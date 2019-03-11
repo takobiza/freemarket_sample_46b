@@ -2,16 +2,16 @@
   color: #333;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 
-.header {
+
+header {
   height: 90px;
   width: 100vw;
-
+}
 
 .header-inner {
   background-color: white;
   margin: 0 auto;
   width: 70%;
-
 
   &__top {
     height: 45px;
@@ -90,16 +90,106 @@
     }
   }
 }
+
+
+main {
 }
 
 
+footer {
+  background-color: #212121;
+  color: #fff;
+  height: 800px;
+  width: 100vw;
+  font-size: 14px;
+  padding-bottom: 40px;
+}
 
+.banner {
+  width: 100vw;
+  height: 250px;
+  background-image: url("https://item.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?82208132");
+  background-position: center;
 
-  body {
+  &__inner {
+    width: 53%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
 
+    &--content {
+      float: left;
+      height: calc(100% - 40px);
+      position: absolute;
+      padding-top: 40px;
+      h2 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      p {
+        font-size: 35px;
+      }
+      .icon {
+        width: 68px;
+        height: 68px;
+        margin-top: 5px;
+      }
+      .link {
+        width: 133px;
+        height: 40px;
+        margin: 0 0 10px 10px;
+      }
+    }
+
+    &--image {
+      height: 100%;
+      width: 300px;
+      float: right;
+    }
   }
-  footer {
+}
 
+.footer-content {
+  width: 80%;
+  height: calc(100%- 250px);
+  margin: 60px auto 0;
+  display: flex;
+
+  &__links {
+    float: left;
+    text-align: center;
+    flex: 1;
+
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    li {
+      line-height: 30px;
+    }
+
+    &--country {
+      width: 50%;
+      line-height: 50px;
+      display: block;
+      margin: 0 auto;
+      i {
+        float: left;
+        text-align: center;
+        margin: 17px 0;
+      }
+    }
   }
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 30px;
+
+  &__copyright {
+    font-size: 12px;
+  }
+}
 
 }
