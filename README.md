@@ -59,7 +59,7 @@ deviceで追加されるもの
 |building|string||
 |phone_number|string||
 
-### Association TODO
+### Association
 - belongs_to :user
 
 ## productsテーブル
@@ -75,7 +75,7 @@ deviceで追加されるもの
 |price|integer|null: false|
 |is_buy|boolean|null:false, default: true |
 
-### Association ToDo
+### Association
 - has_one :deliveryoption, dependent: destroy
 - has_many :productimages, dependent: destroy
 - belongs_to :category
@@ -93,7 +93,7 @@ deviceで追加されるもの
 |prefecture|integer|null: false|
 |days|integer|null: false|
 
-### Association ToDo
+### Association
 - belongs_to :product
 
 
