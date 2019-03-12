@@ -41,7 +41,7 @@ deviceで追加されるもの
 |city|string||
 |block|string||
 |building|string||
-|phone_number|string|null: false|
+|phone_number|integer|null: false|
 
 ### Association
 - belongs_to :user
@@ -57,7 +57,7 @@ deviceで追加されるもの
 |city|string|null: false|
 |block|string|null: false|
 |building|string||
-|phone_number|string||
+|phone_number|integer||
 
 ### Association
 - belongs_to :user
