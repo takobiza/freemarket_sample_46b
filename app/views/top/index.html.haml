@@ -1,4 +1,5 @@
-.container
+.top-page-container
+
   %header
     .header-inner
       .header-inner__top
@@ -17,9 +18,11 @@
           %li.signin ログイン
           %li.signup 新規会員登録
 
-  %main
 
   %footer
+    .sell-btn
+      %p 出品
+      = fa_icon 'camera 4x'
     .banner
       .banner__inner
         .banner__inner--content
@@ -82,8 +85,7 @@
           %p 日本
 
     .footer-bottom
-      .footer-bottom__logo
-        =link_to root_path do
-          = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?2845599746'
+      =link_to root_path do
+        = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?2845599746'
       %p.footer-bottom__copyright
         © 2019 Mercari
