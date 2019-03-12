@@ -2,7 +2,6 @@
   "name": "freemarket_sample_46b",
   "private": true,
   "dependencies": {
-    "bxslider": "^4.2.14",
     "flag-icon-css": "^3.3.0"
   }
 }
