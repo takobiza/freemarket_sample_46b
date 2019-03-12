@@ -17,6 +17,20 @@
         %ul.header-inner__bottom--right
           %li.signin ログイン
           %li.signup 新規会員登録
+  %main
+    .top-banner
+      %ul.bxslider
+        %li.bxslider__banner-new-life
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/featured/newlife/keyvisual.png?2845599746', :class => 'bxslider__banner-new-life--text')
+        %li.bxslider__banner-about-mercari
+        %li.bxslider__banner-get-app
+          .bxslider__banner-get-app--left-contents
+            %h2 スマホでかんたん<br>フリマアプリ
+            %p メルカリはスマホからすぐに出品できる<br>購入時も安心な独自システムのアプリです
+            = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?2845599746', :class => 'link')
+            = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2845599746', :class => 'link')
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?2845599746', :class => 'bxslider__banner-get-app--image')
+
 
 
   %footer

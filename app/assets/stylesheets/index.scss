@@ -87,6 +87,87 @@ header {
   }
 }
 
+main {
+  padding-top: 10px;
+}
+
+.top-banner {
+  width: 100vw;
+  height: 390px;
+  background-color: #d9f7ff;
+}
+
+.bx-wrapper {
+  margin: 0 !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: none !important;
+  .bx-default-pager {
+    padding-bottom: 50px;
+  }
+}
+
+.bxslider {
+  height: 100%;
+  width: 100%;
+  &__banner-new-life {
+    background-color: #ff9999;
+    background-image: url('https://item.mercari.com/jp/assets/img/featured/newlife/keyvisual_bg_item.png?82208132');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    &--text {
+      margin: 0 30%;
+      max-width: 40%;
+    }
+  }
+
+  &__banner-about-mercari {
+    background-image: url('https://item.mercari.com/jp/assets/img/common/jp/top/top-banner-welcome.png');
+    background-position: center;
+    height: 100%;
+  }
+
+  &__banner-get-app {
+    background-image: url('https://item.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg');
+    background-position: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    &--left-contents {
+      flex: 2;
+      margin: auto 0 auto 12%;
+      padding-left: 5%;
+      h2 {
+        font-size: 60px;
+        font-weight: bold;
+        line-height: 70px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 35px;
+        margin: 20px 0;
+      }
+      .link {
+        height: 50px;
+        float: left;
+        margin-right: 10px;
+        width: 170px;
+      }
+    }
+
+    &--image {
+      flex: 1;
+      float: left;
+      height: 100%;
+      margin-right: 12%;
+      width: 440px;
+    }
+  }
+}
 
 
 footer {
