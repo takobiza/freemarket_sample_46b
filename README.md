@@ -29,7 +29,7 @@ deviceで追加されるもの
 ### Association
 - belongs_to :user
 
-## user_detailテーブル
+## user_detailsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
