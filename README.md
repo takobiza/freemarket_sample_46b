@@ -35,7 +35,7 @@ deviceで追加されるもの
 |user_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 |name_kana|string|null: false|
-|birth|string|null: false|
+|birth|data|null: false|
 |postal_code|string||
 |prefectures|integer||
 |city|string||
