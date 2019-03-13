@@ -1,0 +1,94 @@
+.top-page-container
+
+  %header
+    .header-inner
+      .header-inner__top
+        .header-inner__top--logo
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2845599746'
+        .header-inner__top--form
+          = form_with do |f|
+            = f.text_field :keyword,  class: 'input', placeholder: 'キーワードから探す'
+          .input__search
+            = fa_icon 'search', class: 'input__search--btn'
+      .header-inner__bottom
+        %ul.header-inner__bottom--left
+          %li.nav カテゴリーから探す
+          %li.nav ブランドから探す
+        %ul.header-inner__bottom--right
+          %li.signin ログイン
+          %li.signup 新規会員登録
+
+
+  = render 'top-page'
+
+
+  %footer
+    .sell-btn
+      %p 出品
+      = fa_icon 'camera 4x'
+    .banner
+      .banner__inner
+        .banner__inner--content
+          %h2 スマホでかんたんフリマアプリ
+          %p 今すぐ無料ダウンロード！
+
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/mercari_icon.png?2845599746', class: 'icon')
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?2845599746', class: 'link')
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2845599746', class: 'link')
+        = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/jp/download_content_pc.png?2845599746', class: 'banner__inner--image')
+
+    .footer-content
+      %ul.footer-content__links
+        %h2 メルカリについて
+        %li 会社概要
+        %li プライバシーポリシー
+        %li メルカリ利用規約
+        %li 有償ポイントに関する特約
+        %li あんしんスマホサポート制度に関する規約
+        %li コンプライアンスポリシー
+        %li 個人データの安全管理に係る基本方針
+        %li 特定商取引に関する表記
+        %li 資金決済法に基づく表示
+        %li 法令遵守と犯罪抑止のために
+        %li 採用情報
+
+      %ul.footer-content__links
+        %h2 メルカリを見る
+        %li カテゴリー一覧
+        %li ブランド一覧
+        %li 出品地域一覧
+        %li 公式ブログ
+        %li 公式Twitter
+        %li 公式Facebook
+
+      %ul.footer-content__links
+        %h2 ヘルプ＆ガイド
+        %li メルカリガイド
+        %li メルカリロゴ利用ガイドライン
+        %li お知らせ
+        %li らくらくメルカリ便とは
+        %li ゆうゆうメルカリ便とは
+        %li 大型らくらくメルカリ便とは
+        %li 車体取引ガイド
+        %li 返品・返金ポリシー
+        %li メルカリあんしん・あんぜん宣言！
+        %li 偽ブランド品撲滅への取り組み
+        %li メルカリボックス
+
+      %ul.footer-content__links
+        %h2 国
+        .footer-content__links--country
+          %i.flag-icon.flag-icon-us
+          %p United States
+        .footer-content__links--country
+          %i.flag-icon.flag-icon-gb
+          %p United Kingdom
+        .footer-content__links--country
+          %i.flag-icon.flag-icon-jp
+          %p 日本
+
+    .footer-bottom
+      =link_to root_path do
+        = image_tag '//www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?2845599746'
+      %p.footer-bottom__copyright
+        © 2019 Mercari
