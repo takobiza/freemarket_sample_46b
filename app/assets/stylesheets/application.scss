@@ -1,4 +1,11 @@
 @import './reset';
-@import 'index';
 @import 'font-awesome';
 @import 'bxslider';
+
+@import 'config/color';
+
+@import 'modules/main-option';
+@import 'modules/index';
+@import 'modules/main-header';
+@import 'modules/main-footer';
+
