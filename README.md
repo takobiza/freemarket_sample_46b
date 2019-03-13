@@ -16,8 +16,10 @@ deviceで追加されるもの
 - has_many :products, dependent: destroy
 - has_many :favorites, dependent: destroy
 - has_many :comments, dependent: destroy
-- has_many :buyer_purchase, class_name: 'User', :foreign_key => 'buyer_id'
-- has_many :exhibitor_transactions, class_name: 'User', :foreign_key => 'exhibitor_id'
+- has_many :purchase_seller, :class_name => 'Purchase', :foreign_key => 'seller_id'
+- has_many :purchase_of_buyer, :class_name => 'Purchase', :foreign_key => 'buyer_id'
+- has_many :products_of_seller, :through => :purchase_of_seller, :source => 'product'
+- has_many :products_of_buyer, :through => :purchase_of_buyer, :source => 'product'
 
 ## sns_credentialsテーブル
 |Column|Type|Options|
