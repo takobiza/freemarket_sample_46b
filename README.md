@@ -33,9 +33,13 @@ deviceで追加されるもの
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|name|string|null: false|
-|name_kana|string|null: false|
-|birth|data|null: false|
+|family_name|string|null: false|
+|given_name|string|null: false|
+|family_name_kana|string|null: false|
+|given_name_kana|string|null: false|
+|birth_year|integer|null: false|
+|birth_month|integer|null: false|
+|birth_day|integer|null: false|
 |postal_code|string||
 |prefectures|integer||
 |city|string||
@@ -50,8 +54,10 @@ deviceで追加されるもの
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|name|string|null: false|
-|name_kana|string|null: false|
+|family_name|string|null: false|
+|given_name|string|null: false|
+|family_name_kana|string|null: false|
+|given_name_kana|string|null: false|
 |postal_code|string|null: false|
 |prefectures|integer|null: false|
 |city|string|null: false|
@@ -73,6 +79,7 @@ deviceで追加されるもの
 |size|integer||
 |state|integer||
 |price|integer|null: false|
+|status|boolean|null:false, default: true |
 |is_buy|boolean|null:false, default: true |
 
 ### Association
@@ -148,11 +155,12 @@ deviceで追加されるもの
 |Column|Type|Options|
 |------|----|-------|
 |buyer_id|references|null:false, foreign_key: true|
-|exhibitor_id|references|null:false, foreign_key: true|
+|seller_id|references|null:false, foreign_key: true|
 |product_id|references|null:false, foreign_key: true|
 |price_pay|integer|null: false|
+|rate|integer|null: false|
 
 ### Association
-- belongs_to :buyer, class_name: 'User', :foreign_key => 'buyer_id'
-- belongs_to :exhibitor, class_name: 'User', :foreign_key => 'exhibitor_id'
 - belongs_to :product
+- belongs_to :seller, :class_name => 'User', :foreign_key => 'seller_id'
+- belongs_to :buyer, :class_name => 'User', :foreign_key => 'buyer_id'
