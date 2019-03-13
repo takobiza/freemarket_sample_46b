@@ -1,310 +1,310 @@
 .top-page-container
 
-  = render 'main-header'
+  = render '/shared/main-header'
 
 
   %main.top-page-body
-  .top-banner
-    %ul.bxslider
-      %li.bxslider__banner-new-life
-        = image_tag('//www-mercari-jp.akamaized.net/assets/img/featured/newlife/keyvisual.png?2845599746', class: 'bxslider__banner-new-life--text')
-      %li.bxslider__banner-about-mercari
-      %li.bxslider__banner-get-app
-        .bxslider__banner-get-app--left-contents
-          %h2 スマホでかんたん<br>フリマアプリ
-          %p メルカリはスマホからすぐに出品できる<br>購入時も安心な独自システムのアプリです
-          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?2845599746', class: 'link')
-          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2845599746', class: 'link')
-        = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?2845599746', class: 'bxslider__banner-get-app--image')
+    .top-banner
+      %ul.bxslider
+        %li.bxslider__banner-new-life
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/featured/newlife/keyvisual.png?2845599746', class: 'bxslider__banner-new-life--text')
+        %li.bxslider__banner-about-mercari
+        %li.bxslider__banner-get-app
+          .bxslider__banner-get-app--left-contents
+            %h2 スマホでかんたん<br>フリマアプリ
+            %p メルカリはスマホからすぐに出品できる<br>購入時も安心な独自システムのアプリです
+            = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?2845599746', class: 'link')
+            = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2845599746', class: 'link')
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?2845599746', class: 'bxslider__banner-get-app--image')
 
 
-  .pickup-items-wrapper
-    .items-container
-      %h2 ピックアップカテゴリー
+    .pickup-items-wrapper
+      .items-container
+        %h2 ピックアップカテゴリー
 
-      .pickup-items
-        %h3 レディース 新着アイテム
+        .pickup-items
+          %h3 レディース 新着アイテム
 
-        .pickup-items__boxes
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+          .pickup-items__view-all すべての商品を見る
 
-      .pickup-items
-        %h3 メンズ 新着アイテム
+        .pickup-items
+          %h3 メンズ 新着アイテム
 
-        .pickup-items__boxes
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+          .pickup-items__view-all すべての商品を見る
 
-      .pickup-items
-        %h3 ベビー・キッズ 新着アイテム
+        .pickup-items
+          %h3 ベビー・キッズ 新着アイテム
 
-        .pickup-items__boxes
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+          .pickup-items__view-all すべての商品を見る
 
-      .pickup-items
-        %h3 コスメ・香水・美容 新着アイテム
+        .pickup-items
+          %h3 コスメ・香水・美容 新着アイテム
 
-        .pickup-items__boxes
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
-
-
-    .items-container
-      %h2 ピックアップ
+          .pickup-items__view-all すべての商品を見る
 
 
-      .pickup-items
-        %h3 シャネル 新着アイテム
+      .items-container
+        %h2 ピックアップ
 
-        .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+        .pickup-items
+          %h3 シャネル 新着アイテム
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-      .pickup-items
-        %h3 ルイヴィトン 新着アイテム
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__boxes
+          .pickup-items__view-all すべての商品を見る
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+        .pickup-items
+          %h3 ルイヴィトン 新着アイテム
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-      .pickup-items
-        %h3 シュプリーム 新着アイテム
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__boxes
+          .pickup-items__view-all すべての商品を見る
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+        .pickup-items
+          %h3 シュプリーム 新着アイテム
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-      .pickup-items
-        %h3 ナイキ 新着アイテム
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-        .pickup-items__boxes
+          .pickup-items__view-all すべての商品を見る
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+        .pickup-items
+          %h3 ナイキ 新着アイテム
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name ワンピース
-              %p.price ¥1,500
-              %p.tax (税込)
+          .pickup-items__boxes
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-          .pickup-items__boxes__product
-            = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-            .pickup-items__boxes__product--detail
-              %p.name 服
-              %p.price ¥2,000
-              %p.tax (税込)
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name ワンピース
+                %p.price ¥1,500
+                %p.tax (税込)
 
-        .pickup-items__view-all すべての商品を見る
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
 
-  = render 'main-footer'
+            .pickup-items__boxes__product
+              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
+              .pickup-items__boxes__product--detail
+                %p.name 服
+                %p.price ¥2,000
+                %p.tax (税込)
+
+          .pickup-items__view-all すべての商品を見る
+
+  = render '/shared/main-footer'
