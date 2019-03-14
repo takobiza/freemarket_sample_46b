@@ -1,0 +1,84 @@
+.main-header {
+  height: 90px;
+  width: 100vw;
+}
+
+.header-inner {
+  background-color: $white;
+  margin: 0 auto;
+  width: 70%;
+
+  &__top {
+    height: 45px;
+    padding-top: 10px;
+
+    &--logo {
+      float: left;
+      height: 35px;
+      width: 134px;
+    }
+    &--form {
+      float: right;
+      height: 35px;
+      position: relative;
+      width: calc(100% - (134px + 15px));
+      .input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 100%;
+        padding: 0 8px;
+        position: absolute;
+        width: calc(100% - 20px);
+        &__search {
+          float: right;
+          height: 100%;
+          position: relative;
+          width: 35px;
+          &--btn {
+            line-height: 35px;
+            position: absolute;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  &__bottom {
+    height: 35px;
+
+    li {
+      font-size: 14px;
+      float: left;
+      line-height: 35px;
+    }
+
+    &--left {
+      .nav{
+        padding-right: 15px;
+      }
+    }
+
+    &--right {
+      float: right;
+      .signin {
+        background-color: $warm-red;
+        border-radius: 4px;
+        color: white;
+        margin-right: 15px;
+        text-align: center;
+        width: 80px;
+      }
+
+      .signup {
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px $lightblue inset;
+        color: $lightblue;
+        float: left;
+        text-align: center;
+        width: 105px;
+      }
+    }
+  }
+}
