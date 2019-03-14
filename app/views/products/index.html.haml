@@ -2,7 +2,6 @@
 
   = render '/shared/main-header'
 
-
   %main.top-page-body
     .top-banner
       %ul.bxslider
@@ -26,285 +25,116 @@
           %h3 レディース 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_ladies.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
           %h3 メンズ 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_mens.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
           %h3 ベビー・キッズ 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_kids.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
           %h3 コスメ・香水・美容 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', :class => 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_cosmetics.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, :class => 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
 
       .items-container
-        %h2 ピックアップ
-
+        %h2 ピックアップブランド
 
         .pickup-items
           %h3 シャネル 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_chanel.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
           %h3 ルイヴィトン 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_vuitton.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
           %h3 シュプリーム 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_supreme.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
           %h3 ナイキ 新着アイテム
 
           .pickup-items__boxes
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m62022754247_1.jpg?1550064654', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name ワンピース
-                %p.price ¥1,500
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
-            .pickup-items__boxes__product
-              = image_tag('https://static.mercdn.net/thumb/photos/m95109049741_1.jpg?1552377352', class: 'pickup-items__boxes__product--img')
-              .pickup-items__boxes__product--detail
-                %p.name 服
-                %p.price ¥2,000
-                %p.tax (税込)
-
+            - @items_nike.each do |i|
+              .pickup-items__boxes__product
+                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+                .pickup-items__boxes__product--detail
+                  = i.name
+                  %p.price
+                    = i.price
+                  %p.tax (税込)
           .pickup-items__view-all すべての商品を見る
 
   = render '/shared/main-footer'
