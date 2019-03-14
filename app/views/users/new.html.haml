@@ -1,11 +1,11 @@
 .signup__container
-  = render '/shared/single-header'
+  = render '/shared/single/single-header'
 
   %main.signup__container__main
-    %section.signup__box
-      %h2.signup__box__header 新規会員登録
-      %section.signup__box__inner
-        .signup__box__list
+    %section.signup__container__main__box
+      %h2.signup__container__main__box__header 新規会員登録
+      .signup__container__main__box__section
+        .signup__container__main__box__section__list
           = link_to new_user_registration_path, class: "registration__btn btn-mail" do
             = fa_icon "envelope-o", class: "mail-icon"
             メールアドレスで登録
@@ -13,7 +13,8 @@
             = fa_icon "facebook-square", class: "facebook-icon"
             Facebookで登録
           %button.registration__btn.btn-google
-            = fa_icon "google-plus", class: "google-icon"
+            = image_tag("https://img.icons8.com/color/48/000000/google-logo.png", class: "google-icon")
             Googleで登録
 
-  = render '/shared/single-footer'
+  = render '/shared/single/single-footer'
+
