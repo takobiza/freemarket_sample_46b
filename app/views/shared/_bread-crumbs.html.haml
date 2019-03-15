@@ -1,0 +1,9 @@
+%nav.bread-crumbs
+  %ul.bread-crumbs__list
+    %li
+      =link_to "メルカリ", root_path, class: 'list-link'
+    %li
+      &ensp;
+      =fa_icon "angle-right", class: 'list-arrow-right'
+      &nbsp;
+      =link_to "マイページ", users_path, class: 'list-link'

@@ -1,0 +1,28 @@
+.bread-crumbs {
+  border-top: 1px solid #eee;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  margin-bottom: 4px;
+  &__list {
+    display: flex;
+    background-color: $white;
+    padding: 16px 0 15px;
+    margin: 0 auto;
+    width: 70%;
+    font-family: $mercari-font;
+    font-size: 14px;
+    li {
+      .list-link {
+        text-decoration: none;
+        color: black;
+      }
+      .list-arrow-right {
+        font-weight: bold;
+        color: gray;
+      }
+    }
+    li:last-child {
+      font-weight: bold;
+    }
+  }
+}
