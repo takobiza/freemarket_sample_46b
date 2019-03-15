@@ -26,13 +26,7 @@
 
           .pickup-items__boxes
             - @items_ladies.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -40,13 +34,7 @@
 
           .pickup-items__boxes
             - @items_mens.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -54,13 +42,7 @@
 
           .pickup-items__boxes
             - @items_kids.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -68,13 +50,7 @@
 
           .pickup-items__boxes
             - @items_cosmetics.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, :class => 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
 
@@ -86,13 +62,7 @@
 
           .pickup-items__boxes
             - @items_chanel.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -100,13 +70,7 @@
 
           .pickup-items__boxes
             - @items_vuitton.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -114,13 +78,7 @@
 
           .pickup-items__boxes
             - @items_supreme.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -128,13 +86,7 @@
 
           .pickup-items__boxes
             - @items_nike.each do |i|
-              .pickup-items__boxes__product
-                = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
-                .pickup-items__boxes__product--detail
-                  = i.name
-                  %p.price
-                    = i.price
-                  %p.tax (税込)
+              = render partial: 'products-list', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
   = render '/shared/main-footer'

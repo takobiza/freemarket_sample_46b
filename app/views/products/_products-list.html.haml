@@ -1,0 +1,7 @@
+.pickup-items__boxes__product
+  = image_tag(i.item_image, class: 'pickup-items__boxes__product--img')
+  .pickup-items__boxes__product--detail
+    = i.name
+    %p.price
+      = i.price
+    %p.tax (税込)
