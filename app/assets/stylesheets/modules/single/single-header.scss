@@ -1,10 +1,10 @@
 .single_header {
     text-align: center;
-    height: 128px;
+    height: auto;
 
     h1 {
         display: inline-block;
-        margin: 40px 0 0;
+        margin: 40px 0 ;
 
         a {
             display: inline-block;
@@ -13,8 +13,8 @@
             line-height: 49px;
 
             img {
-                width: 185px;
-                height: 49px;
+                width: 195px;
+                height: 59px;
             }
         }
     }
