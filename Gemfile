@@ -44,6 +44,10 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
@@ -77,3 +81,8 @@ gem 'bxslider-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'recaptcha', require: "recaptcha/rails"
+gem 'pry-rails'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+

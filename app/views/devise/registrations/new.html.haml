@@ -4,12 +4,9 @@
   .field
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.text_field :email, autofocus: true, autocomplete: "email"
   .field
     = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
     %br/
     = f.password_field :password, autocomplete: "new-password"
   .field
