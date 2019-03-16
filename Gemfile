@@ -80,5 +80,6 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'bxslider-rails'
 gem 'jquery-rails'
-gem 'pry-byebug'
+gem 'devise'
+gem 'recaptcha', require: "recaptcha/rails"
 
