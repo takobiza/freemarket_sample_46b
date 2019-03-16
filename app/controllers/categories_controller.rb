@@ -1,0 +1,2 @@
+class CaregoriesController < ApplicationController
+end
