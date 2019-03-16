@@ -1,0 +1,22 @@
+.single_header {
+    text-align: center;
+    height: auto;
+
+    h1 {
+        display: inline-block;
+        margin: 40px 0 ;
+
+        a {
+            display: inline-block;
+            width: 185px;
+            height: 49px;
+            line-height: 49px;
+
+            img {
+                width: 195px;
+                height: 59px;
+            }
+        }
+    }
+}
+

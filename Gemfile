@@ -82,4 +82,7 @@ gem 'bxslider-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'recaptcha', require: "recaptcha/rails"
+<<<<<<< HEAD
 
+=======
+>>>>>>> takobiza/master
