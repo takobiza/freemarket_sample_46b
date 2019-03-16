@@ -1,3 +1,3 @@
 class Brand < ApplicationRecord
-  has_mamy :products, dependent: :destroy
+  has_many :products, dependent: :destroy
 end
