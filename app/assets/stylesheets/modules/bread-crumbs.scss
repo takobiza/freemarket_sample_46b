@@ -11,12 +11,12 @@
     width: 70%;
     font-family: $mercari-font;
     font-size: 14px;
-    li {
-      .list-link {
+    &__link {
+      &__name {
         text-decoration: none;
         color: black;
       }
-      .list-arrow-right {
+      &__arrow-right {
         font-weight: bold;
         color: gray;
       }

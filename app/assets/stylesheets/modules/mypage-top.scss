@@ -59,75 +59,87 @@
     &__content {
       display: none;
       clear: both;
-      position: relative;
-      .no-list {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        .icon {
+      &__no-list {
+        background-color: white;
+        clear: both;
+        padding: 45px 0;
+        &__icon {
           display: flex;
           justify-content: center;
         }
-        p {
+        &__message {
           color: #ccc;
           font-weight: bold;
-          margin-top: 20px;
+          margin-top: 35px;
+          text-align: center
         }
       }
-    }
-    #news_contents {
-      li {
-        background-color: white;
-        position: relative;
-        border-bottom: 1px solid #eee;
-        .variable-path {
-          text-decoration: none;
-          display: flex;
-          padding: 16px 0 16px 16px;
-          color: black;
-          .icon {
-            margin-right: 16px;
-          }
-          .nortification {
-            &__content {
-              font-size: 0.9rem;
+      &__lists {
+        &__list {
+          background-color: white;
+          position: relative;
+          border-bottom: 1px solid #eee;
+          &__path {
+            text-decoration: none;
+            display: flex;
+            padding: 16px 0 16px 16px;
+            color: black;
+            .icon {
+              margin-right: 16px;
             }
-            &__time {
-              .list-clock {
-                font-size: 1.1rem;
-                color: #ddd;
-              }
-              span {
+            .nortification {
+              &__content {
                 font-size: 0.9rem;
-                color: #ddd;
+              }
+              &__time {
+                &__clock-icon {
+                  font-size: 1.1rem;
+                  color: #ddd;
+                }
+                span {
+                  font-size: 0.9rem;
+                  color: #ddd;
+                }
+              }
+              &__trade {
+                &__during {
+                  background-color: red;
+                  color: white;
+                  font-size: 0.8rem;
+                  padding: 2px 6px;
+                  border-radius: 2px;
+                }
+                &__already {
+                  background-color: gray;
+                  color: white;
+                  font-size: 0.8rem;
+                  padding: 2px 6px;
+                  border-radius: 2px;
+                }
               }
             }
-          }
-          .list-arrow-right {
-            font-weight: bold;
-            font-size: 1.5rem;
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translate(0, -50%);
-          }
-          .show-list {
-            background-color: #eee;
-            width: 100%;
-            text-align: center;
-            margin-right: 16px;
-            padding: 16px 0;
-            font-size: 14px;
-            &:hover { opacity: 0.7 }
+            &__arrow-right {
+              font-weight: bold;
+              font-size: 1.5rem;
+              position: absolute;
+              right: 16px;
+              top: 50%;
+              transform: translate(0, -50%);
+            }
+            &__show-list {
+              background-color: #eee;
+              width: 100%;
+              text-align: center;
+              margin-right: 16px;
+              padding: 16px 0;
+              font-size: 14px;
+              &:hover { opacity: 0.7 }
+            }
           }
         }
       }
     }
-    #todo_contents {
-      background-color: white;
-      height: 250px;
-    }
+
     #news:checked ~ #news_contents,
     #todo:checked ~ #todo_contents {
       display: block;
@@ -137,10 +149,10 @@
   &__bottom-space {
     background-color: #eee;
     height: 72px;
-    margin-top: 55px;
     font-weight: bold;
     line-height: 72px;
     padding: 0 16px;
+    margin-top: 60px;
   }
 
   &__bottom-tabs {
@@ -169,82 +181,6 @@
     &__content {
       display: none;
       clear: both;
-    }
-    #current-negotiation_contents {
-      li {
-        background-color: white;
-        position: relative;
-        border-bottom: 1px solid #eee;
-        .variable-path {
-          text-decoration: none;
-          display: flex;
-          padding: 16px 0 16px 16px;
-          color: black;
-          .icon {
-            margin-right: 16px;
-          }
-          .nortification {
-            flex-flow:column;
-            justify-content:space-between;
-            &__content {
-              font-size: 0.9rem;
-            }
-            &__status {
-              font-size: 0.8rem;
-              background-color: red;
-              color: white;
-              padding: 2px 6px;
-              border-radius: 2px;
-            }
-          }
-          .list-arrow-right {
-            font-weight: bold;
-            font-size: 1.5rem;
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translate(0, -50%);
-          }
-        }
-      }
-    }
-    #past-negotiation_contents {
-      li {
-        background-color: white;
-        position: relative;
-        border-bottom: 1px solid #eee;
-        .variable-path {
-          text-decoration: none;
-          display: flex;
-          padding: 16px 0 16px 16px;
-          color: black;
-          .icon {
-            margin-right: 16px;
-          }
-          .nortification {
-            flex-flow:column;
-            justify-content:space-between;
-            &__content {
-              font-size: 0.9rem;
-            }
-            &__status {
-              font-size: 0.8rem;
-              background-color: gray;
-              color: white;
-              padding: 2px 6px;
-              border-radius: 2px;
-            }
-          }
-          .list-arrow-right {
-            font-weight: bold;
-            font-size: 1.5rem;
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translate(0, -50%);
-          }
-        }
-      }
     }
     #current-negotiation:checked ~ #current-negotiation_contents,
     #past-negotiation:checked ~ #past-negotiation_contents {

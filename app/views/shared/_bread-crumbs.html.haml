@@ -1,9 +1,9 @@
 %nav.bread-crumbs
   %ul.bread-crumbs__list
-    %li
-      =link_to "メルカリ", root_path, class: 'list-link'
-    %li
+    %li.bread-crumbs__list__link
+      =link_to "メルカリ", root_path, class: 'bread-crumbs__list__link__name'
+    %li.bread-crumbs__list__link
       &ensp;
-      =fa_icon "angle-right", class: 'list-arrow-right'
+      =fa_icon "angle-right", class: 'bread-crumbs__list__link__arrow-right'
       &nbsp;
-      =link_to "マイページ", users_path, class: 'list-link'
+      =link_to "マイページ", users_path, class: 'bread-crumbs__list__link__name'
