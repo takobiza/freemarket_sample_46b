@@ -10,9 +10,11 @@ class ProductsController < ApplicationController
     @items_supreme = brand_search(3)
     @items_nike = brand_search(4)
   end
-end
 
+  def show
+  end
 
+def private
   def category_search(category_name)
     Category.where(large: category_name).order("RAND()").limit(4).map{ |category| Product.find_by(category_id: category.id)}
   end
@@ -20,3 +22,5 @@ end
   def brand_search(brand_id)
     Product.where(brand_id: brand_id).order("RAND()").limit(4)
   end
+end
+end
