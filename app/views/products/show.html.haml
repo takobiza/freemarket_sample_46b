@@ -6,32 +6,32 @@
   .product-detail-wrapper__container
 
 
-    .product-detail-wrapper__container--item-box
-      %h1.item-name
+    .item-box
+      %h1.item-box__item-name
         高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド
-      %p.item-description
+      %p.item-box__item-description
         『高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド』は、4回の取引実績を持つみっとみとさんから出品されました。腕時計(アナログ)/レディースの商品で、兵庫県から1~2日で発送されます。
 
-      .item-main
-        .item-main__main-img
-          = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'item-main__main-img__img')
+      .item-box__item-main
+        .item-box__item-main--main-img
+          = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'active-img')
 
-          .item-main__sub-img
+          .item-box__item-main--sub-img
             %ul
               %li
-                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'item-main__sub-img__bottom')
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'bottom-img')
               %li
-                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_2.jpg?1549854823', class: 'item-main__sub-img__bottom')
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_2.jpg?1549854823', class: 'bottom-img')
               %li
-                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_3.jpg?1549854823', class: 'item-main__sub-img__bottom')
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_3.jpg?1549854823', class: 'bottom-img')
 
-        %table.item-main__table
+        %table.item-box__item-main--table
           %tr
             %th 出品者
-            %td.item-main__table--change-color テック
+            %td.item-box__item-main--table--change-color テック
           %tr
             %th カテゴリー
-            %td.item-main__table--change-color レディース<br>>時計<br>>腕時計(アナログ)
+            %td.item-box__item-main--table--change-color レディース<br>>時計<br>>腕時計(アナログ)
           %tr
             %th ブランド
             %td
@@ -46,23 +46,23 @@
             %td らくらくメルカリ便
           %tr
             %th 配送元地域
-            %td.item-main__table--change-color 兵庫県
+            %td.item-box__item-main--table--change-color 兵庫県
           %tr
             %th 発送日の目安
             %td 1~2日で発送
 
-      .item-price
-        .item-price--price
+      .item-box__item-price
+        .item-box__item-price--price
           ¥1,650
-        .item-price--tax
+        .item-box__item-price--tax
           (税込)
-        .item-price--postage
+        .item-box__item-price--postage
           送料込み
 
-      .item-buy-btn
+      .item-box__item-buy-btn
         = link_to '購入画面に進む', root_path
 
-      .item-message
+      .item-box__item-message
         %p 即購入OK！
         %br
         %p 今、巷で流行しているDW似のお洒落で可愛いピンクゴールドのレディース腕時計です^ ^
@@ -89,14 +89,14 @@
         %br
         %p お値引きは心ばかりですが相談に応じます
 
-      .item-footer
-        .item-footer__like-btn
+      .item-box__item-footer
+        .item-box__item-footer--like-btn
           = fa_icon 'heart'
           %a いいね！
-        .item-footer__report-btn
+        .item-box__item-footer--report-btn
           = fa_icon 'flag'
           %a 不適切な商品の報告
-        .item-footer__link-safety
+        .item-box__item-footer--link-safety
           = fa_icon 'lock'
           %a あんしん・あんぜんへの取り組み
 
