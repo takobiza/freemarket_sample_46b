@@ -1,0 +1,175 @@
+= render '/shared/main-header'
+= render '/shared/bread-crumbs'
+
+
+.product-detail-wrapper
+  .product-detail-wrapper__container
+
+
+    .item-box
+      %h1.item-name
+        高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド
+      %p.item-description
+        『高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド』は、4回の取引実績を持つみっとみとさんから出品されました。腕時計(アナログ)/レディースの商品で、兵庫県から1~2日で発送されます。
+
+      .item-main
+        .item-main__main-img
+          = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'item-main__main-img__img')
+
+          .item-main__sub-img
+            %ul
+              %li
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'item-main__sub-img__bottom')
+              %li
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_2.jpg?1549854823', class: 'item-main__sub-img__bottom')
+              %li
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_3.jpg?1549854823', class: 'item-main__sub-img__bottom')
+
+        %table.item-main__table
+          %tr
+            %th 出品者
+            %td.item-main__table--change-color テック
+          %tr
+            %th カテゴリー
+            %td.item-main__table--change-color レディース<br>>時計<br>>腕時計(アナログ)
+          %tr
+            %th ブランド
+            %td
+          %tr
+            %th 商品の状態
+            %td 新品・未使用
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td らくらくメルカリ便
+          %tr
+            %th 配送元地域
+            %td.item-main__table--change-color 兵庫県
+          %tr
+            %th 発送日の目安
+            %td 1~2日で発送
+
+      .item-price
+        .item-price--price
+          ¥1,650
+        .item-price--tax
+          (税込)
+        .item-price--postage
+          送料込み
+
+      .item-buy-btn
+        = link_to '購入画面に進む', root_path
+
+      .item-message
+        %p 即購入OK！
+        %br
+        %p 今、巷で流行しているDW似のお洒落で可愛いピンクゴールドのレディース腕時計です^ ^
+        %br
+        %p ピンクゴールドに対して文字盤がブラックなのが非常に可愛くてセンスありです！
+        %br
+        %p ダニエルウェリントン似で高級感もありシックにカッコよく決めたい時にも重宝します
+        %br
+        %p ★メンズの方も奥さんや彼女へのプレゼントにいかがでしょうか。センスが良く、非常に喜ばれると思います！
+        %br
+        %p 是非、ご検討下さいませ
+        %br
+        %p ・新品未使用
+        %p ・送料込み
+        %br
+        %p 文字盤サイズ:直径4cm
+        %p バント幅:2cm
+        %p カラー:ピンクゴールド
+        %br
+        %p ご不明点はお気軽にお聞きください
+        %br
+        %p 新品未使用ではありますが、海外製（輸入品）の為、小傷等ある場合がございます。
+        %p 検品はしっかりしておりますが完璧を求める方、神経質な方のご購入はお控え下さい。
+        %br
+        %p お値引きは心ばかりですが相談に応じます
+
+      .item-footer
+        .item-footer__like-btn
+          = fa_icon 'heart'
+          %a いいね！
+        .item-footer__report-btn
+          = fa_icon 'flag'
+          %a 不適切な商品の報告
+        .item-footer__link-safety
+          = fa_icon 'lock'
+          %a あんしん・あんぜんへの取り組み
+
+
+    .comments-list
+      %ul
+        %li.comment-container
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Xe6HCS4lyoEhsVAHOOBBin6qxLYLren_xcLyTTknCIF-k24u', class: 'comment-container__user-avater')
+          .comment-container__comment-box
+            .comment-container__comment-box--user-name
+              %p 小曽根
+            .comment-container__comment-box--comment
+              %p あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              = fa_icon 'clock-o'
+              %span 20日前
+              = fa_icon 'flag'
+
+        %li.comment-container
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCZALHoHYx_FZT7PSvWXSdNJoOOUgkTqgURomgtXxbb8b5JDi0Vw', class: 'comment-container__user-avater')
+          .comment-container__comment-box
+            .comment-container__comment-box--user-name
+              %p 小崎
+            .comment-container__comment-box--comment
+              %p 欲しい！
+              = fa_icon 'clock-o'
+              %span 15日前
+              = fa_icon 'flag'
+
+        %li.comment-container
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGT-FqAbRzN8UQnpybr8xvbvxDzzGnF0e1z2NIN9wyHLfdZJk7cA', class: 'comment-container__user-avater')
+          .comment-container__comment-box
+            .comment-container__comment-box--user-name
+              %p 木幡
+            .comment-container__comment-box--comment
+              %p かわいい！
+              = fa_icon 'clock-o'
+              %span 3日前
+              = fa_icon 'flag'
+
+
+    .sns_icons
+      .sns_icons__icon
+        .sns_icons__icon--facebook
+          = fa_icon 'facebook'
+        .sns_icons__icon--twitter
+          = fa_icon 'twitter'
+        .sns_icons__icon--pinterest
+          = fa_icon 'pinterest'
+
+
+    .show-items
+      %h3 テックさんのその他の出品
+      .show-items__boxes
+        = render 'product-detail'
+        = render 'product-detail'
+        = render 'product-detail'
+
+      .show-items__boxes
+        = render 'product-detail'
+        = render 'product-detail'
+        = render 'product-detail'
+
+    .show-items
+      %h3 腕時計(アナログ)（レディース） その他の商品
+      .show-items__boxes
+        = render 'product-detail'
+        = render 'product-detail'
+        = render 'product-detail'
+
+      .show-items__boxes
+        = render 'product-detail'
+        = render 'product-detail'
+        = render 'product-detail'
+
+
+= render '/shared/main-footer'
