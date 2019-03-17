@@ -8,16 +8,15 @@
     width: 700px;
     height: 100%;
     margin: auto;
+
+    &--item-box {
+      height: auto;
+      background-color: $white;
+      width: calc(100% - 80px);
+      margin-bottom: 10px;
+      padding: 40px;
+    }
   }
-
-
-.item-box {
-  height: auto;
-  background-color: $white;
-  width: calc(100% - 80px);
-  margin-bottom: 10px;
-  padding: 40px;
-}
 
 .item-name {
   text-align: center;
