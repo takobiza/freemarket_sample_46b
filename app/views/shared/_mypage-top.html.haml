@@ -1,0 +1,104 @@
+.l-content
+  %section.l-content__profile
+    =link_to users_path, class: "l-content__profile__link" do
+      .l-content__profile__link__block
+        .icon
+          = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "60", height: "60")
+        %p ユーザー名
+        %ul
+          %li 評価数 &ensp;7
+          %li 出品数 &ensp;6
+
+  .l-content__tabs
+    %input{id: "news", type: "radio", name: "tab_item", checked: "checked"}
+    %label.l-content__tabs__item{for: "news"} お知らせ
+    %input{id: "todo", type: "radio", name: "tab_item"}
+    %label.l-content__tabs__item{for: "todo"} やることリスト
+    .l-content__tabs__content{id: "news_contents"}
+      %ul.l-content__tabs__content__lists
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 事務局から個別メッセージ
+              %p.nortification__time
+                =fa_icon "clock-o", class: 'nortification__time__clock-icon'
+                %span &nbsp;n 時間前
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 事務局から個別メッセージ
+              %p.nortification__time
+                =fa_icon "clock-o", class: 'nortification__time__clock-icon'
+                %span &nbsp;n 時間前
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 事務局から個別メッセージ
+              %p.nortification__time
+                =fa_icon "clock-o", class: 'nortification__time__clock-icon'
+                %span &nbsp;n 時間前
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 事務局から個別メッセージ
+              %p.nortification__time
+                =fa_icon "clock-o", class: 'nortification__time__clock-icon'
+                %span &nbsp;n 時間前
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 事務局から個別メッセージ
+              %p.nortification__time
+                =fa_icon "clock-o", class: 'nortification__time__clock-icon'
+                %span &nbsp;n 時間前
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            %p.l-content__tabs__content__lists__list__path__show-list 一覧を見る
+    .l-content__tabs__content{id: "todo_contents"}
+      .l-content__tabs__content__no-list
+        .l-content__tabs__content__no-list__icon
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7O3Br01fmMVD3k6KL-m70GU5XUWN2Q13hZR1okjGmb027sP8ySw', width: "110", height: "90")
+        %p.l-content__tabs__content__no-list__message 現在、やることリストはありません
+
+  %p.l-content__bottom-space
+    購入した商品
+
+  .l-content__bottom-tabs
+    %input{id: "current-negotiation", type: "radio", name: "bottom-tab_item", checked: "checked"}
+    %label.l-content__bottom-tabs__item{for: "current-negotiation"} 取引中
+    %input{id: "past-negotiation", type: "radio", name: "bottom-tab_item"}
+    %label.l-content__bottom-tabs__item{for: "past-negotiation"} 過去の取引
+    .l-content__bottom-tabs__content{id: "current-negotiation_contents"}
+      %ul.l-content__tabs__content__lists
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 「〜」を取引中です。
+              %span.nortification__trade__during 取引中
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            %p.show-list 一覧を見る
+    .l-content__bottom-tabs__content{id: "past-negotiation_contents"}
+      %ul
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "48", height: "48", class: "icon")
+            .nortification
+              %p.nortification__content 「＝」を購入しました。取引が完了しました
+              %span.nortification__trade__already 取引完了
+            =fa_icon "angle-right", class: 'l-content__tabs__content__lists__list__path__arrow-right'
+        %li.l-content__tabs__content__lists__list
+          =link_to users_path, class: "l-content__tabs__content__lists__list__path" do
+            %p.show-list 一覧を見る
