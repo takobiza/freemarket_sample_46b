@@ -1,0 +1,14 @@
+.l-content__btn-area {
+  background-color: white;
+  padding: 64px;
+  text-align: center;
+  &__btn {
+    background-color: #ea352d;
+    color: white;
+    font-size: 13px;
+    line-height: 48px;
+    border: none;
+    padding: 0 120px;
+    transition: all ease-out .3s;
+  }
+}
