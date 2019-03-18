@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
     end
+  end
 
   resources :products, only:[:show, :index]
 end
