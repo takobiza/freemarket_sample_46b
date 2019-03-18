@@ -9,12 +9,4 @@ class UsersController < ApplicationController
   def logout
   end
 
-  def identify
-  end
-
-  def profile
-  end
-
-  def card
-  end
 end
