@@ -15,12 +15,28 @@
           = image_tag("https://img.icons8.com/color/48/000000/google-logo.png", class: "google-icon")
           Googleでログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .error_message_box_center
+          -if resource.errors.full_messages_for(:total).present?
+            = resource.errors.full_messages_for(:total).first.split(" ")[1]
+
         .login__container_main_content_form__inner_group
-          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス"
+          = f.text_field :email, autocomplete: "email", placeholder: "メールアドレス"
+          .error_message_box
+            -if resource.errors.full_messages_for(:email).present?
+              = resource.errors.full_messages_for(:email).first.split(" ")[1]
+
         .login__container_main_content_form__inner_group
           = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+          .error_message_box
+            -if resource.errors.full_messages_for(:password).present?
+              = resource.errors.full_messages_for(:password).first.split(" ")[1]
+
         .login__container_main_content_form__inner_group
           = recaptcha_tags
+          .error_message_box
+            -if resource.errors.full_messages_for(:recaptcha).present?
+              = resource.errors.full_messages_for(:recaptcha).first.split(" ")[1]
+
         .login__container_main_content_form__inner_action
           = f.submit "ログイン", class: "registration__btn btn-red login-submit"
           - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
