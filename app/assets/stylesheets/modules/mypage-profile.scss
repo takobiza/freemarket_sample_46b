@@ -37,12 +37,16 @@
   &__bottom-btn-area {
     margin: 0 39px;
     &__btn {
-      padding: 16px 0;
-      width: 100%;
-      background-color: red;
-      color: white;
-      border: none;
-      font-size: 14px;
+      text-decoration: none;
+      &__text {
+        padding: 16px 0;
+        width: 100%;
+        background-color: red;
+        color: white;
+        border: none;
+        font-size: 14px;
+        text-align: center;
+      }
     }
   }
 }

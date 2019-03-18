@@ -7,4 +7,5 @@
   .l-content-profile__profile__textarea
     %textarea.l-content-profile__profile__textarea__content{placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
   .l-content-profile__bottom-btn-area
-    %button.l-content-profile__bottom-btn-area__btn 変更する
+    =link_to users_path, class: "l-content-profile__bottom-btn-area__btn" do
+      %p.l-content-profile__bottom-btn-area__btn__text 変更する
