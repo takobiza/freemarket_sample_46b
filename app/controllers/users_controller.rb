@@ -7,6 +7,6 @@ class UsersController < ApplicationController
   end
 
   def logout
-
   end
+
 end
