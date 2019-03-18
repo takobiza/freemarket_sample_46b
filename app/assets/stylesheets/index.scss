@@ -67,7 +67,7 @@
     &--right {
       float: right;
       .signin {
-        background-color: #ea352d;
+        background-color: $warm-red;
         border-radius: 4px;
         color: white;
         margin-right: 15px;
@@ -255,7 +255,7 @@ h2 {
 }
 
 .sell-btn {
-  background-color: #ea352d;
+  background-color: $warm-red;
   border-radius: 50%;
   height: 160px;
   position: fixed;
