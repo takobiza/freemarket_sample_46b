@@ -1,0 +1,219 @@
+.signup-header {
+    height: 128px;
+    text-align: center;
+    background-color: $background-gray;
+
+    &__logo {
+        margin: 40px 0 0;
+        display: inline-block;
+
+        a {
+            display: inline-block;
+            width: 185px;
+            height: 49px;
+            margin: 0 8px 0 0;
+
+            img:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    &__nav {
+        padding: 40px 0 0 44px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 0;
+        text-align: center;
+
+        .active {
+            color: $warm-red;
+            font-weight: 600;
+
+            .status {
+                background: $warm-red;
+            }
+        }
+
+        li {
+            font-size: 12px;
+            color: #888;
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            margin: 0 40px 0 0;
+
+            .status {
+                width: 12px;
+                height: 12px;
+                margin: 8px auto 0;
+                background: #ccc;
+                border-radius: 50%;
+            }
+
+            .status::after {
+                left: 50%;
+                position: absolute;
+                bottom: 5px;
+                z-index: -1;
+                display: block;
+                content: '';
+                width: 100%;
+                height: 2px;
+                background: #ccc;
+            }
+
+            .status::before {
+                right: 50%;
+                position: absolute;
+                bottom: 5px;
+                z-index: -1;
+                display: block;
+                content: '';
+                width: 100%;
+                height: 2px;
+                background: #ccc;
+            }
+        }
+    }
+}
+
+.signup-main {
+    background-color: $background-gray;
+
+    &-content {
+        margin: 0 436px;
+        background-color: white;
+
+        &__head {
+            color: $thick-gray;
+            text-align: center;
+            padding: 32px 16px;
+            font-size: 22px;
+        }
+
+        &__inner {
+            border-top: 1px solid #eee;
+            padding-top: 40px;
+
+            &-form {
+                max-width: 320px;
+                margin: 0 auto;
+                padding-bottom: 64px;
+
+                &__group:first-child {
+                    margin: 0;
+                }
+
+                &__group {
+                    margin: 40px 0 0;
+
+                    label {
+                        font-weight: 600;
+                        font-size: 14px;
+                    }
+
+                    span {
+                        background: $warm-red;
+                        margin: 0 0 0 8px;
+                        padding: 3px 4px;
+                        border-radius: 3px;
+                        color: $white;
+                        font-size: 12px;
+                    }
+
+                    &-inner {
+                        width: 100%;
+                        height: 48px;
+                        padding: 10px 16px 8px;
+                        border-radius: 4px;
+                        border: 1px solid $form-box-border;
+                        background: $white;
+                        line-height: 1.5;
+                        font-size: 16px;
+                        margin: 8px 0 0;
+                    }
+
+                    h3 {
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+
+                    p {
+                        margin: 8px 0 0;
+                        font-size: 14px;
+                    }
+
+                    &-right {
+                        text-align: right;
+                        padding-top: 40px;
+
+                        &__inner {
+                            text-decoration: none;
+                            color: $lightblue;
+                        }
+                    }
+
+                    &__select {
+
+                        &__wrap {
+                            display: inline-block;
+                            position: relative;
+                            margin: 8px 0 0;
+                            width: 140px;
+                            background-color: $white;
+
+                            &-default {
+                                -webkit-appearance: none;
+                                -moz-appearance: none;
+                                appearance: none;
+                                @include select-default-style();
+                            }
+
+                            .icon__arrow--bottom {
+                                position: absolute;
+                                right: 8px;
+                                top: -24%;
+                                width: 30px;
+                                background-color: $white;
+                                color: #888;
+                                font-size: 48px;
+                                -webkit-text-stroke: 2px white
+                            }
+
+                          &_text{
+                            display: inline-block;
+                          }
+                        }
+                    }
+
+                }
+
+                &__text {
+                    margin: 8px 0 0;
+                    text-align: center;
+                    font-size: 14px;
+                    padding-bottom: 40px;
+
+                    &-gray {
+                        margin: 8px 0 0;
+                        text-align: center;
+                        font-size: 14px;
+                        color: #888;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: $lightblue;
+                    }
+
+                }
+
+            }
+
+        }
+    }
+}
+
+
+
