@@ -19,6 +19,9 @@ class ProductsController < ApplicationController
     @relation_product = Product.where(category_id: @product.category_id).where(brand_id: @product.brand_id).limit(6)
     @relation_user = Product.where(user_id: @product.user_id).limit(6)
 
+    @product_prefecture = DelivaryOption.find_by(product_id: @product.id)
+
+    # @delivary_prefecture = Prefecture.find_by(id: @product.prefecture_id)
   end
 
   private

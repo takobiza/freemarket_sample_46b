@@ -49,7 +49,7 @@
           %tr
             %th 配送元地域
             %td.item-box__item-main--table--change-color
-
+              = Prefecture.find_by(id: @product_prefecture.prefecture_id).name
           %tr
             %th 発送日の目安
             %td 1~2日で発送
