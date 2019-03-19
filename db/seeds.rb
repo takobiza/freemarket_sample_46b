@@ -35,10 +35,10 @@ Product.create(name: "シュプリーム 靴",price: 10000, state: 2, is_buy: tr
 Product.create(name: "シュプリーム バッグ",price: 1000, state: 3, is_buy: true, status: true, category_id: 166, brand_id: 3)
 Product.create(name: "シュプリーム ジャケット",price: 1000, state: 3, is_buy: true, status: true, size: 1,category_id: 135, brand_id: 3)
 
-Product.create(name: "ナイキ フリース",price: 18999, state: 1, is_buy: true, size: 1,status: true, category_id: 124, brand_id: 3)
-Product.create(name: "ナイキ 靴",price: 10000, state: 2, is_buy: true, status: true, size: 1,category_id: 158, brand_id: 3)
-Product.create(name: "ナイキ バッグ",price: 1000, state: 3, is_buy: true, status: true, category_id: 166, brand_id: 3)
-Product.create(name: "ナイキ ジャケット",price: 1000, state: 3, is_buy: true, status: true, size: 1,category_id: 135, brand_id: 3)
+Product.create(name: "ナイキ フリース",price: 18999, state: 1, is_buy: true, size: 1,status: true, category_id: 124, brand_id: 4)
+Product.create(name: "ナイキ 靴",price: 10000, state: 2, is_buy: true, status: true, size: 1,category_id: 158, brand_id: 4)
+Product.create(name: "ナイキ バッグ",price: 1000, state: 3, is_buy: true, status: true, category_id: 166, brand_id: 4)
+Product.create(name: "ナイキ ジャケット",price: 1000, state: 3, is_buy: true, status: true, size: 1,category_id: 135, brand_id: 4)
 
 ProductImage.create(image: "https://static.mercdn.net/item/detail/orig/photos/m73002812935_1.jpg?1544748498", product_id: 1);
 ProductImage.create(image: "https://static.mercdn.net/item/detail/orig/photos/m89761627917_1.jpg?1548658461", product_id: 2);
