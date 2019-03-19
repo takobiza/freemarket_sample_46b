@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_074500) do
+ActiveRecord::Schema.define(version: 2019_03_18_053341) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 2019_03_18_074500) do
   create_table "delivary_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.integer "method", null: false
-    t.integer "prefecture", null: false
-    t.integer "days", null: false
-    t.integer "burden", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shippingday_id", null: false
+    t.integer "shippingpay_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_delivary_options_on_product_id"
@@ -62,11 +62,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_074500) do
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name"
-  end
-
-  create_table "shippingdays", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

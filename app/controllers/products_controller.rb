@@ -27,6 +27,6 @@ class ProductsController < ApplicationController
   end
 
   def create_get_category_SQL(category)
-    sql = "SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `large` = '#{category}' ORDER BY RAND() LIMIT 4"
+    sql = "SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `large` = '#{category}' AND `status` = TRUE ORDER BY RAND() LIMIT 4"
   end
 end
