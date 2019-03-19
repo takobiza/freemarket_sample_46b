@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+
+    @product = Product.find(params[:id])
+    @relation_product = Product.where(category_id: @product.category_id).where(brand_id: @product.brand_id).limit(6)
+    @relation_user = Product.where(user_id: @product.user_id).limit(6)
+
   end
 
   private
@@ -28,5 +33,9 @@ class ProductsController < ApplicationController
 
   def create_get_category_SQL(category)
     sql = "SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `large` = '#{category}' AND `status` = TRUE ORDER BY RAND() LIMIT 4"
+  end
+
+  def product_params
+    params.permit(:name, :price)
   end
 end
