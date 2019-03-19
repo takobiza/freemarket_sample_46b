@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only:[:show, :index]
+  resources :products, only:[:show, :index] do
+    resources :transactions, only: :index
+  end
 end

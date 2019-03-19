@@ -1,0 +1,98 @@
+.wrapper-transaction-buy {
+  background-color: #eee;
+  .single-main {
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+    &__title {
+      &__text {
+        text-align: center;
+        font-size: 22px;
+        padding: 32px 0;
+        border-bottom: 1px solid #eee;
+      }
+    }
+    &__transaction-buy {
+      padding: 24px 0 55px;
+      margin: 0 auto;
+      width: 445px;
+      &__image {
+        display: flex;
+        justify-content: center;
+      }
+      &__product {
+        text-align: center;
+        font-weight: bold;
+        &__name {
+          margin-top: 10px;
+        }
+        &__price {
+          margin-top: 10px;
+          padding: 4px 0;
+          font-size: 1.3rem;
+          &__tax {
+            font-weight: normal;
+            font-size: 14px;
+            margin-left: 8px;
+          }
+        }
+        &__point {
+          background-color: red;
+          margin: 8px 70px 0;
+          padding: 14px 0;
+          &__link {
+            text-decoration: none;
+            &__text {
+              color: white;
+              font-size: 0.9rem;
+            }
+          }
+        }
+        &__payment-price {
+          margin: 10px 70px 24px;
+          font-size: 26px;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    &__user-info {
+      border-top: 1px solid #eee;
+      padding: 24px 0 40px;
+      &__means {
+        width: 445px;
+        margin: 0 auto;
+        &__numbers {
+          margin-top: 8px;
+          font-size: 0.8rem;
+          font-weight: normal;
+          margin: 0 70px;
+          p {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 4px;
+          }
+          &__path {
+            color: #0099e8;
+            text-decoration: none;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 4px;
+            &__text {
+              font-size: 0.9rem;
+              vertical-align: center;
+              &:hover {
+                text-decoration: underline;
+                opacity: 0.7;
+              }
+            }
+            &__arrow-right {
+              font-size: 1.2rem;
+              margin: auto 0 auto 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
