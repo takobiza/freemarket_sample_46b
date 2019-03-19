@@ -5,6 +5,5 @@ class AddProductsTableToColums < ActiveRecord::Migration[5.2]
     add_column :products, :state, :integer
     add_column :products, :is_buy, :boolean, null: false, default: true
     add_column :products, :status, :boolean, null: false, default: true
-    add_reference :products, :category, foreign_key: true, null: false
   end
 end
