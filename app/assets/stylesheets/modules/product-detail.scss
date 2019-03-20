@@ -7,17 +7,15 @@
   &__container {
     width: 700px;
     height: 100%;
-
     margin: auto;
 }
+
 .item-box {
   height: auto;
   background-color: $white;
   width: calc(100% - 80px);
   margin-bottom: 10px;
   padding: 40px;
-
-
 
   &__item-name {
     text-align: center;
@@ -220,9 +218,10 @@
 }
 
 .show-items {
-  height: auto;
+  height: 750px;
   width: 700px;
   margin-top: 50px;
+
 
   h3 {
     color: $lightblue;
@@ -232,52 +231,38 @@
     margin: 10px 10px;
   }
 
-  &__boxes {
-    display:-webkit-box;
-    display:-moz-box;
-    display:-ms-flexbox;
-    display:-webkit-flex;
-    display:-moz-flex;
-    display:flex;
-    -webkit-box-pack:justify;
-    -moz-box-pack:justify;
-    -webkit-flex-pack:justify;
-    -moz-flex-pack:justify;
-    -ms-flex-pack:justify;
-    -webkit-justify-content:space-between;
-    -moz-justify-content:space-between;
-    justify-content:space-between;    margin-top: 20px;
-    height: auto;
 
-    &__product {
-      background-color: $white;
-      flex-basis: 220px;
-      height: 330px;
+  &__product {
+    background-color: $white;
+    flex-basis: 220px;
+    height: 330px;
+    float: left;
+    width: 220px;
+    margin: 20px 10px 0 0;
 
-      &--img {
-        height: 220px;
-        width: 100%;
+    &--img {
+      height: 220px;
+      width: 100%;
+    }
+    &--detail {
+      height: 90px;
+      line-height: 15px;
+      padding: 15px 15px 0 15px;
+      position: relative;
+      text-align: left;
+      .name {
+        font-size: 18px;
+        word-wrap: break-word;
       }
-      &--detail {
-        height: 90px;
-        line-height: 15px;
-        padding: 15px 15px 0 15px;
-        position: relative;
-        text-align: left;
-        .name {
-          font-size: 18px;
-          word-wrap: break-word;
-        }
-        .price {
-          bottom:25px;
-          font-weight: bold;
-          position: absolute;
-        }
-        .tax {
-          font-size: 13px;
-          position: absolute;
-          bottom: 5px;
-        }
+      .price {
+        bottom:25px;
+        font-weight: bold;
+        position: absolute;
+      }
+      .tax {
+        font-size: 13px;
+        position: absolute;
+        bottom: 5px;
       }
     }
   }
