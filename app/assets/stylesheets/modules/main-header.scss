@@ -52,6 +52,8 @@
       font-size: 14px;
       float: left;
       line-height: 35px;
+      height: 35px;
+
     }
 
     &--left {
@@ -65,20 +67,27 @@
       .signin {
         background-color: $warm-red;
         border-radius: 4px;
-        color: white;
         margin-right: 15px;
         text-align: center;
         width: 80px;
+        a {
+          text-decoration: none;
+          color: $white;
+        }
       }
 
       .signup {
         border-radius: 4px;
         box-shadow: 0 0 0 1px $lightblue inset;
-        color: $lightblue;
         float: left;
         text-align: center;
         width: 105px;
+        a {
+          text-decoration: none;
+          color: $lightblue;
+        }
       }
+
     }
   }
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_055825) do
+ActiveRecord::Schema.define(version: 2019_03_18_053341) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -28,6 +28,27 @@ ActiveRecord::Schema.define(version: 2019_03_14_055825) do
     t.index ["large"], name: "index_categories_on_large"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "delivary_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.integer "method_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shippingday_id", null: false
+    t.integer "shippingpay_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_delivary_options_on_product_id"
+  end
+
   create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.bigint "product_id", null: false
@@ -39,10 +60,16 @@ ActiveRecord::Schema.define(version: 2019_03_14_055825) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
-    t.bigint "category_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.bigint "brand_id", null: false
+    t.bigint "category_id", null: false
+    t.text "description"
+    t.integer "size"
+    t.integer "state"
+    t.boolean "is_buy", default: true, null: false
+    t.boolean "status", default: true, null: false
+    t.integer "user_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name"
@@ -64,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_055825) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "delivary_options", "products"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"

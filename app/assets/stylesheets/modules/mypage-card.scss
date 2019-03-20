@@ -1,0 +1,64 @@
+.l-content__payment {
+  background-color: white;
+  &__title {
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    font-size: 24px;
+    padding: 8px 0;
+    text-align: center;
+  }
+  &__card {
+    padding: 64px;
+    p {
+      font-weight: bold;
+      padding: 0 130px;
+    }
+    &__info {
+      padding: 0 130px;
+      margin-top: 24px;
+      border-bottom: 1px solid #eee;
+      font-size: 0.9rem;
+      &__mark {
+        display: flex;
+        justify-content: space-between;
+        &__btn {
+          background-color: white;
+          color: red;
+          border-radius: 3px;
+          font-size: 13px;
+          padding: 2px 6px;
+          border: 1px solid #ea352d;
+          cursor: pointer;
+        }
+      }
+      &__number {
+        margin-top: 4px;
+      }
+      &__expiration-date {
+        margin-top: 8px;
+        margin-bottom: 24px;
+      }
+    }
+    &__about-payment {
+      margin-top: 35px;
+      &__path {
+        color: #0099e8;
+        text-decoration: none;
+        display: flex;
+        justify-content: flex-end;
+        &__text {
+          font-size: 0.9rem;
+          &:hover {
+            text-decoration: underline;
+            opacity: 0.7;
+          }
+        }
+        &__arrow-right {
+          font-size: 1.3rem;
+          font-weight: bold;
+          margin: auto 0 auto 6px;
+        }
+      }
+    }
+  }
+}
