@@ -10,4 +10,7 @@ class Product < ApplicationRecord
     ProductImage.find_by(product_id: self.id).image;
   end
 
+  def six_products_related_product
+    Product.where(category_id: self.category_id).where(brand_id: self.brand_id)
+  end
 end

@@ -10,7 +10,7 @@
       %h1.item-box__item-name
         = @product.name
       %p.item-box__item-description
-        『#{@product.name}』は、#{@product.user.nickname}さんから出品されました。#{@product.category.small}/#{@product.category.large}の商品で、兵庫県から発送されます。
+        『#{@product.name}』は、#{@product.user.nickname}さんから出品されました。#{@product.category.small}/#{@product.category.large}の商品で、#{Prefecture.find_by(id: @product_prefecture.prefecture_id).name}から発送されます。
 
       .item-box__item-main
         .item-box__item-main--main-img
@@ -129,7 +129,7 @@
 
     .show-items
       %h3 #{@product.user.nickname}さんのその他の出品
-      - @relation_user.each do |u|
+      - @six_products_related_user.each do |u|
         .show-items__product
           = image_tag(u.item_image, class: 'show-items__product--img')
           .show-items__product--detail
@@ -142,7 +142,7 @@
 
     .show-items
       %h3 #{@product.brand.name}の#{@product.category.small} その他の商品
-      - @relation_product.each do |p|
+      - @six_products_related_product.each do |p|
         .show-items__product
           = image_tag(p.item_image, class: 'show-items__product--img')
           .show-items__product--detail
