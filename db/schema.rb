@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_053341) do
+ActiveRecord::Schema.define(version: 2019_03_20_051718) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,43 @@ ActiveRecord::Schema.define(version: 2019_03_18_053341) do
     t.index ["name"], name: "index_products_on_name"
   end
 
+  create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "family_name", null: false
+    t.string "given_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "given_name_kana", null: false
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "block", null: false
+    t.string "building"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_addresses_on_user_id"
+  end
+
+  create_table "user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "family_name", null: false
+    t.string "given_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "given_name_kana", null: false
+    t.integer "birth_year", null: false
+    t.integer "birth_month", null: false
+    t.integer "birth_day", null: false
+    t.string "postal_code"
+    t.integer "prefecture_id"
+    t.string "city"
+    t.string "block"
+    t.string "building"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_details_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,4 +121,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_053341) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
+  add_foreign_key "user_addresses", "users"
+  add_foreign_key "user_details", "users"
 end

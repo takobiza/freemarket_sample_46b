@@ -1,103 +1,231 @@
 .signup-header {
     height: 128px;
     text-align: center;
-    background-color: $background-gray;
+    margin: 0;
+    padding: 0;
+    background: rgb(245, 245, 245);
 
     &__logo {
         margin: 40px 0 0;
+        padding: 0;
+        width: 185px;
         display: inline-block;
 
-        a {
-            display: inline-block;
+        &--link {
             width: 185px;
             height: 49px;
-            margin: 0 8px 0 0;
+            line-height: 49px;
+            display: inline-block;
+            ;
+            text-decoration: none;
 
-            img:hover {
-                opacity: 0.8;
+            &--object {
+                width: 185px;
+                height: 49px;
+                vertical-align: middle;
             }
         }
     }
 
-    &__nav {
+    &-page {
         padding: 40px 0 0 44px;
+        border: 0;
         display: inline-block;
-        vertical-align: top;
-        font-size: 0;
-        text-align: center;
 
-        .active {
-            color: $warm-red;
-            font-weight: 600;
+        &-bar {
+            margin: 0;
+            overflow: auto;
+            list-style: none;
 
-            .status {
-                background: $warm-red !important;
+            &__member-information {
+                font-weight: 600;
+                color: $warm-red;
+                margin: 0 40px 0 0;
+                min-width: 60px;
+                position: relative;
+                ;
+                z-index: 1;
+                display: inline-block;
+                font-size: 12px;
+
+                .progress-state--first {
+                    background: $warm-red;
+                    width: 12px;
+                    height: 12px;
+                    margin: 8px auto 0;
+                    border-radius: 50%;
+                    display: block;
+
+                    &--line {
+                        bottom: 5px;
+                        left: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                    }
+                }
             }
 
-            .status::after {
-                left: 10%;
-                position: absolute;
-                bottom: 5px;
-                z-index: -2;
-                display: block;
-                content: '';
-                width: 100%;
-                height: 2px;
-                background: $warm-red !important;
+            &__phone-number {
+                margin: 0 40px 0 0;
+                min-width: 60px;
+                position: relative;
+                z-index: 1;
+                display: inline-block;
+                color: #888;
+                font-size: 12px;
+
+                .progress-state--second {
+                    width: 12px;
+                    height: 12px;
+                    margin: 8px auto 0;
+                    background: #ccc;
+                    border-radius: 50%;
+                    padding: 0;
+
+                    &--line-left {
+                        position: absolute;
+                        bottom: 5px;
+                        right: 50%;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                    }
+
+                    &--line-right {
+                        position: absolute;
+                        bottom: 5px;
+                        left: 50%;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                    }
+                }
             }
 
-            .status::before {
-                right: -98%;
-                position: absolute;
-                bottom: 5px;
-                z-index: -2;
-                display: block;
-                content: '';
-                width: 100%;
-                height: 2px;
-                background: $warm-red !important;
+            &__delivery-address {
+                margin: 0 40px 0 0;
+                min-width: 60px;
+                position: relative;
+                z-index: 1;
+                display: inline-block;
+                font-size: 12px;
+                color: #888;
+
+                .progress-state--third {
+                    width: 12px;
+                    height: 12px;
+                    margin: 8px auto 0;
+                    background: #ccc;
+                    border-radius: 50%;
+
+
+                    &--line-left {
+                        bottom: 5px;
+                        right: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                    }
+
+                    &--line-right {
+                        bottom: 5px;
+                        left: 50%;
+                        position: absolute;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                    }
+                }
             }
 
-        }
+            &__payment-method {
+                margin: 0 40px 0 0;
+                min-width: 60px;
+                position: relative;
+                z-index: 1;
+                display: inline-block;
+                font-size: 12px;
+                color: #888;
 
-        li {
-            font-size: 12px;
-            color: #888;
-            position: relative;
-            z-index: 1;
-            display: inline-block;
-            margin: 0 40px 0 0;
+                .progress-state--forth {
+                    width: 12px;
+                    height: 12px;
+                    margin: 8px auto 0;
+                    background: #ccc;
+                    border-radius: 50%;
 
-            .status {
-                width: 12px;
-                height: 12px;
-                margin: 8px auto 0;
-                background: #ccc;
-                border-radius: 50%;
+                    &--line-left {
+                        right: 50%;
+                        bottom: 5px;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                        position: absolute;
+                    }
+
+                    &--line-right {
+                        left: 50%;
+                        bottom: 5px;
+                        z-index: -1;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                        position: absolute;
+                    }
+                }
             }
 
-            .status::after {
-                left: 48%;
-                position: absolute;
-                bottom: 5px;
-                z-index: -1;
-                display: block;
-                content: '';
-                width: 100%;
-                height: 2px;
-                background: #ccc;
-            }
+            &__all-end {
+                margin: 0;
+                min-width: 60px;
+                position: relative;
+                z-index: 1;
+                display: inline-block;
+                font-size: 12px;
+                color: #888;
 
-            .status::before {
-                right: 50%;
-                position: absolute;
-                bottom: 5px;
-                z-index: -1;
-                display: block;
-                content: '';
-                width: 100%;
-                height: 2px;
-                background: #ccc;
+                .progress-state--fifth {
+                    width: 12px;
+                    height: 12px;
+                    margin: 8px auto 0;
+                    background: #ccc;
+                    border-radius: 50%;
+                    display: block;
+
+                    &--line {
+                        position: absolute;
+                        right: 50%;
+                        bottom: 5px;
+                        z-index: -1;
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        height: 2px;
+                        background: #ccc;
+                    }
+                }
             }
         }
     }
@@ -105,6 +233,38 @@
 
 .signup-main {
     background-color: $background-gray;
+
+    &-footer {
+        background-color: #212121;
+        color: #ffffff;
+        font-size: 14px;
+        height: 211px;
+        padding-bottom: 40px;
+        width: 728px;
+
+        &-banner {
+            background-image: url(https://item.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?82208132);
+            background-position: center;
+            height: 250px;
+            width: 728px;
+
+            &__inner {
+                height: 100%;
+                margin: 0 auto;
+                position: relative;
+                width: 53%;
+
+                h2{
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                p{
+                    font-size: 32px;
+                }
+            }
+        }
+    }
 
     &-content {
         margin: 0 436px;
@@ -133,6 +293,15 @@
                 &__group {
                     margin: 40px 0 0;
 
+                    &-center {
+                        text-align: center;
+
+                        p {
+                            font-weight: bold;
+                            font-size: 20px !important;
+                        }
+                    }
+
                     label {
                         font-weight: 600;
                         font-size: 14px;
@@ -147,9 +316,22 @@
                         font-size: 12px;
                     }
 
+                    &-card {
+                        display: flex;
+
+                        img {
+                            margin: 3px 3px 0 0;
+                        }
+
+                        &-right {
+                            text-align: right;
+                            padding-bottom: 10px;
+                        }
+                    }
+
                     &-inner {
-                        width: 100%;
-                        height: 48px;
+                        width: 89%;
+                        height: 38px;
                         padding: 10px 16px 8px;
                         border-radius: 4px;
                         border: 1px solid $form-box-border;
@@ -167,6 +349,10 @@
                     p {
                         margin: 8px 0 0;
                         font-size: 14px;
+                    }
+
+                    a{
+                        text-decoration: none;
                     }
 
                     &-right {
@@ -189,26 +375,24 @@
                             background-color: $white;
 
                             &-default {
-                                -webkit-appearance: none;
-                                -moz-appearance: none;
-                                appearance: none;
                                 @include select-default-style();
+
+                                &-prefecture {
+                                    @include select-default-style(320px);
+                                }
                             }
 
                             .icon__arrow--bottom {
-                                position: absolute;
-                                right: 8px;
-                                top: -24%;
-                                width: 30px;
-                                background-color: $white;
-                                color: #888;
-                                font-size: 48px;
-                                -webkit-text-stroke: 2px white
+                                @include arrow-bottom-icon();
+
+                                &-prefecture {
+                                    @include arrow-bottom-icon(-167px);
+                                }
                             }
 
-                          &_text{
-                            display: inline-block;
-                          }
+                            &_text {
+                                display: inline-block;
+                            }
                         }
                     }
 
@@ -240,5 +424,10 @@
     }
 }
 
+.form-arbitrary {
+    background: #ccc !important;
+}
 
-
+.fa-question-circle {
+    color: $lightblue;
+}

@@ -1,10 +1,10 @@
 $(document).on('turbolinks:load', function() {
 
   function calcDaysForBrithdayForm(){
-      var day = $('#session_birth_day');
+      var day = $('#user_user_detail_attributes_birth_day');
       day.empty();
-      var y = $('#session_birth_year').val();
-      var m = $('#session_birth_month').val();
+      var y = $('#user_user_detail_attributes_birth_year').val();
+      var m = $('#user_user_detail_attributes_birth_month').val();
 
       if (m == 2 && ((y % 400 == 0) || ((y % 4 == 0) && (y % 100 != 0)))) {
         var last = 29;
@@ -22,11 +22,11 @@ $(document).on('turbolinks:load', function() {
       }
     }
 
-    $('#session_birth_year').change(function(){
+    $('#user_user_detail_attributes_birth_year').change(function(){
       calcDaysForBrithdayForm();
     });
 
-    $('#session_birth_month').change(function(){
+    $('#user_user_detail_attributes_birth_month').change(function(){
       calcDaysForBrithdayForm();
     });
 

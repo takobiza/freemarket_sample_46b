@@ -1,51 +1,68 @@
 .signup-header
   %h1.signup-header__logo
-    = link_to root_path do
-      = image_tag("//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?66668746", alt: "mercari")
-  %nav.signup-header__nav
-    %ol.clearfix
-      %li.active
+    = link_to root_path , class: "signup-header__logo--link"do
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?1516044782",class: "signup-header__logo--link--object"
+  %nav.signup-header-page
+    %ol.signup-header-page-bar
+      %li.signup-header-page-bar__member-information
         会員情報
-        .status
-      %li
+        .progress-state--first
+          .progress-state--first--line
+      %li.signup-header-page-bar__phone-number
         電話番号認証
-        .status
-      %li
+        .progress-state--second
+          .progress-state--second--line-left
+          .progress-state--second--line-right
+      %li.signup-header-page-bar__delivery-address
         お届け先住所入力
-        .status
-      %li
+        .progress-state--third
+          .progress-state--third--line-left
+          .progress-state--third--line-right
+      %li.signup-header-page-bar__payment-method
         支払い方法
-        .status
-      %li
+        .progress-state--forth
+          .progress-state--forth--line-left
+          .progress-state--forth--line-right
+      %li.signup-header-page-bar__all-end
         完了
-        .status
+        .progress-state--fifth
+          .progress-state--fifth--line
+
 %main.signup-main
   %section.signup-main-content
     %h2.signup-main-content__head
       会員情報を入力
     .signup-main-content__inner
-      = form_for(:session, url: "#" , html: { id:"form", method: :post}) do |f|
+      = form_for(:session, url: users_path , html: { id:"form", method: :post}) do |f|
         .signup-main-content__inner-form
 
           .signup-main-content__inner-form__group
             = f.label :'ニックネーム'
             %span 必須
             = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例) メルカリ", class: "signup-main-content__inner-form__group-inner"
+            .error_message_box
+              = @user.errors.full_messages_for(:nickname).first
 
           .signup-main-content__inner-form__group
             = f.label :'メールアドレス'
             %span 必須
             = f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "signup-main-content__inner-form__group-inner"
+            .error_message_box
+            = @user.errors.full_messages_for(:email).first
 
           .signup-main-content__inner-form__group
             = f.label :'パスワード'
             %span 必須
             = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-main-content__inner-form__group-inner"
+            .error_message_box
+            = @user.errors.full_messages_for(:password).first
 
           .signup-main-content__inner-form__group
             = f.label :'パスワード(確認)'
             %span 必須
             = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-main-content__inner-form__group-inner"
+            .error_message_box
+            = @user.errors.full_messages_for(:password_confirmation).first
 
           .signup-main-content__inner-form__group
             %h3 本人確認
@@ -99,6 +116,9 @@
 
           .signup-main-content__inner-form__group
             = recaptcha_tags({class: "signup-main-content__inner-form__group-recaptcha"})
+          .error_message_box
+            = @user.errors.full_messages_for(:recaptcha).first
+
           .signup-main-content__inner-form__group
             %p.signup-main-content__inner-form__text
               「次へ進む」のボタンを押すことにより、
