@@ -5,8 +5,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :delivary_option
   belongs_to :category
   belongs_to :brand
-  # belongs_to :user
-
+  belongs_to :user
 
 
   def item_image
