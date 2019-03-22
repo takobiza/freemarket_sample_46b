@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product
+  before_action :set_product, except: [:create, :index]
 
   def index
 
@@ -23,6 +23,13 @@ class ProductsController < ApplicationController
 
   end
 
+  def create
+    @product = Product.create(sell_params)
+    redirect_to sells_path
+
+  end
+
+
   private
 
   def category_search(category_name)
@@ -43,5 +50,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.permit(:name, :price)
+  end
+
+  def sell_params
+    params.require(:product).permit(:name, :description, :state, delivary_option_attributes: [:shippingpay_id, :prefecture_id, :shippingday_id])
   end
 end

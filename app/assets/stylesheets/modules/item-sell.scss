@@ -75,8 +75,6 @@
           cursor: pointer;
           -webkit-appearance: none;
           -moz-appearance: none;
-          &__value {
-          }
         }
         &__arrow-down {
           font-weight: bold;
@@ -139,6 +137,7 @@
     margin-top: 40px;
     padding: 16px 0;
     font-size: 14px;
+    font-weight: normal;
     cursor: pointer;
   }
   &__back-btn {

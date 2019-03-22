@@ -1,7 +1,8 @@
 class Product < ApplicationRecord
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images
-  has_one :deliveryoption, dependent: :destroy
+  has_one :delivary_option, dependent: :destroy
+  accepts_nested_attributes_for :delivary_option
   belongs_to :category
   belongs_to :brand
   belongs_to :user
