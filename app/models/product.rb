@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_one :deliveryoption, dependent: :destroy
   belongs_to :category
   belongs_to :brand
-  # belongs_to :user
+  belongs_to :user
 
 
 
