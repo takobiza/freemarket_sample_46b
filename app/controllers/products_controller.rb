@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
   before_action :set_product, except: [:create, :index]
 
   def index
