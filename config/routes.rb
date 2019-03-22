@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   resources :products, only:[:show, :index] do
     resources :transactions, only: :index
   end
+
+  resources :sells
 end

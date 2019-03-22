@@ -8,18 +8,18 @@
 
     .item-box
       %h1.item-box__item-name
-        高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド
+        = @product.name
       %p.item-box__item-description
-        『高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド』は、4回の取引実績を持つみっとみとさんから出品されました。腕時計(アナログ)/レディースの商品で、兵庫県から1~2日で発送されます。
+        『#{@product.name}』は、#{@product.user.nickname}さんから出品されました。#{@product.category.small}/#{@product.category.large}の商品で、#{Prefecture.find_by(id: @product_prefecture.prefecture_id).name}から発送されます。
 
       .item-box__item-main
         .item-box__item-main--main-img
-          = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'active-img')
+          = image_tag(@product.item_image, class: 'active-img')
 
           .item-box__item-main--sub-img
             %ul
               %li
-                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', class: 'bottom-img')
+                = image_tag(@product.item_image, class: 'bottom-img')
               %li
                 = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_2.jpg?1549854823', class: 'bottom-img')
               %li
@@ -28,13 +28,15 @@
         %table.item-box__item-main--table
           %tr
             %th 出品者
-            %td.item-box__item-main--table--change-color テック
+            %td.item-box__item-main--table--change-color
+              #{@product.user.nickname}
           %tr
             %th カテゴリー
-            %td.item-box__item-main--table--change-color レディース<br>>時計<br>>腕時計(アナログ)
+            %td.item-box__item-main--table--change-color
+              #{@product.category.large}<br>>#{@product.category.middle}<br>>#{@product.category.small}
           %tr
             %th ブランド
-            %td
+            %td #{@product.brand.name}
           %tr
             %th 商品の状態
             %td 新品・未使用
@@ -46,14 +48,16 @@
             %td らくらくメルカリ便
           %tr
             %th 配送元地域
-            %td.item-box__item-main--table--change-color 兵庫県
+            %td.item-box__item-main--table--change-color
+              = Prefecture.find_by(id: @product_prefecture.prefecture_id).name
           %tr
             %th 発送日の目安
             %td 1~2日で発送
 
       .item-box__item-price
         .item-box__item-price--price
-          ¥1,650
+          %span ¥
+          = @product.price
         .item-box__item-price--tax
           (税込)
         .item-box__item-price--postage
@@ -63,31 +67,7 @@
         = link_to '購入画面に進む', root_path
 
       .item-box__item-message
-        %p 即購入OK！
-        %br
-        %p 今、巷で流行しているDW似のお洒落で可愛いピンクゴールドのレディース腕時計です^ ^
-        %br
-        %p ピンクゴールドに対して文字盤がブラックなのが非常に可愛くてセンスありです！
-        %br
-        %p ダニエルウェリントン似で高級感もありシックにカッコよく決めたい時にも重宝します
-        %br
-        %p ★メンズの方も奥さんや彼女へのプレゼントにいかがでしょうか。センスが良く、非常に喜ばれると思います！
-        %br
-        %p 是非、ご検討下さいませ
-        %br
-        %p ・新品未使用
-        %p ・送料込み
-        %br
-        %p 文字盤サイズ:直径4cm
-        %p バント幅:2cm
-        %p カラー:ピンクゴールド
-        %br
-        %p ご不明点はお気軽にお聞きください
-        %br
-        %p 新品未使用ではありますが、海外製（輸入品）の為、小傷等ある場合がございます。
-        %p 検品はしっかりしておりますが完璧を求める方、神経質な方のご購入はお控え下さい。
-        %br
-        %p お値引きは心ばかりですが相談に応じます
+        %p #{@product.description}
 
       .item-box__item-footer
         .item-box__item-footer--like-btn
@@ -148,28 +128,30 @@
 
 
     .show-items
-      %h3 テックさんのその他の出品
-      .show-items__boxes
-        = render 'product-detail'
-        = render 'product-detail'
-        = render 'product-detail'
-
-      .show-items__boxes
-        = render 'product-detail'
-        = render 'product-detail'
-        = render 'product-detail'
+      %h3 #{@product.user.nickname}さんのその他の出品
+      - @six_products_related_user.each do |u|
+        .show-items__product
+          = image_tag(u.item_image, class: 'show-items__product--img')
+          .show-items__product--detail
+            .name
+              = u.name
+            %p.price
+              = u.price
+            .price
+            %p.tax (税込)
 
     .show-items
-      %h3 腕時計(アナログ)（レディース） その他の商品
-      .show-items__boxes
-        = render 'product-detail'
-        = render 'product-detail'
-        = render 'product-detail'
-
-      .show-items__boxes
-        = render 'product-detail'
-        = render 'product-detail'
-        = render 'product-detail'
+      %h3 #{@product.brand.name}の#{@product.category.small} その他の商品
+      - @six_products_related_product.each do |p|
+        .show-items__product
+          = image_tag(p.item_image, class: 'show-items__product--img')
+          .show-items__product--detail
+            .name
+              = p.name
+            %p.price
+              = p.price
+            .price
+            %p.tax (税込)
 
 
 = render '/shared/main-footer'

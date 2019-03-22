@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
     t.index ["large"], name: "index_categories_on_large"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "delivary_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.integer "method_id", null: false
@@ -59,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
     t.integer "state"
     t.boolean "is_buy", default: true, null: false
     t.boolean "status", default: true, null: false
+    t.integer "user_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name"
