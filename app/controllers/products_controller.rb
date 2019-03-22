@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product
+
+  before_action :set_product, except: [:index]
+
 
   def index
 

@@ -9,4 +9,8 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def create
+    binding.pry
+    render new
+  end
 end

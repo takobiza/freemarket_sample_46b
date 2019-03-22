@@ -1,4 +1,10 @@
 ja:
   attributes:
+    nickname: ニックネーム
     email: メールアドレス
     password: パスワード
+    family_name: 姓
+    given_name: 名
+    birth: 生年月日
+    family_name_kana: 姓カナ
+    given_name_kana: 名カナ
