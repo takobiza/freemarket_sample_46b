@@ -60,7 +60,7 @@
           .signup-main-content__inner-form__group
             = f.label :'郵便番号'
             %span 必須
-            = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例) 123-4567", class: "signup-main-content__inner-form__group-inner"
+            = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例) 123-4567", class: "signup-main-content__inner-form__group-inner", name: "zip01", onKeyUp: "AjaxZip3.zip2addr(this,'','pref01','addr01','addr02');"
             .error_message_box
               -if @address.errors.full_messages_for(:postal_code).present?
                 = @address.errors.full_messages_for(:postal_code).first
@@ -70,14 +70,14 @@
             %span 必須
             .signup-main-content__inner-form__group__select
               .signup-main-content__inner-form__group__select__wrap
-                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default-prefecture"}
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default-prefecture", name: "pref01"}
                 .icon__arrow--bottom-prefecture
                   = fa_icon "angle-down"
 
           .signup-main-content__inner-form__group
             = f.label :'市区町村'
             %span 必須
-            = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "signup-main-content__inner-form__group-inner"
+            = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "signup-main-content__inner-form__group-inner ", name: "addr01"
             .error_message_box
               -if @address.errors.full_messages_for(:city).present?
                 = @address.errors.full_messages_for(:city).first
@@ -85,7 +85,7 @@
           .signup-main-content__inner-form__group
             = f.label :'番地'
             %span 必須
-            = f.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "signup-main-content__inner-form__group-inner"
+            = f.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "signup-main-content__inner-form__group-inner", name: "addr02"
             .error_message_box
               -if @address.errors.full_messages_for(:block).present?
                 = @address.errors.full_messages_for(:block).first
