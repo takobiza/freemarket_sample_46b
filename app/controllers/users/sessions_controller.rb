@@ -18,6 +18,7 @@ class Users::SessionsController < Devise::SessionsController
 
     else
       self.resource = get_error_messages
+      binding.pry
       respond_with_navigational(resource) { render :new }
     end
   end
@@ -49,26 +50,26 @@ class Users::SessionsController < Devise::SessionsController
       resource = resource_class.new
 
       if user_params[:email].blank?
-        resource.errors[:email] << "入力してください"
+        resource.errors[:email] << " 入力してください"
       elsif !!!(user_params[:email] =~ /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/)
-        resource.errors[:email] << "フォーマットが不適切です"
+        resource.errors[:email] << " フォーマットが不適切です"
         resource.email << user_params[:email]
       else
         resource.email << user_params[:email]
       end
 
       if user_params[:password].blank?
-        resource.errors[:password] << "入力してください"
+        resource.errors[:password] << " 入力してください"
       elsif user_params[:password].length < 6 || user_params[:password].length > 128
-        resource.errors[:password] << "6文字以上128文字以下で入力してください"
+        resource.errors[:password] << " 6文字以上128文字以下で入力してください"
       end
 
       if user_params[:recaptcha].blank?
-        resource.errors[:recaptcha] << "選択してください"
+        resource.errors[:recaptcha] << " 選択してください"
       end
 
       if resource.errors.messages.blank?
-        resource.errors[:total] << "メールアドレスまたはパスワードが違います"
+        resource.errors[:total] << " メールアドレスまたはパスワードが違います"
       end
 
       return resource

@@ -1,0 +1,101 @@
+.signup-header
+  %h1.signup-header__logo
+    = link_to root_path , class: "signup-header__logo--link"do
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?1516044782",class: "signup-header__logo--link--object"
+  %nav.signup-header-page
+    %ol.signup-header-page-bar
+      %li.signup-header-page-bar__member-information
+        会員情報
+        .progress-state--first
+          .progress-state--first--line
+      %li.signup-header-page-bar__phone-number
+        電話番号認証
+        .progress-state--second
+          .progress-state--second--line-left
+          .progress-state--second--line-right
+      %li.signup-header-page-bar__delivery-address
+        お届け先住所入力
+        .progress-state--third
+          .progress-state--third--line-left
+          .progress-state--third--line-right
+      %li.signup-header-page-bar__payment-method
+        支払い方法
+        .progress-state--forth
+          .progress-state--forth--line-left
+          .progress-state--forth--line-right
+      %li.signup-header-page-bar__all-end
+        完了
+        .progress-state--fifth
+          .progress-state--fifth--line
+
+%main.signup-main
+  %section.signup-main-content
+    %h2.signup-main-content__head
+      支払い方法
+    .signup-main-content__inner
+      = form_for(@user, url: signup_completed_path , html: { id:"form", method: :post}) do |f|
+        .signup-main-content__inner-form
+
+          .signup-main-content__inner-form__group
+            = f.label :'カード番号'
+            %span 必須
+            = f.text_field :card_number, autofocus: true, autocomplete: "card_number", placeholder: "例) 携帯電話の番号を入力", class: "signup-main-content__inner-form__group-inner"
+            %ul.signup-main-content__inner-form__group-card
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3112359103", class: "card--image", width: "49", height: "20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3112359103", class: "card--image", width: "34", height: "20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?3112359103", class: "card--image", width: "30", height: "20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?3112359103", class: "card--image", width: "32", height: "20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?3112359103", class: "card--image", width: "21", height: "20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?3112359103", class: "card--image", width: "32", height: "20")
+              %li
+                = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?3112359103", class: "card--image", width: "32", height: "20")
+
+            .error_message_box
+              -if @user.errors.full_messages_for(:card_number).present?
+                = @user.errors.full_messages_for(:card_number).first
+
+            .signup-main-content__inner-form__group
+              = f.label '有効期限'
+              %span 必須
+              .signup-main-content__inner-form__group__select
+                .signup-main-content__inner-form__group__select__wrap
+                  = f.collection_select :credit_year, CreditYear.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
+                  .icon__arrow--bottom
+                    = fa_icon "angle-down"
+                .signup-main-content__inner-form__group__select__wrap_text 年
+
+              .signup-main-content__inner-form__group__select
+                .signup-main-content__inner-form__group__select__wrap
+                  = f.collection_select :credit_month, CreditMonth.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
+                  .icon__arrow--bottom
+                    = fa_icon "angle-down"
+
+                .signup-main-content__inner-form__group__select__wrap_text 月
+                .error_message_box
+                  -if @user.errors.full_messages_for(:card_number).present?
+                    = @user.errors.full_messages_for(:card_number).first
+
+          .signup-main-content__inner-form__group
+            = f.label :'セキュリティコード'
+            %span 必須
+            = f.text_field :card_code, autofocus: true, autocomplete: "card_number", placeholder: "カードの背面４桁もしくは３桁の番号", class: "signup-main-content__inner-form__group-inner"
+            .signup-main-content__inner-form__group-card-right
+              = fa_icon "question-circle", class: "icon__arrow-question"
+              = link_to "カード裏面の番号とは？", "#", target: "_blank", class: "signup-main-content__inner-form__group-right__inner"
+
+            .error_message_box
+              -if @user.errors.full_messages_for(:card_number).present?
+                = @user.errors.full_messages_for(:card_number).first
+
+
+          .actions
+            = f.submit "登録する", class: "btn-red registration__btn"
+
+
+  = render '/shared/single/single-footer'
