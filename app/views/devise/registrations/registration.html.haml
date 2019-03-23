@@ -4,9 +4,9 @@
       = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?1516044782",class: "signup-header__logo--link--object"
   %nav.signup-header-page
     %ol.signup-header-page-bar
-      %li.signup-header-page-bar__member-information
+      %li.signup-header-page-bar__member-information.information-red
         会員情報
-        .progress-state--first
+        .progress-state--first.bar-red
           .progress-state--first--line
       %li.signup-header-page-bar__phone-number
         電話番号認証
@@ -135,7 +135,8 @@
           %p.signup-main-content__inner-form__text-gray ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
 
           .signup-main-content__inner-form__group
-            = recaptcha_tags({class: "signup-main-content__inner-form__group-recaptcha"})
+            = recaptcha_tags
+
           .error_message_box
             = @user.errors.full_messages_for(:recaptcha).first
 

@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
     t.string "city", null: false
     t.string "block", null: false
     t.string "building"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_addresses_on_user_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
     t.string "city"
     t.string "block"
     t.string "building"
-    t.integer "phone_number"
+    t.string "cell_phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_details_on_user_id"
