@@ -21,19 +21,19 @@
 
         .login__container_main_content_form__inner_group
           = f.text_field :email, autocomplete: "email", placeholder: "メールアドレス"
-          .error_message_box
+          .error_message_box_left
             -if resource.errors.full_messages_for(:email).present?
               = resource.errors.full_messages_for(:email).first.split(" ")[1]
 
         .login__container_main_content_form__inner_group
           = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
-          .error_message_box
+          .error_message_box_left
             -if resource.errors.full_messages_for(:password).present?
               = resource.errors.full_messages_for(:password).first.split(" ")[1]
 
         .login__container_main_content_form__inner_group
           = recaptcha_tags
-          .error_message_box
+          .error_message_box_left
             -if resource.errors.full_messages_for(:recaptcha).present?
               = resource.errors.full_messages_for(:recaptcha).first.split(" ")[1]
 

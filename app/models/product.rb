@@ -6,8 +6,10 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :user
 
+
+
   def item_image
-    ProductImage.find_by(product_id: self.id).image;
+    ProductImage.find_by(product_id: self.id).image
   end
 
   def six_products_related_product
