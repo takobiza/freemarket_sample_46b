@@ -69,11 +69,10 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
     t.integer "state"
     t.boolean "is_buy", default: true, null: false
     t.boolean "status", default: true, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["name"], name: "index_products_on_name"
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -133,7 +132,6 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
-  add_foreign_key "products", "users"
   add_foreign_key "user_addresses", "users"
   add_foreign_key "user_details", "users"
 end
