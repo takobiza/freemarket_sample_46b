@@ -3,27 +3,39 @@ require "nkf"
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def registration
+    session[:provider] = "registration"
     @user = User.new
     @detail = @user.build_user_detail
   end
 
-  def sms_confirmation
-    if verify_recaptcha
-      get_error_messages_registration
+  def google
+    @user = User.new
+    @user.nickname = session[:nickname]
+    @user.email = session[:email]
+    @detail = @user.build_user_detail
+  end
 
-      if @user.errors.messages.blank? && @detail.errors.messages.blank?
-        set_registration_session
-      else
-        render :registration
+  def sms_confirmation
+      if session[:provider] == "registration"
+        get_error_messages_registration
+      elsif session[:provider] == "google_oauth2"
+        get_error_messages_google
       end
 
+      if @user.errors.messages.blank? && @detail.errors.messages.blank?
+        if session[:provider] == "registration"
+          set_registration_session
+        elsif session[:provider] == "google_oauth2"
+          set_google_session
+        end
+      else
+        if session[:provider] == "registration"
+          render :registration
+        elsif session[:provider] == "google_oauth2"
+          render :google
+        end
+      end
 
-    else
-
-      get_error_messages_registration
-      render :registration
-
-    end
   end
 
   def address
@@ -71,6 +83,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @detail = UserDetail.create(user_id: resource.id ,family_name: session[:family_name], given_name: session[:given_name], family_name_kana: session[:family_name_kana], given_name_kana: session[:given_name_kana], birth_year: session[:birth_year], birth_month: session[:birth_month], birth_day: session[:birth_day], cell_phone_number: session[:cell_phone_number])
 
       @address = UserAddress.create(user_id: resource.id, family_name: session[:address_family_name], given_name: session[:address_given_name], family_name_kana: session[:address_family_name_kana], given_name_kana: session[:address_given_name_kana], postal_code: session[:postal_code],prefecture_id: session[:prefecture_id], city: session[:city], block: session[:block],building: session[:building], phone_number: session[:phone_number])
+
+      if session[:provider] == "google_oauth2"
+        SnsCredential.create(user_id: resource.id, uid: session[:uid], provider: session[:provider])
+      end
 
       sign_in(resource_name, resource)
       render :create
@@ -143,23 +159,93 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @detail.errors[:family_name_kana] << "入力してください"
       elsif user_params[:user_detail_attributes][:family_name_kana].length > 35
         @detail.errors[:family_name_kana] << "は35文字までです"
-      elsif !!!(half_to_full(user_params[:user_detail_attributes][:family_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
+      elsif !!!(half_to_kana(user_params[:user_detail_attributes][:family_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
         @detail.errors[:family_name_kana] << "はカナ文字を入力してください"
       else
-        @detail.family_name_kana = half_to_full(user_params[:user_detail_attributes][:family_name_kana])
+        @detail.family_name_kana = half_to_kana(user_params[:user_detail_attributes][:family_name_kana])
       end
 
       if user_params[:user_detail_attributes][:given_name_kana].blank?
         @detail.errors[:given_name_kana] << "入力してください"
       elsif user_params[:user_detail_attributes][:given_name_kana].length > 35
         @detail.errors[:given_name_kana] << "は35文字までです"
-      elsif !!!(half_to_full(user_params[:user_detail_attributes][:given_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
+      elsif !!!(half_to_kana(user_params[:user_detail_attributes][:given_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
         @detail.errors[:given_name_kana] << "はカナ文字を入力してください"
       else
-        @detail.given_name_kana = half_to_full(user_params[:user_detail_attributes][:given_name_kana])
+        @detail.given_name_kana = half_to_kana(user_params[:user_detail_attributes][:given_name_kana])
       end
 
       if user_params[:user_detail_attributes][:birth_year].blank? || user_params[:user_detail_attributes][:birth_month].blank? || user_params[:user_detail_attributes][:birth_day].blank?
+        @detail.errors[:birth] << "を入力してください"
+      end
+  end
+
+  def get_error_messages_google
+      @user = User.new
+      @detail = @user.build_user_detail
+
+      if google_params[:recaptcha].blank?
+        @user.errors[:recaptcha] << " 選択してください"
+      end
+
+      if google_params[:nickname].blank?
+        @user.errors[:nickname] << " 入力してください"
+      elsif google_params[:nickname].length > 20
+        @user.errors[:nickname] << " 20文字以下で入力してください"
+        @user.nickname = google_params[:nickname]
+      else
+        @user.nickname = google_params[:nickname]
+      end
+
+      if google_params[:email].blank?
+        resource.errors[:email] << " 入力してください"
+      elsif !!!(google_params[:email] =~ /\A[a-zA-Z0-9_\#!$%&`'*+\-{|}~^\/=?\.]+@[a-zA-Z0-9][a-zA-Z0-9\.-]+\z/)
+        @user.errors[:email] << " フォーマットが不適切です"
+        @user.email = google_params[:email]
+      elsif User.find_by(email: google_params[:email])
+        @user.errors[:email] << "は既に使用されています"
+        @user.email = google_params[:email]
+      else
+        @user.email = google_params[:email]
+      end
+
+      if google_params[:user_detail_attributes][:family_name].blank?
+        @detail.errors[:family_name] << "入力してください"
+      elsif google_params[:user_detail_attributes][:family_name].length > 35
+        @detail.errors[:family_name] << "は35文字までです"
+      else
+        @detail.family_name = half_to_full(google_params[:user_detail_attributes][:family_name])
+      end
+
+      if google_params[:user_detail_attributes][:given_name].blank?
+        @detail.errors[:given_name] << "を入力してください"
+      elsif google_params[:user_detail_attributes][:given_name].length > 35
+        @detail.errors[:given_name] << "は35文字までです"
+      else
+        @detail.given_name = half_to_full(google_params[:user_detail_attributes][:given_name])
+      end
+
+      if google_params[:user_detail_attributes][:family_name_kana].blank?
+        @detail.errors[:family_name_kana] << "入力してください"
+      elsif google_params[:user_detail_attributes][:family_name_kana].length > 35
+        @detail.errors[:family_name_kana] << "は35文字までです"
+      elsif !!!(half_to_kana(google_params[:user_detail_attributes][:family_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
+        @detail.errors[:family_name_kana] << "はカナ文字を入力してください"
+      else
+        @detail.family_name_kana = half_to_kana(google_params[:user_detail_attributes][:family_name_kana])
+      end
+
+      if google_params[:user_detail_attributes][:given_name_kana].blank?
+        @detail.errors[:given_name_kana] << "入力してください"
+      elsif google_params[:user_detail_attributes][:given_name_kana].length > 35
+        @detail.errors[:given_name_kana] << "は35文字までです"
+      elsif !!!(half_to_kana(google_params[:user_detail_attributes][:given_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
+        @detail.errors[:given_name_kana] << "はカナ文字を入力してください"
+      else
+        @detail.given_name_kana = half_to_kana(google_params[:user_detail_attributes][:given_name_kana])
+      end
+
+      if google_params[:user_detail_attributes][:birth_year].blank? || google_params[:user_detail_attributes][:birth_month].blank? || google_params[:user_detail_attributes][:birth_day].blank?
         @detail.errors[:birth] << "を入力してください"
       end
   end
@@ -187,20 +273,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @address.errors[:family_name_kana] << "入力してください"
     elsif address_params[:family_name_kana].length > 35
       @address.errors[:family_name_kana] << "は35文字までです"
-    elsif !!!(half_to_full(address_params[:family_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
+    elsif !!!(half_to_kana(address_params[:family_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
       @address.errors[:family_name_kana] << "はカナ文字を入力してください"
     else
-      @address.family_name_kana = half_to_full(address_params[:family_name_kana])
+      @address.family_name_kana = half_to_kana(address_params[:family_name_kana])
     end
 
     if address_params[:given_name_kana].blank?
       @address.errors[:given_name_kana] << "入力してください"
     elsif address_params[:given_name_kana].length > 35
       @address.errors[:given_name_kana] << "は35文字までです"
-    elsif !!!(half_to_full(address_params[:given_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
+    elsif !!!(half_to_kana(address_params[:given_name_kana]) =~ /\A[ァ-ヾｦ-ﾟ]+\Z/)
       @address.errors[:given_name_kana] << "はカナ文字を入力してください"
     else
-      @address.given_name_kana = half_to_full(address_params[:given_name_kana])
+      @address.given_name_kana = half_to_kana(address_params[:given_name_kana])
     end
 
     if address_params[:postal_code].blank?
@@ -288,6 +374,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation, user_detail_attributes:[:family_name, :given_name, :family_name_kana, :given_name_kana,:birth_year, :birth_month, :birth_day]).merge(recaptcha: params[:"g-recaptcha-response"])
   end
 
+  def google_params
+    params.require(:user).permit(:nickname, :email, user_detail_attributes:[:family_name, :given_name, :family_name_kana, :given_name_kana,:birth_year, :birth_month, :birth_day]).merge(recaptcha: params[:"g-recaptcha-response"])
+  end
+
   def sms_params
     params.require(:user_detail).permit(:cell_phone_number)
   end
@@ -302,6 +392,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def half_to_full(str)
     str = str.tr('0-9a-zA-Z', '０-９ａ-ｚＡ-Ｚ')
+    str = NKF.nkf("-Xw",str)
+    return str
+  end
+
+  def half_to_kana(str)
+    str = str.tr('0-9a-zA-Z', '０-９ａ-ｚＡ-Ｚ')
     str = str.tr('ぁ-ん','ァ-ン')
     str = NKF.nkf("-Xw",str)
     return str
@@ -311,26 +407,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    session[:family_name] = user_params[:user_detail_attributes][:family_name]
-    session[:given_name] = user_params[:user_detail_attributes][:given_name]
-    session[:family_name_kana] = user_params[:user_detail_attributes][:family_name_kana]
-    session[:given_name_kana] = user_params[:user_detail_attributes][:given_name_kana]
+    session[:family_name] = half_to_full(user_params[:user_detail_attributes][:family_name])
+    session[:given_name] = half_to_full(user_params[:user_detail_attributes][:given_name])
+    session[:family_name_kana] = half_to_kana(user_params[:user_detail_attributes][:family_name_kana])
+    session[:given_name_kana] = half_to_kana(user_params[:user_detail_attributes][:given_name_kana])
     session[:birth_year] = user_params[:user_detail_attributes][:birth_year]
     session[:birth_month] = user_params[:user_detail_attributes][:birth_month]
     session[:birth_day] = user_params[:user_detail_attributes][:birth_day]
   end
 
   def set_credit_session
-    session[:address_family_name] = address_params[:family_name]
-    session[:address_given_name] = address_params[:given_name]
-    session[:address_family_name_kana] = address_params[:family_name_kana]
-    session[:address_given_name_kana] = address_params[:given_name_kana]
+    session[:address_family_name] = half_to_full(address_params[:family_name])
+    session[:address_given_name] = half_to_full(address_params[:given_name])
+    session[:address_family_name_kana] = half_to_kana(address_params[:family_name_kana])
+    session[:address_given_name_kana] = half_to_kana(address_params[:given_name_kana])
     session[:postal_code] = address_params[:postal_code]
     session[:prefecture_id] = address_params[:prefecture_id]
     session[:city] = address_params[:city]
     session[:block] = address_params[:block]
     session[:building] = address_params[:building]
     session[:phone_number] = address_params[:phone_number].delete("-")
+  end
+
+  def set_google_session
+    session[:nickname] = google_params[:nickname]
+    session[:email] = google_params[:email]
+    session[:family_name] = half_to_full(google_params[:user_detail_attributes][:family_name])
+    session[:given_name] = half_to_full(google_params[:user_detail_attributes][:given_name])
+    session[:family_name_kana] = half_to_kana(google_params[:user_detail_attributes][:family_name_kana])
+    session[:given_name_kana] = half_to_kana(google_params[:user_detail_attributes][:given_name_kana])
+    session[:birth_year] = google_params[:user_detail_attributes][:birth_year]
+    session[:birth_month] = google_params[:user_detail_attributes][:birth_month]
+    session[:birth_day] = google_params[:user_detail_attributes][:birth_day]
   end
 
   def build_resource(hash = {})
