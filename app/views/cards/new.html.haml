@@ -10,12 +10,12 @@
       .l-container__main--registration
 
         .registration-form
-        = form_tag({ controller: 'cards', action: 'create' }, { method: 'POST'}) do
+        %form#charge-form{:action => "registration", :method => "POST"}
           .registration-form__card-number
             %label.registration-form__card-number--heading カード番号
             %span.registration-form__card-number--essential 必須
             %br
-            %input{type: 'integer', class: 'registration-form__card-number--form', id: 'payment_card_no', name: 'number', maxlength: '16', placeholder: '半角英数字のみ'}
+            %input.number{type: 'integer', class: 'registration-form__card-number--form', id: 'payment_card_no', name: 'number', maxlength: '16', placeholder: '半角英数字のみ'}
             %ul.registration-form__card-number--image-list
               %li
                 = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?454567723'
@@ -37,7 +37,7 @@
             %label.registration-form__expiration-date--heading 有効期限
             %span.registration-form__expiration-date--essential 必須
             %br
-            %select{:name => 'exp_month', class: 'registration-form__expiration-date--month-form'}
+            %select.exp_month{:name => 'exp_month', class: 'registration-form__expiration-date--month-form', id: 'payment_card_expire_mm'}
               %option{:value => "01"} 01
               %option{:value => "02"} 02
               %option{:value => "03"} 03
@@ -52,7 +52,7 @@
               %option{:value => "12"} 12
             %span 月
             %br
-            %select{:name => 'exp_year', class: 'registration-form__expiration-date--year-form'}
+            %select.exp_year{:name => 'exp_year', class: 'registration-form__expiration-date--year-form', id: 'payment_card_expire_yy'}
               %option{:value => "19"} 19
               %option{:value => "20"} 20
               %option{:value => "21"} 21
@@ -68,9 +68,47 @@
           .registration-form__sequrity-cord
             %label.registration-form__sequrity-cord--heading セキュリティコード
             %span.registration-form__sequrity-cord--essential 必須
-            %input{type: 'integer', class: 'registration-form__sequrity-cord--form', id: 'payment_card_security_code', name: 'cvc', maxlength: '4', placeholder: 'カード背面4桁もしくは3桁の番号'}
+            %input.cvc{type: 'integer', class: 'registration-form__sequrity-cord--form', id: 'payment_card_security_code', name: 'cvc', maxlength: '4', placeholder: 'カード背面4桁もしくは3桁の番号'}
             %p.registration-form__sequrity-cord--link カード裏面の番号とは？
 
-          .registration-form__add-btn 追加する
+            %button{type: "submit", class: 'registration-form__add-btn'} 追加する
+
+:javascript
+  (function() {
+    var form = $("charge-form"),
+        number = form.find('input[name="number"]'),
+        cvc = form.find('input[name="cvc"]'),
+        exp_month = form.find('select[name="exp_month"]'),
+        exp_year = form.find('input[name="exp_year"]');
+
+    $("#charge-form").submit(function() {
+      form.find("input[type=submit]").prop("disabled", true);
+        console.log(form)
+      var card = {
+          number: number.value,
+          cvc: cvc.value,
+          exp_month: exp_month.value,
+          exp_year: exp_year.value
+      };
+      Payjp.createToken(card, function(s, response) {
+        if (response.error) {
+          form.find('.payment-errors').text(response.error.message);
+          form.find('button').prop('disabled', false);
+        }
+        else {
+          $(".number").removeAttr("name");
+          $(".cvc").removeAttr("name");
+          $(".exp_month").removeAttr("name");
+          $(".exp_year").removeAttr("name");
+
+          var token = response.id;
+
+          form.append($('<input type="hidden" name="payjpToken" />').val(token));
+          form.get(0).submit();
+        }
+      });
+    });
+  })();
+
 
 = render 'shared/main-footer'
