@@ -10,7 +10,7 @@
       %h1.item-box__item-name
         = @product.name
       %p.item-box__item-description
-        『#{@product.name}』は、#{@product.user.nickname}さんから出品されました。#{@product.category.small}/#{@product.category.large}の商品で、#{Prefecture.find_by(id: @product_prefecture.prefecture_id).name}から発送されます。
+        『#{@product.name}』は、#{@product.user.nickname}さんから出品されました。#{@product.category.name}/#{@product.category.root.name}の商品で、#{@product.delivary_option.prefecture.name}から発送されます。
 
       .item-box__item-main
         .item-box__item-main--main-img
@@ -33,26 +33,32 @@
           %tr
             %th カテゴリー
             %td.item-box__item-main--table--change-color
-              #{@product.category.large}<br>>#{@product.category.middle}<br>>#{@product.category.small}
+              #{@product.category.root.name}<br>>#{@product.category.parent.name}<br>>#{@product.category.name}
           %tr
             %th ブランド
-            %td #{@product.brand.name}
+            %td 
+              = @product.brand.name
           %tr
             %th 商品の状態
-            %td 新品・未使用
+            %td 
+              = @product.state.name
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @product.delivary_option.shippingpay.name
           %tr
             %th 配送の方法
-            %td らくらくメルカリ便
+            %td 
+              = @product.delivary_option.shippingmethod.name
+
           %tr
             %th 配送元地域
             %td.item-box__item-main--table--change-color
-              = Prefecture.find_by(id: @product_prefecture.prefecture_id).name
+              = @product.delivary_option.prefecture.name
           %tr
             %th 発送日の目安
-            %td 1~2日で発送
+            %td 
+              = @product.delivary_option.shippingday.name
 
       .item-box__item-price
         .item-box__item-price--price
@@ -141,7 +147,7 @@
             %p.tax (税込)
 
     .show-items
-      %h3 #{@product.brand.name}の#{@product.category.small} その他の商品
+      %h3 #{@product.brand.name}の#{@product.category.name} その他の商品
       - @six_products_related_product.each do |p|
         .show-items__product
           = image_tag(p.item_image, class: 'show-items__product--img')

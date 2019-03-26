@@ -20,12 +20,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_122802) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "large", null: false
-    t.string "middle", null: false
-    t.string "small", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["large"], name: "index_categories_on_large"
+    t.integer "parent_id"
+    t.string "name"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_122802) do
 
   create_table "delivary_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.integer "method_id", null: false
+    t.integer "shippingmethod_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "shippingday_id", null: false
     t.integer "shippingpay_id", null: false
@@ -66,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_122802) do
     t.bigint "category_id", null: false
     t.text "description"
     t.integer "size"
-    t.integer "state"
+    t.integer "state_id"
     t.boolean "is_buy", default: true, null: false
     t.boolean "status", default: true, null: false
     t.bigint "user_id"
