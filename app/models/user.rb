@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_one :user_address, dependent: :destroy
   has_many :products
-  validates :password,               length: {minimum:6 ,message: 'は6文字以上128文字以下で入力してください'}, if: ->(u) { u.password.blank? }
+
   attr_writer :card_number, :credit_year, :credit_month, :card_code
 
   def card_number
