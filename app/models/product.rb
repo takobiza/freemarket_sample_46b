@@ -1,11 +1,14 @@
 class Product < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images
   has_one :delivary_option, dependent: :destroy
   accepts_nested_attributes_for :delivary_option
   belongs_to :category
   belongs_to :brand
-  # belongs_to :user
+  belongs_to :user
+  belongs_to_active_hash :state
 
 
 
@@ -15,6 +18,6 @@ class Product < ApplicationRecord
   end
 
   def six_products_related_product
-    Product.where(category_id: self.category_id).where(brand_id: self.brand_id)
+    Product.where.not(id: self.id).where(category_id: self.category_id).where(brand_id: self.brand_id).limit(6)
   end
 end

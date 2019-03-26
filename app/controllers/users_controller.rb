@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     render new
   end
 end

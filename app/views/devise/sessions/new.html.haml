@@ -13,7 +13,8 @@
           Facebookでログイン
         %button.registration__btn.btn-google
           = image_tag("https://img.icons8.com/color/48/000000/google-logo.png", class: "google-icon")
-          Googleでログイン
+          = link_to "Googleでログイン",user_google_oauth2_omniauth_authorize_path
+
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .error_message_box_center
           -if resource.errors.full_messages_for(:total).present?

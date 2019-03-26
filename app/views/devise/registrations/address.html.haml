@@ -6,17 +6,17 @@
     %ol.signup-header-page-bar
       %li.signup-header-page-bar__member-information
         会員情報
-        .progress-state--first
-          .progress-state--first--line
+        .progress-state--first.bar-red
+          .progress-state--first--line.bar-red
       %li.signup-header-page-bar__phone-number
         電話番号認証
-        .progress-state--second
-          .progress-state--second--line-left
-          .progress-state--second--line-right
-      %li.signup-header-page-bar__delivery-address
+        .progress-state--second.bar-red
+          .progress-state--second--line-left.bar-red
+          .progress-state--second--line-right.bar-red
+      %li.signup-header-page-bar__delivery-address.information-red
         お届け先住所入力
-        .progress-state--third
-          .progress-state--third--line-left
+        .progress-state--third.bar-red
+          .progress-state--third--line-left.bar-red
           .progress-state--third--line-right
       %li.signup-header-page-bar__payment-method
         支払い方法
@@ -43,6 +43,9 @@
 
             = f.text_field :given_name, autofocus: true, autocomplete: "given_name", placeholder: "例) 光宙", class: "signup-main-content__inner-form__group-inner"
             .error_message_box
+              -if @address.errors.full_messages_for(:family_name).present?
+                = @address.errors.full_messages_for(:family_name).first
+            .error_message_box
               -if @address.errors.full_messages_for(:given_name).present?
                 = @address.errors.full_messages_for(:given_name).first
 
@@ -54,13 +57,16 @@
 
             = f.text_field :given_name_kana, autofocus: true, autocomplete: "given_name_kana", placeholder: "例) ピカチュウ", class: "signup-main-content__inner-form__group-inner"
             .error_message_box
+              -if @address.errors.full_messages_for(:family_name_kana).present?
+                = @address.errors.full_messages_for(:family_name_kana).first
+            .error_message_box
               -if @address.errors.full_messages_for(:given_name_kana).present?
                 = @address.errors.full_messages_for(:given_name_kana).first
 
           .signup-main-content__inner-form__group
             = f.label :'郵便番号'
             %span 必須
-            = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例) 123-4567", class: "signup-main-content__inner-form__group-inner", name: "zip01", onKeyUp: "AjaxZip3.zip2addr(this,'','pref01','addr01','addr02');"
+            = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例) 123-4567", class: "signup-main-content__inner-form__group-inner", onKeyUp: "AjaxZip3.zip2addr(this,'','user_address[prefecture_id]','user_address[city]','user_address[block]');"
             .error_message_box
               -if @address.errors.full_messages_for(:postal_code).present?
                 = @address.errors.full_messages_for(:postal_code).first
@@ -70,14 +76,17 @@
             %span 必須
             .signup-main-content__inner-form__group__select
               .signup-main-content__inner-form__group__select__wrap
-                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default-prefecture", name: "pref01"}
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default-prefecture"}
                 .icon__arrow--bottom-prefecture
                   = fa_icon "angle-down"
+              .error_message_box
+                -if @address.errors.full_messages_for(:prefecture_id).present?
+                  = @address.errors.full_messages_for(:prefecture_id).first
 
           .signup-main-content__inner-form__group
             = f.label :'市区町村'
             %span 必須
-            = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "signup-main-content__inner-form__group-inner ", name: "addr01"
+            = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "signup-main-content__inner-form__group-inner "
             .error_message_box
               -if @address.errors.full_messages_for(:city).present?
                 = @address.errors.full_messages_for(:city).first
@@ -85,7 +94,7 @@
           .signup-main-content__inner-form__group
             = f.label :'番地'
             %span 必須
-            = f.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "signup-main-content__inner-form__group-inner", name: "addr02"
+            = f.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "signup-main-content__inner-form__group-inner"
             .error_message_box
               -if @address.errors.full_messages_for(:block).present?
                 = @address.errors.full_messages_for(:block).first
