@@ -6,7 +6,7 @@
       .l-content__payment__card__add
         .l-content__payment__card__add__inner
           = fa_icon 'credit-card', class: 'l-content__payment__card__add__inner__card-icon'
-          %span クレジットカードを追加する
+          = link_to 'クレジットカードを追加する', new_user_card_path, class: 'l-content__payment__card__add__inner'
       .l-content__payment__card__about-payment
         = link_to users_path, class: 'l-content__payment__card__about-payment__path' do
           .l-content__payment__card__about-payment__path__text 支払い方法について
