@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_051718) do
 
   create_table "delivary_options", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.integer "method_id", null: false
+    t.integer "shippingmethod_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "shippingday_id", null: false
     t.integer "shippingpay_id", null: false

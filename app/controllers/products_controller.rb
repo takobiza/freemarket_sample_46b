@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+
     @product = Product.create(sell_params)
     redirect_to sells_path
 
@@ -54,6 +55,6 @@ class ProductsController < ApplicationController
   end
 
   def sell_params
-    params.require(:product).permit(:name, :description, :state, delivary_option_attributes: [:shippingpay_id, :prefecture_id, :shippingday_id])
+    params.require(:product).permit(:name, :description, :state, delivary_option_attributes: [:shippingpay_id, :shippingmethod_id, :prefecture_id, :shippingday_id], product_images_attributes: [:image])
   end
 end

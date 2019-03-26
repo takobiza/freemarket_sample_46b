@@ -41,7 +41,7 @@
   }
   &__upload-drop-box {
     margin-top: 10px;
-    padding: 40px 0;
+    display: flex;
     &__text {
       cursor: pointer;
       background-color: #eee;
@@ -49,9 +49,15 @@
       text-align: center;
       font-weight: normal;
       padding: 40px 173px;
+    }
+    &__photo {
+      margin-bottom: 40px;
       &__file {
         display: none;
       }
+    }
+    &__list {
+      display: flex;
     }
   }
   &__options {
@@ -62,6 +68,9 @@
       color: gray;
     }
     &__product {
+      &__hidden-box {
+        // display: none;
+      }
       &__box {
         position: relative;
         &__select-box {

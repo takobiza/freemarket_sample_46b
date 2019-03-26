@@ -10,13 +10,12 @@
         %span 必須
         %p 最大5枚までアップロードできます
         .single-main__sell-registration__upload-drop-box
-          %label.single-main__sell-registration__upload-drop-box__text{for: "file-photo"}
-            クリックしてファイルをアップロード
-            %input{type: "file", id: "file-photo",class: "single-main__sell-registration__upload-drop-box__text__file"}
-            %input{type: "file", id: "file-photo",class: "single-main__sell-registration__upload-drop-box__text__file"}
-            %input{type: "file", id: "file-photo",class: "single-main__sell-registration__upload-drop-box__text__file"}
-            %input{type: "file", id: "file-photo",class: "single-main__sell-registration__upload-drop-box__text__file"}
-            %input{type: "file", id: "file-photo",class: "single-main__sell-registration__upload-drop-box__text__file"}
+          %ul.single-main__sell-registration__upload-drop-box__list
+            - 5.times do |i|
+              = form.fields_for :product_images do |image|
+                %li.single-main__sell-registration__upload-drop-box__photo
+                  = image.file_field :image, id: "file-photo-#{i}", class: "single-main__sell-registration__upload-drop-box__photo__file", accept: ".jpg, .jpeg, .png", value: "#{i}"
+          = form.label :image, "クリックしてファイルをアップロード", class: "single-main__sell-registration__upload-drop-box__text", for: "file-photo-0"
 
 
       .single-main__sell-registration
@@ -75,6 +74,22 @@
                   %span 必須
                 = shipping.collection_select :shippingpay_id, Shippingpay.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
                 =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+              .single-main__sell-registration__options__product__hidden-box#seller-fee
+                .single-main__sell-registration__options__product__box
+                  .single-main__sell-registration__options__product__box__title-two-more
+                    = shipping.label :shippingmethod_id, "配送の方法(出品者負担)"
+                    %span 必須
+                  = shipping.collection_select :shippingmethod_id, Shippingmethod.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
+                  =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+              .single-main__sell-registration__options__product__hidden-box#purchaser-fee
+                .single-main__sell-registration__options__product__box
+                  .single-main__sell-registration__options__product__box__title-two-more
+                    = shipping.label :shippingmethod_id, "配送の方法(購入者負担)"
+                    %span 必須
+                  = shipping.collection_select :shippingmethod_id, Shippingmethod.purchaser_fee, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
+                  =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
 
               .single-main__sell-registration__options__product__box
                 .single-main__sell-registration__options__product__box__title-two-more

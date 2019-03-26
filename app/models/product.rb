@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 
 
   def item_image
-    ProductImage.find_by(product_id: self.id).image;
+    ProductImage.find_by(product_id: self.id).image.url
   end
 
   def six_products_related_product
