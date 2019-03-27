@@ -22,9 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only:[:show, :index, :create] do
+  resources :products, only:[:show, :index, :create, :new] do
     resources :transactions, only: :index
   end
 
   resources :sells
+  get '/categories' => 'categories#category'
 end

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, except: [:create, :index]
+  before_action :set_product, except: [:create, :index, :new]
+
 
   def index
 
@@ -16,6 +17,18 @@ class ProductsController < ApplicationController
 
   end
 
+  def create
+
+    @product = Product.new(sell_params)
+    if @product.save
+      redirect_to root_path
+    else
+      render :template => 'sells/index', locals: {product: @product}
+    end
+
+  end
+
+
   def show
 
     @six_products_related_product = @product.six_products_related_product
@@ -23,12 +36,18 @@ class ProductsController < ApplicationController
 
   end
 
-  def create
+  # def new
 
-    @product = Product.create(sell_params)
-    redirect_to sells_path
+  #   @product = Product.new
+  #   @product.build_delivary_option
+  #   @product.product_images.build
+  #   respond_to do |format|
+  #     format.html
+  #     format.json { @middle_categories = Category.find(params[:category_id]).children }
+  #   end
 
-  end
+  # end
+
 
 
   private
@@ -58,6 +77,6 @@ class ProductsController < ApplicationController
   end
 
   def sell_params
-    params.require(:product).permit(:name, :description, :state, delivary_option_attributes: [:shippingpay_id, :shippingmethod_id, :prefecture_id, :shippingday_id], product_images_attributes: [:image])
+    params.require(:product).permit(:name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 end

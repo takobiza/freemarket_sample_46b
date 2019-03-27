@@ -41,7 +41,7 @@
   }
   &__upload-drop-box {
     margin-top: 10px;
-    display: flex;
+    // display: flex;
     &__text {
       cursor: pointer;
       background-color: #eee;
@@ -54,6 +54,18 @@
       margin-bottom: 40px;
       &__file {
         display: none;
+      }
+      &__image-area {
+        margin-right: 8px;
+        background-color: #eee;
+        &__btn-area {
+          display: flex;
+          justify-content: space-between;
+        }
+        &__remove-btn {
+        }
+        &__edit-btn {
+        }
       }
     }
     &__list {
@@ -69,7 +81,7 @@
     }
     &__product {
       &__hidden-box {
-        // display: none;
+        display: none;
       }
       &__box {
         position: relative;

@@ -9,6 +9,7 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :user
   belongs_to_active_hash :state
+  validates :category_id, presence: true
 
 
 

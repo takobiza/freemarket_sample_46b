@@ -5,7 +5,7 @@ class Shippingmethod < ActiveHash::Base
   ]
   has_many :delivary_options
 
-  def self.purchaser_fee
+  def self.purchaser_fee_method
     find([0,3,5,6,])
   end
 

@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
       var img =
          `<div class="single-main__sell-registration__upload-drop-box__photo__image-area">
             <img alt="" class="single-main__sell-registration__upload-drop-box__photo__image-area__image", width="114">
-            <p>
+            <p class="single-main__sell-registration__upload-drop-box__photo__image-area__btn-area">
               <a class="single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn">削除</a>
               <a class="single-main__sell-registration__upload-drop-box__photo__image-area__edit-btn">編集</a>
             </p>
@@ -35,8 +35,6 @@ $(document).on('turbolinks:load', function() {
 
       function remove_image(target) {
         target.find("a.single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn").on('click', function(){
-          // var l = $('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length;
-          // var m = l - 1
           var input =$(this);
           var parentBox = input.parent().prev();
           var grandBox = parentBox.parent().prev();
