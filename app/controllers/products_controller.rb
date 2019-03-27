@@ -1,10 +1,9 @@
 class ProductsController < ApplicationController
 
   before_action :set_product, except: [:index]
-
+  before_action :get_header_category_brand, only: [:index, :show]
 
   def index
-
     @items_ladies = get_category_SQL(159,336)
     @items_mens = get_category_SQL(337,465)
     @items_kids = get_category_SQL(466,581)
@@ -18,10 +17,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
-
   end
 
   private
@@ -49,4 +46,19 @@ class ProductsController < ApplicationController
   def product_params
     params.permit(:name, :price)
   end
+
+  def get_header_category_brand
+    @brands = Brand.limit(5)
+
+    @categories = Category.roots
+    @categories.each do |large|
+      large.children.limit(14).each do |middle|
+        @categories+= [middle]
+        middle.children.limit(14).each do |small|
+          @categories+= [small]
+        end
+      end
+    end
+  end
+
 end
