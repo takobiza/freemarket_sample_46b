@@ -1,0 +1,157 @@
+.top-page-body {
+  padding-top: 10px;
+}
+
+.top-banner {
+  width: 100vw;
+  height: 390px;
+  background-color: #d9f7ff;
+}
+
+.bx-wrapper {
+  margin: 0 !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: none !important;
+  .bx-default-pager {
+    padding-bottom: 50px;
+  }
+
+.bxslider {
+  height: 100%;
+  width: 100%;
+  &__banner-new-life {
+    background-color: #ff9999;
+    background-image: url('https://item.mercari.com/jp/assets/img/featured/newlife/keyvisual_bg_item.png?82208132');
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    &--text {
+      margin: 0 30%;
+      max-width: 40%;
+    }
+  }
+
+  &__banner-about-mercari {
+    background-image: url('https://item.mercari.com/jp/assets/img/common/jp/top/top-banner-welcome.png');
+    background-position: center;
+    height: 100%;
+  }
+
+  &__banner-get-app {
+    background-image: url('https://item.mercari.com/jp/assets/img/common/jp/top/main_bg_pc.jpg');
+    background-position: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    &--left-contents {
+      flex: 2;
+      margin: auto 0 auto 12%;
+      padding-left: 5%;
+      h2 {
+        font-size: 60px;
+        font-weight: bold;
+        line-height: 70px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 35px;
+        margin: 20px 0;
+      }
+      .link {
+        height: 50px;
+        float: left;
+        margin-right: 10px;
+        width: 170px;
+      }
+    }
+
+    &--image {
+      flex: 1;
+      float: left;
+      height: 100%;
+      margin-right: 12%;
+      width: 440px;
+    }
+  }
+}
+}
+.pickup-items-wrapper {
+  background-color: #f5f5f5;
+  height: auto;
+  padding: 40px 5%;
+  text-align: center;
+}
+
+.items-container {
+  height: auto;
+  margin: 0 auto;
+  width: 75%;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.pickup-items {
+
+  h3 {
+    color: $lightblue;
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 10px;
+  }
+
+  &__boxes {
+    display: flex;
+    height: auto;
+
+    &__product {
+      background-color: $white;
+      flex: 1;
+      height: 330px;
+      margin-left: 20px;
+      width: 220px;
+      text-decoration: none;
+      color: black;
+      &--img {
+        height: 220px;
+        width: 100%;
+      }
+      &--detail {
+        height: 90px;
+        line-height: 15px;
+        padding: 15px 15px 0 15px;
+        position: relative;
+        text-align: left;
+        .name {
+          font-size: 18px;
+          word-wrap: break-word;
+        }
+        .price {
+          bottom:25px;
+          font-weight: bold;
+          position: absolute;
+        }
+        .tax {
+          font-size: 13px;
+          position: absolute;
+          bottom: 5px;
+        }
+      }
+    }
+  }
+
+  &__view-all {
+      color: $lightblue;
+      margin: 20px 0 40px 0;
+      text-align: right;
+      width: 100%;
+  }
+}
+

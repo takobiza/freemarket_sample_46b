@@ -1,0 +1,163 @@
+= render '/shared/main-header'
+= render '/shared/bread-crumbs'
+
+
+.product-detail-wrapper
+  .product-detail-wrapper__container
+
+
+    .item-box
+      %h1.item-box__item-name
+        = @product.name
+      %p.item-box__item-description
+        『#{@product.name}』は、#{@product.user.nickname}さんから出品されました。#{@product.category.name}/#{@product.category.root.name}の商品で、#{@product.delivary_option.prefecture.name}から発送されます。
+
+      .item-box__item-main
+        .item-box__item-main--main-img
+          = image_tag(@product.item_image, class: 'active-img')
+
+          .item-box__item-main--sub-img
+            %ul
+              %li
+                = image_tag(@product.item_image, class: 'bottom-img')
+              %li
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_2.jpg?1549854823', class: 'bottom-img')
+              %li
+                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_3.jpg?1549854823', class: 'bottom-img')
+
+        %table.item-box__item-main--table
+          %tr
+            %th 出品者
+            %td.item-box__item-main--table--change-color
+              #{@product.user.nickname}
+          %tr
+            %th カテゴリー
+            %td.item-box__item-main--table--change-color
+              #{@product.category.root.name}<br>>#{@product.category.parent.name}<br>>#{@product.category.name}
+          %tr
+            %th ブランド
+            %td 
+              = @product.brand.name
+          %tr
+            %th 商品の状態
+            %td 
+              = @product.state.name
+          %tr
+            %th 配送料の負担
+            %td 
+              = @product.delivary_option.shippingpay.name
+          %tr
+            %th 配送の方法
+            %td 
+              = @product.delivary_option.shippingmethod.name
+
+          %tr
+            %th 配送元地域
+            %td.item-box__item-main--table--change-color
+              = @product.delivary_option.prefecture.name
+          %tr
+            %th 発送日の目安
+            %td 
+              = @product.delivary_option.shippingday.name
+
+      .item-box__item-price
+        .item-box__item-price--price
+          %span ¥
+          = @product.price
+        .item-box__item-price--tax
+          (税込)
+        .item-box__item-price--postage
+          送料込み
+
+      .item-box__item-buy-btn
+        = link_to '購入画面に進む', root_path
+
+      .item-box__item-message
+        %p #{@product.description}
+
+      .item-box__item-footer
+        .item-box__item-footer--like-btn
+          = fa_icon 'heart'
+          %a いいね！
+        .item-box__item-footer--report-btn
+          = fa_icon 'flag'
+          %a 不適切な商品の報告
+        .item-box__item-footer--link-safety
+          = fa_icon 'lock'
+          %a あんしん・あんぜんへの取り組み
+
+
+    .comments-list
+      %ul
+        %li.comment-container
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Xe6HCS4lyoEhsVAHOOBBin6qxLYLren_xcLyTTknCIF-k24u', class: 'comment-container__user-avater')
+          .comment-container__comment-box
+            .comment-container__comment-box--user-name
+              %p 小曽根
+            .comment-container__comment-box--comment
+              %p あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              = fa_icon 'clock-o'
+              %span 20日前
+              = fa_icon 'flag'
+
+        %li.comment-container
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCZALHoHYx_FZT7PSvWXSdNJoOOUgkTqgURomgtXxbb8b5JDi0Vw', class: 'comment-container__user-avater')
+          .comment-container__comment-box
+            .comment-container__comment-box--user-name
+              %p 小崎
+            .comment-container__comment-box--comment
+              %p 欲しい！
+              = fa_icon 'clock-o'
+              %span 15日前
+              = fa_icon 'flag'
+
+        %li.comment-container
+          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGT-FqAbRzN8UQnpybr8xvbvxDzzGnF0e1z2NIN9wyHLfdZJk7cA', class: 'comment-container__user-avater')
+          .comment-container__comment-box
+            .comment-container__comment-box--user-name
+              %p 木幡
+            .comment-container__comment-box--comment
+              %p かわいい！
+              = fa_icon 'clock-o'
+              %span 3日前
+              = fa_icon 'flag'
+
+
+    .sns_icons
+      .sns_icons__icon
+        .sns_icons__icon--facebook
+          = fa_icon 'facebook'
+        .sns_icons__icon--twitter
+          = fa_icon 'twitter'
+        .sns_icons__icon--pinterest
+          = fa_icon 'pinterest'
+
+
+    .show-items
+      %h3 #{@product.user.nickname}さんのその他の出品
+      - @six_products_related_user.each do |u|
+        .show-items__product
+          = image_tag(u.item_image, class: 'show-items__product--img')
+          .show-items__product--detail
+            .name
+              = u.name
+            %p.price
+              = u.price
+            .price
+            %p.tax (税込)
+
+    .show-items
+      %h3 #{@product.brand.name}の#{@product.category.name} その他の商品
+      - @six_products_related_product.each do |p|
+        .show-items__product
+          = image_tag(p.item_image, class: 'show-items__product--img')
+          .show-items__product--detail
+            .name
+              = p.name
+            %p.price
+              = p.price
+            .price
+            %p.tax (税込)
+
+
+= render '/shared/main-footer'
