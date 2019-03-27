@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   before_action :set_product, except: [:index]
 
-  # add_breadcrumb 'メルカリ', '/'
+  add_breadcrumb 'メルカリ', '/'
 
 
   def index
