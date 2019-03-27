@@ -11,7 +11,7 @@ class CreateUserAddresses < ActiveRecord::Migration[5.2]
       t.string      :city, null: false
       t.string      :block, null: false
       t.string      :building
-      t.integer     :phone_number
+      t.string     :phone_number
       t.timestamps
     end
   end

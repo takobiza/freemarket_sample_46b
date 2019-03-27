@@ -53,22 +53,6 @@
                 = @user.errors.full_messages_for(:email).first
 
           .signup-main-content__inner-form__group
-            = f.label :'パスワード'
-            %span 必須
-            = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-main-content__inner-form__group-inner"
-            .error_message_box
-              -if @user.errors.full_messages_for(:password).present?
-                = @user.errors.full_messages_for(:password).first
-
-          .signup-main-content__inner-form__group
-            = f.label :'パスワード(確認)'
-            %span 必須
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "6文字以上", class: "signup-main-content__inner-form__group-inner"
-            .error_message_box
-              -if @user.errors.full_messages_for(:password_confirmation).present?
-                = @user.errors.full_messages_for(:password_confirmation).first
-
-          .signup-main-content__inner-form__group
             %h3 本人確認
             %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
 

@@ -38,8 +38,7 @@
             list-style: none;
 
             &__member-information {
-                font-weight: 600;
-                color: $warm-red;
+                color: #888;
                 margin: 0 40px 0 0;
                 min-width: 60px;
                 position: relative;
@@ -49,7 +48,7 @@
                 font-size: 12px;
 
                 .progress-state--first {
-                    background: $warm-red;
+                    background: #ccc;
                     width: 12px;
                     height: 12px;
                     margin: 8px auto 0;
@@ -430,4 +429,13 @@
 
 .fa-question-circle {
     color: $lightblue;
+}
+
+.bar-red{
+    background: $warm-red !important;
+}
+
+.information-red{
+    color: $warm-red !important;
+    font-weight: 600 !important;
 }
