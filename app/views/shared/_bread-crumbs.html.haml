@@ -6,4 +6,5 @@
       &ensp;
       =fa_icon "angle-right", class: 'bread-crumbs__list__link__arrow-right'
       &nbsp;
-      =link_to "マイページ", users_path, class: 'bread-crumbs__list__link__name'
+      / =link_to "マイページ", users_path, class: 'bread-crumbs__list__link__name'
+      =render_breadcrumbs separator: '>'

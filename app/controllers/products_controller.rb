@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   before_action :set_product, except: [:index]
 
-  add_breadcrumb 'メルカリ', '/'
+  # add_breadcrumb 'メルカリ', '/'
 
 
   def index
@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
 
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
-    binding.pry
+
     add_breadcrumb @product.name
 
   end
