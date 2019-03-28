@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   has_one :delivary_option, dependent: :destroy
   accepts_nested_attributes_for :delivary_option
   belongs_to :category
-  belongs_to :brand
+  belongs_to :brand, optional: true
   belongs_to :user
   belongs_to_active_hash :state
   validates :category_id, presence: true
