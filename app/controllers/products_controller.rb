@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     if @product.save!
       redirect_to root_path
     else
-      render :template => 'sells/index', locals: {product: @product}
+      render template: 'sells/index', locals: {product: @product}
     end
 
   end
