@@ -6,4 +6,5 @@ class CommentsController < ApplicationController
 
   def comments_params
   end
+
 end
