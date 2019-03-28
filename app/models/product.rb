@@ -8,15 +8,9 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :brand, optional: true
   belongs_to :user
-<<<<<<< HEAD
-=======
   belongs_to_active_hash :state
-<<<<<<< HEAD
->>>>>>> takobiza/master
-=======
   validates :category_id, presence: true
 
->>>>>>> takobiza/master
 
 
 
