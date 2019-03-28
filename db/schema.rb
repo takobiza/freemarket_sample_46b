@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_122802) do
+ActiveRecord::Schema.define(version: 2019_03_27_080453) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_122802) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nickname"
-    t.string "image"
+    t.string "image", default: "member_photo_noimage_thumb.png"
     t.text "message"
     t.string "pay_id"
     t.datetime "created_at", null: false
