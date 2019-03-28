@@ -14,7 +14,7 @@ class CreateUserDetails < ActiveRecord::Migration[5.2]
       t.string      :city
       t.string      :block
       t.string      :building
-      t.integer     :phone_number
+      t.string     :cell_phone_number
       t.timestamps
     end
   end

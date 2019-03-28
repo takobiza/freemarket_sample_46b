@@ -6,22 +6,22 @@
     %ol.signup-header-page-bar
       %li.signup-header-page-bar__member-information
         会員情報
-        .progress-state--first
-          .progress-state--first--line
+        .progress-state--first.bar-red
+          .progress-state--first--line.bar-red
       %li.signup-header-page-bar__phone-number
         電話番号認証
-        .progress-state--second
-          .progress-state--second--line-left
-          .progress-state--second--line-right
+        .progress-state--second.bar-red
+          .progress-state--second--line-left.bar-red
+          .progress-state--second--line-right.bar-red
       %li.signup-header-page-bar__delivery-address
         お届け先住所入力
-        .progress-state--third
-          .progress-state--third--line-left
-          .progress-state--third--line-right
-      %li.signup-header-page-bar__payment-method
+        .progress-state--third.bar-red
+          .progress-state--third--line-left.bar-red
+          .progress-state--third--line-right.bar-red
+      %li.signup-header-page-bar__payment-method.information-red
         支払い方法
-        .progress-state--forth
-          .progress-state--forth--line-left
+        .progress-state--forth.bar-red
+          .progress-state--forth--line-left.bar-red
           .progress-state--forth--line-right
       %li.signup-header-page-bar__all-end
         完了
@@ -39,7 +39,7 @@
           .signup-main-content__inner-form__group
             = f.label :'カード番号'
             %span 必須
-            = f.text_field :card_number, autofocus: true, autocomplete: "card_number", placeholder: "例) 携帯電話の番号を入力", class: "signup-main-content__inner-form__group-inner"
+            = f.text_field :card_number, autofocus: true, autocomplete: "card_number", placeholder: "例) 半角数字のみ", class: "signup-main-content__inner-form__group-inner", maxlength: 19
             %ul.signup-main-content__inner-form__group-card
               %li
                 = image_tag("//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3112359103", class: "card--image", width: "49", height: "20")
@@ -78,8 +78,12 @@
 
                 .signup-main-content__inner-form__group__select__wrap_text 月
                 .error_message_box
-                  -if @user.errors.full_messages_for(:card_number).present?
-                    = @user.errors.full_messages_for(:card_number).first
+                  -if @user.errors.full_messages_for(:credit_year).present?
+                    = @user.errors.full_messages_for(:credit_year).first
+
+                .error_message_box
+                  -if @user.errors.full_messages_for(:credit_month).present?
+                    = @user.errors.full_messages_for(:credit_month).first
 
           .signup-main-content__inner-form__group
             = f.label :'セキュリティコード'
@@ -90,8 +94,8 @@
               = link_to "カード裏面の番号とは？", "#", target: "_blank", class: "signup-main-content__inner-form__group-right__inner"
 
             .error_message_box
-              -if @user.errors.full_messages_for(:card_number).present?
-                = @user.errors.full_messages_for(:card_number).first
+              -if @user.errors.full_messages_for(:card_code).present?
+                = @user.errors.full_messages_for(:card_code).first
 
 
           .actions

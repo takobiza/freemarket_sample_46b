@@ -9,10 +9,10 @@
 
 require "csv"
 
-csv_data1 = CSV.read('db/categories.csv', headers: true)
+csv_data1 = CSV.read('db/category.csv', headers: true)
 
-csv_data1.each do |row|
-  Category.create!(row.to_hash)
+csv_data1.each do |data|
+  Category.create!(data.to_hash)
 end
 
 Brand.create(name: "シャネル")
@@ -20,25 +20,51 @@ Brand.create(name: "ルイ ヴィトン")
 Brand.create(name: "シュプリーム")
 Brand.create(name: "ナイキ")
 
-Product.create(name: "シャネル 長財布",price: 18999, state: 1, is_buy: true, status: true, category_id: 104, brand_id: 1)
-Product.create(name: "シャネル ジャケット",price: 10000, state: 2, is_buy: true, status: true, category_id: 16, brand_id: 1)
-Product.create(name: "シャネル 香水",price: 1000, state: 3, is_buy: true, status: true, category_id: 636, brand_id: 1)
-Product.create(name: "シャネル 靴",price: 1000, state: 3, is_buy: true, status: true, category_id: 50, brand_id: 1)
+user = User.create!(email: "hoge@gmail.com", password: 11111111, nickname: "メルカリ太郎")
 
-Product.create(name: "ルイ ヴィトン 長財布",price: 18999, state: 1, is_buy: true, status: true, category_id: 104, brand_id: 2)
-Product.create(name: "ルイ ヴィトン バッグ",price: 18999, state: 1, is_buy: true, status: true, category_id: 74, brand_id: 2)
-Product.create(name: "ルイ ヴィトン 靴",price: 18999, state: 1, is_buy: true, status: true, category_id: 50, brand_id: 2)
-Product.create(name: "ルイ ヴィトン デニム",price: 18999, state: 1, is_buy: true, size: 1, status: true, category_id: 29, brand_id: 2)
+UserDetail.create!(user_id: user.id, family_name: "山田", given_name: "光宙", family_name_kana: "ヤマダ", given_name_kana: "ピカチュウ", birth_year: 1996, birth_month: 03, birth_day: 10, cell_phone_number: "09011111111")
 
-Product.create(name: "シュプリーム Tシャツ",price: 18999, state: 1, is_buy: true, size: 1,status: true, category_id: 124, brand_id: 3)
-Product.create(name: "シュプリーム 靴",price: 10000, state: 2, is_buy: true, status: true, size: 1,category_id: 158, brand_id: 3)
-Product.create(name: "シュプリーム バッグ",price: 1000, state: 3, is_buy: true, status: true, category_id: 166, brand_id: 3)
-Product.create(name: "シュプリーム ジャケット",price: 1000, state: 3, is_buy: true, status: true, size: 1,category_id: 135, brand_id: 3)
+UserAddress.create!(user_id: user.id, family_name: "山崎", given_name: "大秘宝", family_name_kana: "ヤマザキ", given_name_kana: "ワンピース", postal_code: "150-0032", prefecture_id: 13, city: "渋谷区", block: "鶯谷町")
 
-Product.create(name: "ナイキ フリース",price: 18999, state: 1, is_buy: true, size: 1,status: true, category_id: 124, brand_id: 4)
-Product.create(name: "ナイキ 靴",price: 10000, state: 2, is_buy: true, status: true, size: 1,category_id: 158, brand_id: 4)
-Product.create(name: "ナイキ バッグ",price: 1000, state: 3, is_buy: true, status: true, category_id: 166, brand_id: 4)
-Product.create(name: "ナイキ ジャケット",price: 1000, state: 3, is_buy: true, status: true, size: 1,category_id: 135, brand_id: 4)
+Product.create(name: "シャネル 長財布",price: 18999, state_id: 1, is_buy: true, status: true, category_id: 276, brand_id: 1, user_id: user.id)
+Product.create(name: "シャネル ジャケット",price: 10000, state_id: 2, is_buy: true, status: true, category_id: 177, brand_id: 1, user_id: user.id)
+Product.create(name: "シャネル 香水",price: 1000, state_id: 3, is_buy: true, status: true, category_id: 876, brand_id: 1, user_id: user.id)
+Product.create(name: "シャネル 靴",price: 1000, state_id: 3, is_buy: true, status: true, category_id: 219, brand_id: 1, user_id: user.id)
+
+Product.create(name: "ルイ ヴィトン 長財布",price: 18999, state_id: 1, is_buy: true, status: true, category_id: 276, brand_id: 2, user_id: user.id)
+Product.create(name: "ルイ ヴィトン バッグ",price: 18999, state_id: 1, is_buy: true, status: true, category_id: 244, brand_id: 2, user_id: user.id)
+Product.create(name: "ルイ ヴィトン 靴",price: 18999, state_id: 1, is_buy: true, status: true, category_id: 219, brand_id: 2, user_id: user.id)
+Product.create(name: "ルイ ヴィトン デニム",price: 18999, state_id: 1, is_buy: true, size: 1, status: true, category_id: 198, brand_id: 2, user_id: user.id)
+
+Product.create(name: "シュプリーム Tシャツ",price: 18999, state_id: 1, is_buy: true, size: 1,status: true, category_id: 337, brand_id: 3, user_id: user.id)
+Product.create(name: "シュプリーム 靴",price: 10000, state_id: 2, is_buy: true, status: true, size: 1,category_id: 380, brand_id: 3, user_id: user.id)
+Product.create(name: "シュプリーム バッグ",price: 1000, state_id: 3, is_buy: true, status: true, category_id: 388, brand_id: 3, user_id: user.id)
+Product.create(name: "シュプリーム ジャケット",price: 1000, state_id: 3, is_buy: true, status: true, size: 1,category_id: 349, brand_id: 3, user_id: user.id)
+
+Product.create(name: "ナイキ フリース",price: 18999, state_id: 1, is_buy: true, size: 1,status: true, category_id: 340, brand_id: 4, user_id: user.id)
+Product.create(name: "ナイキ 靴",price: 10000, state_id: 2, is_buy: true, status: true, size: 1,category_id: 380, brand_id: 4, user_id: user.id)
+Product.create(name: "ナイキ バッグ",price: 1000, state_id: 3, is_buy: true, status: true, category_id: 393, brand_id: 4, user_id: user.id)
+Product.create(name: "ナイキ ジャケット",price: 1000, state_id: 3, is_buy: true, status: true, size: 1,category_id: 349, brand_id: 4, user_id: user.id)
+
+DelivaryOption.create(product_id: 1,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 2,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 3,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 4,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+
+DelivaryOption.create(product_id: 5,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 6,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 7,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 8,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+
+DelivaryOption.create(product_id: 9,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 10,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 11,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 12,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+
+DelivaryOption.create(product_id: 13,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 14,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 15,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
+DelivaryOption.create(product_id: 16,shippingmethod_id: 1 , prefecture_id: 1, shippingday_id: 1, shippingpay_id: 1)
 
 ProductImage.create(image: "https://static.mercdn.net/item/detail/orig/photos/m73002812935_1.jpg?1544748498", product_id: 1);
 ProductImage.create(image: "https://static.mercdn.net/item/detail/orig/photos/m89761627917_1.jpg?1548658461", product_id: 2);

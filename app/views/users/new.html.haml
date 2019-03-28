@@ -14,6 +14,7 @@
             Facebookで登録
           %button.registration__btn.btn-google
             = image_tag("https://img.icons8.com/color/48/000000/google-logo.png", class: "google-icon")
-            Googleで登録
+            = link_to "Googleで登録",user_google_oauth2_omniauth_authorize_path
+
 
   = render '/shared/single/single-footer'
