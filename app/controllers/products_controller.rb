@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   def create
 
     @product = Product.new(sell_params)
-    if @product.save
+    if @product.save!
       redirect_to root_path
     else
       render :template => 'sells/index', locals: {product: @product}
@@ -33,19 +33,6 @@ class ProductsController < ApplicationController
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
   end
 
-  # def new
-
-  #   @product = Product.new
-  #   @product.build_delivary_option
-  #   @product.product_images.build
-  #   respond_to do |format|
-  #     format.html
-  #     format.json { @middle_categories = Category.find(params[:category_id]).children }
-  #   end
-
-  # end
-
-
 
   private
 
@@ -56,10 +43,6 @@ class ProductsController < ApplicationController
   def brand_search(brand_id)
     Product.where(brand_id: brand_id).order("RAND()").limit(4)
   end
-
-  # def create_get_category_SQL(category)
-  #   sql = "SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `large` = '#{category}' AND `status` = TRUE ORDER BY RAND() LIMIT 4"
-  # end
 
   def get_category_SQL(low, high)
     ActiveRecord::Base.connection.select_all("SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `products`.`category_id` BETWEEN #{low} AND #{high}  ORDER BY RAND() LIMIT 4").to_hash.map{|id| Product.find( id.fetch("id") )}

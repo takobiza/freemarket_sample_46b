@@ -60,14 +60,6 @@
               -if @product.errors.full_messages_for(:category_id).present?
                 = @product.errors.full_messages_for(:category_id).first
 
-            / .single-main__sell-registration__options__product__hidden-box
-            /   .single-main__sell-registration__options__product__box
-            /     .single-main__sell-registration__options__product__box__title-two-more
-            /       = form.label :size, "サイズ"
-            /       %span 必須
-            /     = form.collection_select :size, Size.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
-            /     =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
-
             .single-main__sell-registration__options__product__box
               .single-main__sell-registration__options__product__box__title-two-more
                 = form.label :state_id, "商品の状態"
