@@ -1,5 +1,5 @@
 = render '/shared/main-header'
-= render '/shared/bread-crumbs'
+= render '/shared/breadcrumbs'
 
 
 .product-detail-wrapper
@@ -36,19 +36,19 @@
               #{@product.category.root.name}<br>>#{@product.category.parent.name}<br>>#{@product.category.name}
           %tr
             %th ブランド
-            %td 
+            %td
               = @product.brand.name
           %tr
             %th 商品の状態
-            %td 
+            %td
               = @product.state.name
           %tr
             %th 配送料の負担
-            %td 
+            %td
               = @product.delivary_option.shippingpay.name
           %tr
             %th 配送の方法
-            %td 
+            %td
               = @product.delivary_option.shippingmethod.name
 
           %tr
@@ -57,7 +57,7 @@
               = @product.delivary_option.prefecture.name
           %tr
             %th 発送日の目安
-            %td 
+            %td
               = @product.delivary_option.shippingday.name
 
       .item-box__item-price
