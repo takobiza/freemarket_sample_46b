@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:create, :index]
   before_action :get_header_category_brand, only: [:index, :show]
 
-  add_breadcrumb 'メルカリ', '/'
 
   def index
     @items_ladies = get_category_SQL(159,336)
