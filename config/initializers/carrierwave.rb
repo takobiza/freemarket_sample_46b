@@ -11,6 +11,6 @@ CarrierWave.configure do |config|
     aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
     region: 'ap-northeast-1'
   }
-  config.fog_directory  = 'freemarcket-46b-image-upload'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarcket-46b-image-upload'
+  config.fog_directory  = 'freemarket-image-uploder'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket-image-uploder'
 end
