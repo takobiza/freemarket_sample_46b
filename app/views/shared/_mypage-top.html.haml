@@ -4,9 +4,10 @@
       .l-content__profile__link__block
         .icon
           = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "60", height: "60")
-        %p ユーザー名
+        %p
+          = @user.nickname
         %ul
-          %li 評価数 &ensp;7
+          %li 評価数 &ensp;0
           %li 出品数 &ensp;6
 
   .l-content__tabs

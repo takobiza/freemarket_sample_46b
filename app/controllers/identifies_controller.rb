@@ -1,5 +1,5 @@
 class IdentifiesController < ApplicationController
-  before_action :get_header_category_brand
+  before_action :get_header_category_brand, only: [:index, :update]
   before_action :authenticate_user!
 
   def index

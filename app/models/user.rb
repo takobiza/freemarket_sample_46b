@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_one :user_address, dependent: :destroy
   has_one :sns_credentials, dependent: :destroy
   has_many :products
+  validates :nickname, presence: true
+  validates :nickname,    length: { maximum: 20 }
+  validates :message,    length: { maximum: 1000 }
+
 
 
   attr_writer :card_number, :credit_year, :credit_month, :card_code
