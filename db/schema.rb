@@ -60,9 +60,9 @@ ActiveRecord::Schema.define(version: 2019_03_27_080453) do
     t.datetime "updated_at"
     t.bigint "brand_id"
     t.bigint "category_id"
-    t.text "description"
+    t.text "description", null: false
     t.integer "size"
-    t.integer "state_id"
+    t.integer "state_id", null: false
     t.boolean "is_buy", default: true, null: false
     t.boolean "status", default: true, null: false
     t.bigint "user_id"
