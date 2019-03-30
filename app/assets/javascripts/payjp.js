@@ -11,7 +11,6 @@ $(document).on('turbolinks:load', function() {
         exp_month: parseInt($("#payment_card_expire_mm").val()),
         exp_year: parseInt($("#payment_card_expire_yy").val())
     };
-            console.log(card);
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         alert('トークン作成エラー発生');
@@ -23,7 +22,6 @@ $(document).on('turbolinks:load', function() {
         $(".registration-form__expiration-date--year-form").removeAttr("name");
 
         var token = response.id;
-        console.log(token);
         form.append($('<input type="hidden" name="payjpToken" />').val(token));
         form.get(0).submit();
       }
