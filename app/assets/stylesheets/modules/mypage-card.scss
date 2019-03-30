@@ -24,6 +24,7 @@
       text-align: center;
       line-height: 50px;
       margin: 20px auto;
+      text-decoration: none;
         &__card-icon {
           color: $white;
           font-size: 15px;
@@ -39,7 +40,7 @@
       &__mark {
         display: flex;
         justify-content: space-between;
-        &__btn {
+        a {
           background-color: white;
           color: red;
           border-radius: 3px;
@@ -47,6 +48,7 @@
           padding: 2px 6px;
           border: 1px solid #ea352d;
           cursor: pointer;
+          text-decoration: none;
         }
       }
     &__add-link {
