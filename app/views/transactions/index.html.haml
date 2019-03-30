@@ -20,7 +20,7 @@
           %span ¥ 1,650
         .single-main__transaction-buy__product__point
           = link_to users_path, method: :get, class: "single-main__transaction-buy__product__point__link" do
-            %p.single-main__transaction-buy__product__point__link__text 購入する
+            = link_to '購入する', '/products/1/transactions', method: :post, class: 'single-main__transaction-buy__product__point__link__text'
 
     .single-main__user-info
       .single-main__user-info__means
@@ -39,6 +39,7 @@
       .single-main__user-info__means
         .single-main__user-info__means__numbers
           %p 支払い方法
+          / カード情報を表示出来るようにする
           ************5555
           %br
           07/89
