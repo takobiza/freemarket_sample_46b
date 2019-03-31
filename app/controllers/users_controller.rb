@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :get_header_category_brand
 
   def index
+    @user = User.find(current_user.id)
   end
 
   def new

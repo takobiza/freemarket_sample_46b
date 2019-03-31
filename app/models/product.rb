@@ -21,6 +21,6 @@ class Product < ApplicationRecord
   end
 
   def six_products_related_product
-    Product.where.not(id: self.id).where(category_id: self.category_id).where(brand_id: self.brand_id).limit(6)
+    Product.where.not(id: self.id).where(category_id: self.category_id).limit(6)
   end
 end
