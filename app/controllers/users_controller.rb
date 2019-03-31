@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :get_header_category_brand
+  add_breadcrumb 'メルカリ', '/'
 
   def index
+    add_breadcrumb "マイページ"
   end
 
   def new

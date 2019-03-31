@@ -1,5 +1,14 @@
 crumb :root do
-  link "Home", root_path
+  link "メルカリ", root_path
+end
+
+crumb :user_profiles do
+  link "マイページ", user_profiles_path
+  parent :root
+end
+
+crumb :sell do
+  link "出品した商品-出品中", sell_path
 end
 
 # crumb :projects do

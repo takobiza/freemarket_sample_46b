@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 
   add_breadcrumb 'メルカリ', '/'
+  add_breadcrumb 'マイページ', 'users_path'
+  add_breadcrumb '出品した商品-出品中', 'sell_path'
   before_action :set_product, except: [:create, :index]
   before_action :get_header_category_brand, only: [:index, :show]
 
