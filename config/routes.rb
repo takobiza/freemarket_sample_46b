@@ -27,10 +27,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only:[:show, :index, :create, :new] do
+  resources :products, only:[:show, :index, :create, :edit, :update] do
     resources :transactions, only: :index
   end
 
-  resources :sells
+  resources :sells, only: :index
   get '/categories' => 'categories#category'
 end
