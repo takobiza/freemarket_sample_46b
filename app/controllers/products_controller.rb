@@ -19,10 +19,12 @@ class ProductsController < ApplicationController
   def create
 
     @product = Product.new(sell_params)
-    if @product.save!
-      redirect_to root_path
-    else
-      render template: 'sells/index', locals: {product: @product}
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to root_path }
+      else
+        format.json { render template: 'sells/index', locals: {product: @product} }
+      end
     end
 
   end

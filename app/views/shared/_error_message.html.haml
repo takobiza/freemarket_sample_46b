@@ -1,0 +1,3 @@
+.error_message_box
+  -if product.errors.full_messages_for(:category_id).present?
+    = product.errors.full_messages_for(:category_id).first
