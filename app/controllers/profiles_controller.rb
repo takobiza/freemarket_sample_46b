@@ -20,7 +20,6 @@ class ProfilesController < ApplicationController
       end
     end
   end
-
   def save
 
     @user = User.find(current_user.id)
