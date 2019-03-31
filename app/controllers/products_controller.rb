@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_product, except: [:index]
+  before_action :set_product, except: [:create, :index]
   before_action :get_header_category_brand, only: [:index, :show]
 
   def index
@@ -16,10 +16,25 @@ class ProductsController < ApplicationController
 
   end
 
+  def create
+
+    @product = Product.new(sell_params)
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to root_path }
+      else
+        format.json { render template: 'sells/index', locals: {product: @product} }
+      end
+    end
+
+  end
+
+
   def show
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
   end
+
 
   private
 
@@ -31,10 +46,6 @@ class ProductsController < ApplicationController
     Product.where(brand_id: brand_id).order("RAND()").limit(4)
   end
 
-  # def create_get_category_SQL(category)
-  #   sql = "SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `large` = '#{category}' AND `status` = TRUE ORDER BY RAND() LIMIT 4"
-  # end
-
   def get_category_SQL(low, high)
     ActiveRecord::Base.connection.select_all("SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `products`.`category_id` BETWEEN #{low} AND #{high}  ORDER BY RAND() LIMIT 4").to_hash.map{|id| Product.find( id.fetch("id") )}
   end
@@ -45,6 +56,10 @@ class ProductsController < ApplicationController
 
   def product_params
     params.permit(:name, :price)
+  end
+
+  def sell_params
+    params.require(:product).permit(:name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def get_header_category_brand

@@ -4,15 +4,20 @@ class Product < ApplicationRecord
   has_many :product_images, dependent: :destroy
   accepts_nested_attributes_for :product_images
   has_one :delivary_option, dependent: :destroy
+  accepts_nested_attributes_for :delivary_option
   belongs_to :category
-  belongs_to :brand
+  belongs_to :brand, optional: true
   belongs_to :user
   belongs_to_active_hash :state
+  validates :name, length: { in: 1..40 }
+  validates :description, length: { in: 1..1000 }
+  validates :price, presence: true, numericality: { greater_than: 300, less_than: 9999999 }
+  validates :product_images, length: { minimum: 1, maximum: 5}
 
 
 
   def item_image
-    ProductImage.find_by(product_id: self.id).image
+    ProductImage.find_by(product_id: self.id).image.url
   end
 
   def six_products_related_product
