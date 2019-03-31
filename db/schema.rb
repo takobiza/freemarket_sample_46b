@@ -56,15 +56,15 @@ ActiveRecord::Schema.define(version: 2019_03_27_080453) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
+    t.text "description", null: false
+    t.integer "size"
+    t.integer "state_id", null: false
+    t.boolean "is_buy", default: true, null: false
+    t.boolean "status", default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.bigint "brand_id"
     t.bigint "category_id"
-    t.text "description"
-    t.integer "size"
-    t.integer "state_id"
-    t.boolean "is_buy", default: true, null: false
-    t.boolean "status", default: true, null: false
     t.bigint "user_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"

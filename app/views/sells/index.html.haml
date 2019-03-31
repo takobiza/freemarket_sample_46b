@@ -4,7 +4,7 @@
   %main.single-main
     .single-main__title
       %h2.single-main__title__text 商品の情報を入力
-    = form_with(model: @product, local: true)  do |form|
+    = form_with(model: @product)  do |form|
       .single-main__sell-registration
         出品画像
         %span 必須
@@ -54,11 +54,9 @@
                 .single-main__sell-registration__options__product__box__title
                 = form.collection_select :category_id, [], :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "small_category"}
                 =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
-                .error_message_box
 
-            .error_message_box
-              -if @product.errors.full_messages_for(:category_id).present?
-                = @product.errors.full_messages_for(:category_id).first
+            .error_message_box_product#error_message_product
+
 
             .single-main__sell-registration__options__product__box
               .single-main__sell-registration__options__product__box__title-two-more
