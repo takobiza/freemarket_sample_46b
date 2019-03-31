@@ -35,6 +35,25 @@ class ProductsController < ApplicationController
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
   end
 
+  def edit
+    @middle_category_number = Category.find(@product.category_id).parent_id
+    @large_category_number = Category.find(@middle_category_number).parent_id
+    respond_to do |format|
+      format.html
+      format.json { @middle_categories = Category.find(params[:category_id]).children }
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @product.update(update_sell_params)
+        format.html { redirect_to root_path }
+      else
+        format.json { render template: 'sells/index', locals: {product: @product} }
+      end
+    end
+  end
+
 
   private
 
@@ -60,6 +79,10 @@ class ProductsController < ApplicationController
 
   def sell_params
     params.require(:product).permit(:name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:image]).merge(user_id: current_user.id)
+  end
+
+  def update_sell_params
+    params.require(:product).permit(:name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id, :_destroy, :id], product_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def get_header_category_brand
