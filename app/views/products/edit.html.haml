@@ -12,10 +12,10 @@
         .single-main__sell-registration__upload-drop-box
           %ul.single-main__sell-registration__upload-drop-box__list
             - 5.times do |i|
-              = form.fields_for :product_images do |image|
+              = form.fields_for(@product_images) do |image|
                 %li.single-main__sell-registration__upload-drop-box__photo
                   = image.file_field :image, id: "file-photo-#{i}", class: "single-main__sell-registration__upload-drop-box__photo__file", accept: ".jpg, .jpeg, .png", value: "#{i}"
-          = form.label :image, "クリックしてファイルをアップロード", class: "single-main__sell-registration__upload-drop-box__text", for: "file-photo-0"
+          = form.label :image, "クリックしてファイルをアップロード", class: "single-main__sell-registration__upload-drop-box__text", for: "file-photo-#{@images_count}"
 
 
       .single-main__sell-registration
@@ -76,7 +76,7 @@
                 .single-main__sell-registration__options__product__box__title
                   = shipping.label :shippingpay_id, "配送料の負担"
                   %span 必須
-                = shipping.collection_select :shippingpay_id, Shippingpay.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "shippingpay-method"}
+                = shipping.collection_select :shippingpay_id, Shippingpay.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "shippingpay-method", fee_value: "#{@shippingmethod_number}"}
                 =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
 
               .single-main__sell-registration__options__product__edit-box#seller-fee

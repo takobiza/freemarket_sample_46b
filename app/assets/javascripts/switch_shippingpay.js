@@ -38,14 +38,17 @@ $(document).on('turbolinks:load', function() {
     if (location.href.match(/\/products\/\d+\/edit/)) {
       $('#shippingpay-method').prepend("<option value> --- </option>");
       var methodNumber = $('#shippingpay-method').val();
+      var feeNumber = $('#shippingpay-method').attr('fee_value');
       if ( methodNumber == 0 ) {
         $('#purchaser-fee').css('display', 'none');
         $('#edit_seller_fee').append(sellerFeeHTML);
         $('#edit_purchaser_fee').append(purchaserFeeHTML);
+        $('#edit_seller_fee').find(`option[value='${feeNumber}']`).attr("selected", "selected");
       } else if ( methodNumber == 1 ) {
         $('#seller-fee').css('display', 'none');
         $('#edit_purchaser_fee').append(purchaserFeeHTML);
         $('#edit_seller_fee').append(sellerFeeHTML);
+        $('#edit_purchaser_fee').find(`option[value='${feeNumber}']`).attr("selected", "selected");
       }
     }
   });

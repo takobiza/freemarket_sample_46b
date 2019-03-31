@@ -38,6 +38,9 @@ class ProductsController < ApplicationController
   def edit
     @middle_category_number = Category.find(@product.category_id).parent_id
     @large_category_number = Category.find(@middle_category_number).parent_id
+    @shippingmethod_number = @product.delivary_option.shippingmethod_id
+    @product_images = @product.product_images
+    @images_count = @product_images.count
     respond_to do |format|
       format.html
       format.json { @middle_categories = Category.find(params[:category_id]).children }
