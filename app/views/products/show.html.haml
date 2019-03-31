@@ -33,12 +33,7 @@
               #{@product.category.root.name}<br>>#{@product.category.parent.name}<br>>#{@product.category.name}
           %tr
             %th ブランド
-<<<<<<< HEAD
-            %td
-              = @product.brand.name
-=======
             = product_brand_name(@product)
->>>>>>> takobiza/master
           %tr
             %th 商品の状態
             %td

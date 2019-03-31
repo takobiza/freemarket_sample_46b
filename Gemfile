@@ -98,9 +98,5 @@ gem 'omniauth-google-oauth2'
 gem 'gretel'
 gem 'breadcrumbs_on_rails'
 gem 'acts_as_tree'
-<<<<<<< HEAD
-# gem 'fog-aws'
-=======
 gem 'toastr_rails'
 gem 'fog-aws'
->>>>>>> takobiza/master

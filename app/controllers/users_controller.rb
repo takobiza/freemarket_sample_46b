@@ -3,11 +3,8 @@ class UsersController < ApplicationController
   add_breadcrumb 'メルカリ', '/'
 
   def index
-<<<<<<< HEAD
     add_breadcrumb "マイページ"
-=======
     @user = User.find(current_user.id)
->>>>>>> takobiza/master
   end
 
   def new

@@ -1,10 +1,9 @@
 class ProfilesController < ApplicationController
   before_action :get_header_category_brand
-<<<<<<< HEAD
   add_breadcrumb 'メルカリ', '/'
 
   def index
-    add_breadcrumb " "
+    @user = User.find(current_user.id)
   end
 
   private
@@ -20,11 +19,6 @@ class ProfilesController < ApplicationController
         end
       end
     end
-=======
-
-  def index
-    @user = User.find(current_user.id)
->>>>>>> takobiza/master
   end
 
   def save
