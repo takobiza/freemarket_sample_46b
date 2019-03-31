@@ -8,7 +8,9 @@
         = form_with do |f|
           = f.text_field :keyword,  class: 'input', placeholder: 'キーワードから探す'
         .input__search
-          = fa_icon 'search', class: 'input__search--btn'
+          / = fa_icon 'search', class: 'input__search--btn'
+          = icon 'fa', 'search', class: 'input__search--btn'
+
     .header-inner__bottom
       %ul.header-inner__bottom--left
         %li.nav.header-inner__bottom--left__category
@@ -44,11 +46,15 @@
         - if user_signed_in?
           %li.header-inner__bottom--right-login
             = link_to (root_path) do
-              = fa_icon "bell"
+              / = fa_icon "bell"
+              = icon 'fa', 'bell'
+
               お知らせ
           %li.header-inner__bottom--right-login
             = link_to (root_path) do
-              = fa_icon "angle-down"
+              / = fa_icon "angle-down"
+              = icon 'fa', 'angle-down'
+
               やることリスト
 
           %li.header-inner__bottom--right-login

@@ -65,7 +65,18 @@
       line-height: auto;
       border: 1px solid $background-gray;
       &--change-color {
-        color: $lightblue
+        color: $lightblue;
+        &_icons{
+          color: black;
+          font-size: 14px;
+          &_icon{
+            display: inline-block;
+            margin: 8px 16px 0 0;
+            .far{
+              font-size: 16px;
+            }
+          }
+        }
       }
       th {
         @include table;
@@ -270,6 +281,21 @@
 }
 }
 
-.sell-btn {
-  display: none;
+// .sell-btn {
+//   display: none;
+// }
+.fa-grin:before{
+  font-weight: 900;
+  color: red ;
 }
+
+.fa-meh:before{
+  font-weight: 900;
+  color: #E4A20B ;
+}
+
+.fa-frown:before{
+  font-weight: 900;
+  color: #75A9FF ;
+}
+

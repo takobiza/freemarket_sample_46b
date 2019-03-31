@@ -78,7 +78,8 @@
               .signup-main-content__inner-form__group__select__wrap
                 = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default-prefecture"}
                 .icon__arrow--bottom-prefecture
-                  = fa_icon "angle-down"
+                  = icon 'fa', 'angle-right'
+
               .error_message_box
                 -if @address.errors.full_messages_for(:prefecture_id).present?
                   = @address.errors.full_messages_for(:prefecture_id).first

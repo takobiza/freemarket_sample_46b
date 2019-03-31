@@ -27,6 +27,22 @@
             %th 出品者
             %td.item-box__item-main--table--change-color
               #{@product.user.nickname}
+              .item-box__item-main--table--change-color_icons
+
+                .item-box__item-main--table--change-color_icons_icon
+                  = icon 'far', 'grin',class: "fa-grin"
+                  %span
+                    = @product.user.get_good_rate
+                .item-box__item-main--table--change-color_icons_icon
+                  = icon 'far', 'meh'
+                  %span
+                    = @product.user.get_normal_rate
+
+                .item-box__item-main--table--change-color_icons_icon
+                  = icon 'far', 'frown'
+                  %span
+                    = @product.user.get_low_rate
+
           %tr
             %th カテゴリー
             %td.item-box__item-main--table--change-color
@@ -76,13 +92,15 @@
 
       .item-box__item-footer
         .item-box__item-footer--like-btn
-          = fa_icon 'heart'
+          = icon 'fa', 'heart'
+
           %a いいね！
         .item-box__item-footer--report-btn
-          = fa_icon 'flag'
+          = icon 'fa', 'flag'
+
           %a 不適切な商品の報告
         .item-box__item-footer--link-safety
-          = fa_icon 'lock'
+          = icon 'fa', 'lock'
           %a あんしん・あんぜんへの取り組み
 
 
@@ -95,9 +113,10 @@
               %p 小曽根
             .comment-container__comment-box--comment
               %p あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-              = fa_icon 'clock-o'
+              = icon 'fa', 'clock-o'
+
               %span 20日前
-              = fa_icon 'flag'
+              = icon 'fa', 'flag'
 
         %li.comment-container
           = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCZALHoHYx_FZT7PSvWXSdNJoOOUgkTqgURomgtXxbb8b5JDi0Vw', class: 'comment-container__user-avater')
@@ -106,9 +125,11 @@
               %p 小崎
             .comment-container__comment-box--comment
               %p 欲しい！
-              = fa_icon 'clock-o'
+              = icon 'fa', 'clock-o'
+
               %span 15日前
-              = fa_icon 'flag'
+              = icon 'fa', 'flag'
+
 
         %li.comment-container
           = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGT-FqAbRzN8UQnpybr8xvbvxDzzGnF0e1z2NIN9wyHLfdZJk7cA', class: 'comment-container__user-avater')
@@ -117,19 +138,24 @@
               %p 木幡
             .comment-container__comment-box--comment
               %p かわいい！
-              = fa_icon 'clock-o'
+              = icon 'fa', 'clock-o'
+
               %span 3日前
-              = fa_icon 'flag'
+              = icon 'fa', 'flag'
+
 
 
     .sns_icons
       .sns_icons__icon
         .sns_icons__icon--facebook
-          = fa_icon 'facebook'
+          = icon 'fab', 'facebook'
+
         .sns_icons__icon--twitter
-          = fa_icon 'twitter'
+          = icon 'fab', 'twitter'
+
         .sns_icons__icon--pinterest
-          = fa_icon 'pinterest'
+          = icon 'fab', 'pinterest'
+
 
 
     .show-items

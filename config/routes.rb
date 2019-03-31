@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resources :cards, only: :index
     collection do
       get 'logout'
+      get '/listings/listing' => 'users#listing'
+      get '/listings/completed' => 'users#completed'
+      get '/listings/in_progress' => 'users#in_progress'
     end
   end
 
