@@ -71,7 +71,7 @@ group :test do
 end
 
 group :production do
-  gem 'unicorn', '5.4.1'
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -98,4 +98,9 @@ gem 'omniauth-google-oauth2'
 gem 'gretel'
 gem 'breadcrumbs_on_rails'
 gem 'acts_as_tree'
+<<<<<<< HEAD
 # gem 'fog-aws'
+=======
+gem 'toastr_rails'
+gem 'fog-aws'
+>>>>>>> takobiza/master

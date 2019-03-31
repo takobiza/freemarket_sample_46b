@@ -1,11 +1,26 @@
 .l-content-profile
+
+  - flash.each do |message_type, message|
+    -if message_type == "success" && message == "変更しました"
+      = javascript_tag "toastr.success('#{message}')"
+
   %h2.l-content-profile__profile-title プロフィール
-  .l-content-profile__profile-name-area
-    .l-content-profile__profile-name-area__icon
-      = image_tag('//is2-ssl.mzstatic.com/image/thumb/Purple128/v4/e9/ca/b0/e9cab0c0-4871-0244-0f3d-9300d904d890/source/512x512bb.jpg', width: "60", height: "60")
-    %input.l-content-profile__profile-name-area__name-type{placeholder: "例)AYA★セール中"}
-  .l-content-profile__profile__textarea
-    %textarea.l-content-profile__profile__textarea__content{placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
-  .l-content-profile__bottom-btn-area
-    =link_to users_path, class: "l-content-profile__bottom-btn-area__btn" do
-      %p.l-content-profile__bottom-btn-area__btn__text 変更する
+  = form_for(@user, url: save_profiles_path) do |f|
+    .l-content-profile__profile-name-area
+      .l-content-profile__profile-name-area__icon
+        = image_tag(@user.image, width: "60", height: "60")
+
+      .l-content-profile__profile-name-area__form
+        = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "例) AYA★セール中", class: "l-content-profile__profile-name-area__name-type"
+        .error_message_box
+          -if @user.errors.full_messages_for(:nickname).present?
+            = @user.errors.full_messages_for(:nickname).first
+
+    .l-content-profile__profile__textarea
+      = f.text_area :message, autofocus: true, autocomplete: "message", placeholder: "例) こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪", class: "l-content-profile__profile__textarea__content"
+      .error_message_box_block
+        -if @user.errors.full_messages_for(:message).present?
+          = @user.errors.full_messages_for(:message).first
+
+      .l-content-profile__bottom-btn-area
+        = f.submit "変更する", class: "registration__btn btn-red"

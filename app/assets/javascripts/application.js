@@ -16,4 +16,5 @@
 //= require activestorage
 //= require turbolinks
 //= require bxslider
+//= require toastr
 //= require_tree .
