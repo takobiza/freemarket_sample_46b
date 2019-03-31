@@ -12,13 +12,15 @@
     font-family: $mercari-font;
     font-size: 14px;
     &__link {
+    a{
+      color: black;
+      text-decoration: none;
+      font-weight: normal;
+    }
       &__name {
         text-decoration: none;
         color: black;
-      }
-      &__arrow-right {
-        font-weight: bold;
-        color: gray;
+        margin-left: 3px;
       }
     }
     li:last-child {
