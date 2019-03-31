@@ -1,15 +1,15 @@
-crumb :root do
-  link "メルカリ", root_path
-end
+# crumb :root do
+#   link "メルカリ", root_path
+# end
 
-crumb :user_profiles do
-  link "マイページ", user_profiles_path
-  parent :root
-end
+# crumb :user_profiles do
+#   link "マイページ", user_profiles_path
+#   parent :root
+# end
 
-crumb :sell do
-  link "出品した商品-出品中", sell_path
-end
+# crumb :sell do
+#   link "出品した商品-出品中", sell_path
+# end
 
 # crumb :projects do
 #   link "Projects", projects_path
