@@ -1,0 +1,92 @@
+.top-page-container
+
+  = render '/shared/main-header'
+
+  %main.top-page-body
+    .top-banner
+      %ul.bxslider
+        %li.bxslider__banner-new-life
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/featured/newlife/keyvisual.png?2845599746', class: 'bxslider__banner-new-life--text')
+        %li.bxslider__banner-about-mercari
+        %li.bxslider__banner-get-app
+          .bxslider__banner-get-app--left-contents
+            %h2 スマホでかんたん<br>フリマアプリ
+            %p メルカリはスマホからすぐに出品できる<br>購入時も安心な独自システムのアプリです
+            = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/app-store.svg?2845599746', class: 'link')
+            = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/common/google-play.svg?2845599746', class: 'link')
+          = image_tag('//www-mercari-jp.akamaized.net/assets/img/common/jp/top/main_content_pc.png?2845599746', class: 'bxslider__banner-get-app--image')
+
+
+    .pickup-items-wrapper
+      .items-container
+        %h2 ピックアップカテゴリー
+
+        .pickup-items
+          %h3 レディース 新着アイテム
+
+          .pickup-items__boxes
+            - @items_ladies.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+        .pickup-items
+          %h3 メンズ 新着アイテム
+
+          .pickup-items__boxes
+            - @items_mens.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+        .pickup-items
+          %h3 ベビー・キッズ 新着アイテム
+
+          .pickup-items__boxes
+            - @items_kids.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+        .pickup-items
+          %h3 コスメ・香水・美容 新着アイテム
+
+          .pickup-items__boxes
+            - @items_cosmetics.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+
+      .items-container
+        %h2 ピックアップブランド
+
+        .pickup-items
+          %h3 シャネル 新着アイテム
+
+          .pickup-items__boxes
+            - @items_chanel.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+        .pickup-items
+          %h3 ルイヴィトン 新着アイテム
+
+          .pickup-items__boxes
+            - @items_vuitton.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+        .pickup-items
+          %h3 シュプリーム 新着アイテム
+
+          .pickup-items__boxes
+            - @items_supreme.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+        .pickup-items
+          %h3 ナイキ 新着アイテム
+
+          .pickup-items__boxes
+            - @items_nike.each do |i|
+              = render partial: 'products-list', locals: {i: i}
+          .pickup-items__view-all すべての商品を見る
+
+  = render '/shared/main-footer'

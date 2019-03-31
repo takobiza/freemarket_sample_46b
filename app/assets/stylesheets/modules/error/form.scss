@@ -1,0 +1,31 @@
+.error_message_box {
+  color: red;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-align: left;
+
+  &_block{
+    color: red;
+    margin: 8px 0px 8px 32px;
+  }
+
+  &_left{
+    color: red;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: left;
+    margin-left: 62px;
+  }
+
+  &_center{
+    color: red;
+    text-align: center;
+  }
+}
+
+.field_with_errors > input {
+  border-color: red !important;
+  &:focus {
+    border-color: blue !important;
+  }
+}

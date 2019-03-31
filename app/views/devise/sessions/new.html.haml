@@ -1,0 +1,47 @@
+.login__container
+  = render '/shared/single/single-header'
+
+  %main.login__container_main
+    .login__container_main_content
+      .login__container_main_content_no__account
+        %p アカウントをお持ちでない方はこちら
+        - if devise_mapping.registerable? && controller_name != 'registrations'
+          = link_to "新規会員登録", new_registration_path(resource_name)
+      .login__container_main_content_form__inner
+        %button.registration__btn.btn-facebook
+          = fa_icon "facebook-square", class: "facebook-icon"
+          Facebookでログイン
+        = link_to (user_google_oauth2_omniauth_authorize_path) do
+          %button.registration__btn.btn-google
+            = image_tag("https://img.icons8.com/color/48/000000/google-logo.png", class: "google-icon")
+            Googleでログイン
+
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .error_message_box_center
+          -if resource.errors.full_messages_for(:total).present?
+            = resource.errors.full_messages_for(:total).first.split(" ")[1]
+
+        .login__container_main_content_form__inner_group
+          = f.text_field :email, autocomplete: "email", placeholder: "メールアドレス"
+          .error_message_box_left
+            -if resource.errors.full_messages_for(:email).present?
+              = resource.errors.full_messages_for(:email).first.split(" ")[1]
+
+        .login__container_main_content_form__inner_group
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
+          .error_message_box_left
+            -if resource.errors.full_messages_for(:password).present?
+              = resource.errors.full_messages_for(:password).first.split(" ")[1]
+
+        .login__container_main_content_form__inner_group
+          = recaptcha_tags
+          .error_message_box_left
+            -if resource.errors.full_messages_for(:recaptcha).present?
+              = resource.errors.full_messages_for(:recaptcha).first.split(" ")[1]
+
+        .login__container_main_content_form__inner_action
+          = f.submit "ログイン", class: "registration__btn btn-red login-submit"
+          - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+            = link_to "パスワードをお忘れの方", new_password_path(resource_name)
+
+  = render '/shared/single/single-footer'

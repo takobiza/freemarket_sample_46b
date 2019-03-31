@@ -1,0 +1,180 @@
+.single-main__sell-registration {
+  padding: 40px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  &__product {
+    font-size: 0.8rem;
+    &__title-two-more {
+      margin-top: 40px;
+    }
+  }
+  &__product-name {
+    margin: 8px 16px 0 0;
+    font-size: 0.9rem;
+    &__type-name {
+      font-weight: normal;
+      padding: 10px 8px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    &__type-textarea {
+      font-weight: normal;
+      padding: 10px 8px;
+      width: 100%;
+      border: 1px solid #ccc;
+      height: 140px;
+    }
+  }
+  span {
+    background-color: red;
+    color: white;
+    font-size: 0.7rem;
+    padding: 4px 6px;
+    border-radius: 2px;
+    font-weight: normal;
+  }
+  p {
+    font-weight: normal;
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+  &__upload-drop-box {
+    margin-top: 10px;
+    // display: flex;
+    &__text {
+      cursor: pointer;
+      background-color: #eee;
+      border: 1px dashed #ccc;
+      text-align: center;
+      font-weight: normal;
+      padding: 40px 173px;
+    }
+    &__photo {
+      margin-bottom: 40px;
+      &__file {
+        display: none;
+      }
+      &__image-area {
+        margin-right: 8px;
+        background-color: #eee;
+        &__btn-area {
+          display: flex;
+          justify-content: space-between;
+        }
+        &__remove-btn {
+        }
+        &__edit-btn {
+        }
+      }
+    }
+    &__list {
+      display: flex;
+    }
+  }
+  &__options {
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    &__title {
+      color: gray;
+    }
+    &__product {
+      &__hidden-box {
+        display: none;
+      }
+      &__box {
+        position: relative;
+        &__select-box {
+          width: 400px;
+          margin-top: 8px;
+          background-color: white;
+          font-size: 16px;
+          font-weight: normal;
+          padding: 8px;
+          border: 1px solid #ccc;
+          cursor: pointer;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+        }
+        &__arrow-down {
+          font-weight: bold;
+          font-size: 24px;
+          color: gray;
+          position: absolute;
+          right: 8px;
+          top: 55%;
+        }
+        &__title-two-more {
+          margin-top: 40px;
+        }
+      }
+      &__price-box {
+        margin-top: 24px;
+        width: 400px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        &__title {
+          line-height: 47px;
+          margin-bottom: 24px;
+          &__title-commision {
+            font-weight: normal;
+          }
+        }
+        &__price {
+          padding: 12px 6px;
+          margin-left: 4px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          font-weight: normal;
+          text-align: right;
+        }
+        &__comission{
+          margin-top: 12.5px;
+          font-weight: normal;
+        }
+      }
+      &__price-box-profit {
+        font-size: 16px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        &__profit {
+          font-size: 34px;
+        }
+      }
+    }
+  }
+  &__notice {
+    font-weight: normal;
+    font-size: 0.85rem;
+  }
+  &__sell-btn {
+    background-color: red;
+    color: white;
+    width: 100%;
+    border: none;
+    margin-top: 40px;
+    padding: 16px 0;
+    font-size: 14px;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  &__back-btn {
+    margin: 24px auto 0;
+    width: 45%;
+    &:hover {opacity: 0.7}
+    &__path {
+      text-decoration: none;
+      &__text {
+        background-color: #ccc;
+        color: white;
+        font-weight: normal;
+        border: none;
+        text-align: center;
+        padding: 16px 0;
+      }
+    }
+  }
+}

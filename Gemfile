@@ -39,15 +39,26 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'faker'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '~> 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+
 end
 
 group :test do
@@ -58,5 +69,32 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'haml-rails'
+gem 'erb2haml'
+gem 'font-awesome-rails'
+gem 'bxslider-rails'
+gem 'jquery-rails'
+gem 'devise'
+gem 'recaptcha', require: "recaptcha/rails"
+gem 'pry-rails'
+gem 'rails-i18n'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+gem 'active_hash'
+gem 'hirb'
+gem 'hirb-unicode'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'breadcrumbs_on_rails'
+gem 'acts_as_tree'
+gem 'toastr_rails'
+gem 'fog-aws'
