@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     post "signup/credit" => "users/registrations#credit"
     post "/signup/completed" => "users/registrations#create"
     get "/signup/done" => "users/registrations#done"
-    post "products/:products_id/transactions" => "cards#pay"
   end
 
   root 'products#index'
@@ -35,6 +34,10 @@ Rails.application.routes.draw do
 
   resources :products, only:[:show, :index, :create, :new] do
     resources :transactions, only: :index
+
+    collection do
+      post "/:products_id/transactions" => "cards#pay", as: :buy_product
+    end
   end
 
   resources :sells
