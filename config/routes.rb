@@ -31,7 +31,13 @@ Rails.application.routes.draw do
   end
 
   resources :products, only:[:show, :index, :create, :new] do
+    collection do
+      get "/:product_id/rate" => "purchase#edit", as: :rate
+      patch "/:product_id/rate" => "purchase#update", as: :rate_update
+    end
+
     resources :transactions, only: :index
+
   end
 
   resources :sells

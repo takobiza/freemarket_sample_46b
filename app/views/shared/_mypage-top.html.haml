@@ -102,7 +102,10 @@
                   = transaction.name
                   」を取引中です。
                 %span.nortification__trade__during 取引中
+
               = icon 'fa', 'angle-right', class: 'l-content__tabs__content__lists__list__path__arrow-right'
+            %button{type: "button", class: "l-content__tabs__content__lists__list__path_text", onClick: "javascript:location.href = '#{rate_products_path(transaction.id)}';"} 出品者を評価する
+
 
 
         %li.l-content__tabs__content__lists__list

@@ -22,15 +22,15 @@
         %p.l-side__list__link__area__name 出品する
         =icon 'fa', 'angle-right', class: 'l-side__list__link__area__arrow-right'
     %li.l-side__list__link
-      =link_to users_path, class: "l-side__list__link__area" do
+      =link_to listings_listing_users_path, class: "l-side__list__link__area" do
         %p.l-side__list__link__area__name 出品した商品-出品中
         =icon 'fa', 'angle-right', class: 'l-side__list__link__area__arrow-right'
     %li.l-side__list__link
-      =link_to users_path, class: "l-side__list__link__area" do
+      =link_to listings_in_progress_users_path, class: "l-side__list__link__area" do
         %p.l-side__list__link__area__name 出品した商品-取引中
         =icon 'fa', 'angle-right', class: 'l-side__list__link__area__arrow-right'
     %li.l-side__list__link
-      =link_to users_path, class: "l-side__list__link__area" do
+      =link_to listings_completed_users_path, class: "l-side__list__link__area" do
         %p.l-side__list__link__area__name 出品した商品-売却済み
         =icon 'fa', 'angle-right', class: 'l-side__list__link__area__arrow-right'
     %li.l-side__list__link

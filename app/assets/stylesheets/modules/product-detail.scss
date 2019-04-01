@@ -11,6 +11,7 @@
 }
 
 .item-box {
+  min-height: 480px;
   height: auto;
   background-color: $white;
   width: calc(100% - 80px);

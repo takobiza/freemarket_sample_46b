@@ -1,0 +1,38 @@
+.l-content
+  %h2.l-content__listings_head
+    出品した商品
+
+  %ul.l-content__listings_tabs
+    %li
+      %h3
+        = link_to "出品中", listings_listing_users_path
+    %li.l-content__listings_tabs-active
+      %h3
+        = link_to "取引中", listings_in_progress_users_path
+    %li
+      %h3
+        = link_to "売却済", listings_completed_users_path
+
+  .l-content__listings_contents
+    -if @products.blank?
+      %ul.l-content__listings_contents_content
+        %li.l-content__listings_contents_content_none
+          出品中の商品がありません
+    -else
+      %ul.l-content__listings_contents_content.l-content__listings_contents_active
+        - @products.each do |product|
+          %li
+            = link_to root_path, class: "l-content__listings_contents_active_link" do
+              .l-content__listings_contents_active_link_content
+                = image_tag(product.item_image, class: 'l-content__listings_contents_active_link_image')
+              .l-content__listings_contents_active_link_item
+                .l-content__listings_contents_active_link_item_text
+                  = product.name
+                .l-content__listings_contents_active_link_item_icon
+                  = icon 'fa', 'heart'
+                  0
+                  = icon 'far', 'comment-alt'
+                  0
+                  %span.l-content__listings_contents_active_link_item_icon_status_red
+                    取引中
+              = icon 'fa', 'angle-right', class: 'l-content__listings_contents_active_link_arrow-right'

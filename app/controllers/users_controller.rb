@@ -21,15 +21,15 @@ class UsersController < ApplicationController
   end
 
   def listing
-
+    @products = Product.where(user_id: current_user.id).where(status: true).where(is_buy: true)
   end
 
   def completed
-
+    @products = current_user.products_of_seller.select{|product| product.purchase[0].rate != 0 }
   end
 
   def in_progress
-
+    @products = current_user.products_of_seller.select{|product| product.purchase[0].rate == 0 }
   end
 
   private
