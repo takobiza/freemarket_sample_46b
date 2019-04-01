@@ -70,7 +70,7 @@ group :test do
 end
 
 group :production do
-  gem 'unicorn', '5.4.1'
+  gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -91,3 +91,9 @@ gem 'active_hash'
 gem 'hirb'
 gem 'hirb-unicode'
 gem 'payjp'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'acts_as_tree'
+gem 'fog-aws'
