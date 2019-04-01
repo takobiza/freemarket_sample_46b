@@ -13,19 +13,25 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
+  resources :identifies, only: [:index, :update]
+  resources :profiles, only: [:index] do
+    collection do
+      patch 'save'
+    end
+  end
+
   resources :users do
-    resources :identifies, only: :index
-    resources :profiles, only: :index
     resources :cards, only: :index
     collection do
       get 'logout'
     end
   end
 
-  resources :products, only:[:show, :index] do
+  resources :products, only:[:show, :index, :create, :new] do
     resources :transactions, only: :index
   end
 
   resources :sells
   resources :search, only: :index
+  get '/categories' => 'categories#category'
 end

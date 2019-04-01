@@ -2,7 +2,8 @@
   .header-inner
     .header-inner__top
       .header-inner__top--logo
-        = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2845599746'
+        = link_to (root_path) do
+          = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2845599746'
       .header-inner__top--form
         = form_with url: search_index_path, method: :get, local: true do |f|
           = f.text_field :keyword, class: 'input', placeholder: 'キーワードから探す'
@@ -10,10 +11,54 @@
             = fa_icon 'search', class: 'input__search--btn'
     .header-inner__bottom
       %ul.header-inner__bottom--left
-        %li.nav カテゴリーから探す
-        %li.nav ブランドから探す
+        %li.nav.header-inner__bottom--left__category
+          カテゴリーから探す
+          .header-inner__bottom--left__category__menu
+            %ul.category__menu__large
+              - @categories.each do |large|
+                - if large.parent_id.nil?
+                  %li
+                    = link_to large.name, root_path, class: "category__menu__large_text"
+                    %ul.category__menu__large__middle
+                      - @categories.each do |middle|
+                        - if middle.parent_id == large.id
+                          %li
+                            = link_to middle.name, root_path
+                            %ul.category__menu__large__middle__small
+                              - @categories.each do |small|
+                                - if small.parent_id == middle.id
+                                  %li
+                                    = link_to small.name, root_path
+
+        %li.nav.header-inner__bottom--left__brand
+          ブランドから探す
+          .header-inner__bottom--left__brand__menu
+            %ul.category__menu__large
+              - @brands.each do |brand|
+                %li
+                  = link_to brand.name, root_path
+              %li
+                = link_to "ブランド一覧", root_path
+
       %ul.header-inner__bottom--right
-        %li.signin
-          = link_to 'ログイン', new_user_session_path
-        %li.signup
-          = link_to '新規会員登録', new_user_path
+        - if user_signed_in?
+          %li.header-inner__bottom--right-login
+            = link_to (root_path) do
+              = fa_icon "bell"
+              お知らせ
+          %li.header-inner__bottom--right-login
+            = link_to (root_path) do
+              = fa_icon "angle-down"
+              やることリスト
+
+          %li.header-inner__bottom--right-login
+            = link_to (users_path) do
+              = image_tag current_user.image, width: "32"
+              .header-inner__bottom--right-login-text
+                マイページ
+
+        - else
+          %li.signin
+            = link_to 'ログイン', new_user_session_path
+          %li.signup
+            = link_to '新規会員登録', new_user_path

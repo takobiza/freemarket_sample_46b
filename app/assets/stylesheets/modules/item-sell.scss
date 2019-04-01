@@ -41,7 +41,7 @@
   }
   &__upload-drop-box {
     margin-top: 10px;
-    padding: 40px 0;
+    // display: flex;
     &__text {
       cursor: pointer;
       background-color: #eee;
@@ -49,9 +49,27 @@
       text-align: center;
       font-weight: normal;
       padding: 40px 173px;
+    }
+    &__photo {
+      margin-bottom: 40px;
       &__file {
         display: none;
       }
+      &__image-area {
+        margin-right: 8px;
+        background-color: #eee;
+        &__btn-area {
+          display: flex;
+          justify-content: space-between;
+        }
+        &__remove-btn {
+        }
+        &__edit-btn {
+        }
+      }
+    }
+    &__list {
+      display: flex;
     }
   }
   &__options {
@@ -62,6 +80,9 @@
       color: gray;
     }
     &__product {
+      &__hidden-box {
+        display: none;
+      }
       &__box {
         position: relative;
         &__select-box {
@@ -75,8 +96,6 @@
           cursor: pointer;
           -webkit-appearance: none;
           -moz-appearance: none;
-          &__value {
-          }
         }
         &__arrow-down {
           font-weight: bold;
@@ -139,6 +158,7 @@
     margin-top: 40px;
     padding: 16px 0;
     font-size: 14px;
+    font-weight: normal;
     cursor: pointer;
   }
   &__back-btn {

@@ -222,7 +222,6 @@
   width: 700px;
   margin-top: 50px;
 
-
   h3 {
     color: $lightblue;
     display: block;
@@ -239,6 +238,8 @@
     float: left;
     width: 220px;
     margin: 20px 10px 0 0;
+    text-decoration: none;
+    color: black;
 
     &--img {
       height: 220px;

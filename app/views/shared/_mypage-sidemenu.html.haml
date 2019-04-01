@@ -17,7 +17,7 @@
         %p.l-side__list__link__area__name いいね！ 一覧
         =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'
     %li.l-side__list__link
-      =link_to users_path, class: "l-side__list__link__area" do
+      =link_to sells_path, class: "l-side__list__link__area" do
         %p.l-side__list__link__area__name 出品する
         =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'
     %li.l-side__list__link
@@ -74,7 +74,7 @@
     設定
     %ul.l-side__list
       %li.l-side__list__link
-        =link_to users_path, class: "l-side__list__link__area" do
+        =link_to profiles_path, class: "l-side__list__link__area" do
           %p.l-side__list__link__area__name プロフィール
           =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'
       %li.l-side__list__link
@@ -90,7 +90,7 @@
           %p.l-side__list__link__area__name メール/パスワード
           =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'
       %li.l-side__list__link
-        =link_to users_path, class: "l-side__list__link__area" do
+        =link_to identifies_path, class: "l-side__list__link__area" do
           %p.l-side__list__link__area__name 本人情報
           =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'
       %li.l-side__list__link
@@ -98,6 +98,6 @@
           %p.l-side__list__link__area__name 電話番号の確認
           =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'
       %li.l-side__list__link
-        =link_to users_path, class: "l-side__list__link__area" do
+        =link_to logout_users_path, class: "l-side__list__link__area" do
           %p.l-side__list__link__area__name ログアウト
           =fa_icon "angle-right", class: 'l-side__list__link__area__arrow-right'

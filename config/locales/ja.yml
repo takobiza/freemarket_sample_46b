@@ -19,3 +19,17 @@ ja:
     credit_year: 有効期限(年)
     credit_month: 有効期限(月)
     card_code: セキュリティコード
+    message: メッセージ
+    category_id: カテゴリー
+
+  activerecord:
+    errors:
+      models:
+        user_detail:
+          attributes:
+            postal_code:
+              invalid: "のフォーマットが不適切です"
+        product:
+          attributes:
+            category_id:
+              blank: "を選択してください"
