@@ -1,5 +1,5 @@
 = render '/shared/main-header'
-= render '/shared/bread-crumbs'
+= render '/shared/breadcrumbs'
 
 
 .product-detail-wrapper
@@ -18,12 +18,9 @@
 
           .item-box__item-main--sub-img
             %ul
-              %li
-                = image_tag(@product.item_image, class: 'bottom-img')
-              %li
-                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_2.jpg?1549854823', class: 'bottom-img')
-              %li
-                = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_3.jpg?1549854823', class: 'bottom-img')
+              - @product.product_images.each do |product_image|
+                %li
+                  = image_tag(product_image.image.url, class: 'bottom-img')
 
         %table.item-box__item-main--table
           %tr
@@ -36,19 +33,19 @@
               #{@product.category.root.name}<br>>#{@product.category.parent.name}<br>>#{@product.category.name}
           %tr
             %th ブランド
-            %td 
-              = @product.brand.name
+            = product_brand_name(@product)
           %tr
             %th 商品の状態
-            %td 
+            %td
               = @product.state.name
           %tr
             %th 配送料の負担
-            %td 
+            %td
               = @product.delivary_option.shippingpay.name
           %tr
             %th 配送の方法
-            %td 
+            %td
+
               = @product.delivary_option.shippingmethod.name
 
           %tr
@@ -57,7 +54,9 @@
               = @product.delivary_option.prefecture.name
           %tr
             %th 発送日の目安
-            %td 
+
+            %td
+
               = @product.delivary_option.shippingday.name
 
       .item-box__item-price
@@ -67,7 +66,10 @@
         .item-box__item-price--tax
           (税込)
         .item-box__item-price--postage
-          送料込み
+          -if @product.delivary_option.shippingpay.id == 0
+            送料込み
+          - else
+            着払い
 
       .item-box__item-buy-btn
         = link_to '購入画面に進む', root_path
@@ -136,7 +138,7 @@
     .show-items
       %h3 #{@product.user.nickname}さんのその他の出品
       - @six_products_related_user.each do |u|
-        .show-items__product
+        = link_to(product_path(u.id), class: 'show-items__product') do
           = image_tag(u.item_image, class: 'show-items__product--img')
           .show-items__product--detail
             .name
@@ -147,9 +149,10 @@
             %p.tax (税込)
 
     .show-items
-      %h3 #{@product.brand.name}の#{@product.category.name} その他の商品
+
+      %h3 #{@product.category.name} その他の商品
       - @six_products_related_product.each do |p|
-        .show-items__product
+        = link_to(product_path(p.id), class: 'show-items__product') do
           = image_tag(p.item_image, class: 'show-items__product--img')
           .show-items__product--detail
             .name

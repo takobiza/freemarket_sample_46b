@@ -15,10 +15,15 @@ Rails.application.routes.draw do
   end
 
   root 'products#index'
+  resources :identifies, only: [:index, :update]
+  resources :profiles, only: [:index] do
+    collection do
+      patch 'save'
+    end
+  end
+
   resources :users do
-    resources :identifies, only: :index
-    resources :profiles, only: :index
-    resources :cards, only: [:index, :new, :update, :create, :delete]
+    resources :cards, only: :index
     collection do
       get 'logout'
     end

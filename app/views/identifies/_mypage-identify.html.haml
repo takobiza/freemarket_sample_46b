@@ -15,50 +15,74 @@
       .l-content__identify-area__form__title
         お名前
       %p.l-content__identify-area__form__content
-        邪剛院 豪傑
+        = @user_detail.get_fullname
 
     .l-content__identify-area__form
       .l-content__identify-area__form__title
         お名前カナ
       %p.l-content__identify-area__form__content
-        ジャゴウイン ゴウケツ
+        = @user_detail.get_fullname_kana
 
     .l-content__identify-area__form
       .l-content__identify-area__form__title
         生年月日
       %p.l-content__identify-area__form__content
-        1785/01/01
+        = @user_detail.get_birth
 
-    / = form_for(current_user) do |f|
-    .l-content__identify-area__form
-      %label.l-content__identify-area__form__title 郵便番号
-      %span.l-content__identify-area__form__status 任意
-      .l-content__identify-area__form__content
-        %input.l-content__identify-area__form__content__type-space{placeholder: "例) 1234567"}
-    .l-content__identify-area__form
-      %label.l-content__identify-area__form__title 都道府県
-      %span.l-content__identify-area__form__status 任意
-      .l-content__identify-area__form__content
-        %input.l-content__identify-area__form__content__type-space
-    .l-content__identify-area__form
-      %label.l-content__identify-area__form__title 市町区村
-      %span.l-content__identify-area__form__status 任意
-      .l-content__identify-area__form__content
-        %input.l-content__identify-area__form__content__type-space{placeholder: "例) 横浜市緑区"}
-    .l-content__identify-area__form
-      %label.l-content__identify-area__form__title 番地
-      %span.l-content__identify-area__form__status 任意
-      .l-content__identify-area__form__content
-        %input.l-content__identify-area__form__content__type-space{placeholder: "例) 青山1-1-1"}
-    .l-content__identify-area__form
-      %label.l-content__identify-area__form__title 建物名
-      %span.l-content__identify-area__form__status 任意
-      .l-content__identify-area__form__content
-        %input.l-content__identify-area__form__content__type-space{placeholder: "例) 柳ビル103"}
-    %button.l-content__identify-area__btn 登録する
+    = form_for(@user_detail, url: identify_path(@user_detail)) do |f|
+      .l-content__identify-area__form
+        %label.l-content__identify-area__form__title 郵便番号
+        %span.l-content__identify-area__form__status 任意
+        .l-content__identify-area__form__content
+          = f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "例) 1234567", class: "l-content__identify-area__form__content__type-space"
+          .error_message_box
+            -if @user_detail.errors.full_messages_for(:postal_code).present?
+              = @user_detail.errors.full_messages_for(:postal_code).first
 
-    .l-content__identify-area__textarea__about-upload{id: "about-registration"}
-      =link_to users_path, class: "l-content__identify-area__textarea__about-upload__path" do
-        .l-content__identify-area__textarea__about-upload__path__text
-          本人情報の登録について
-        =fa_icon "angle-right", class: 'l-content__identify-area__textarea__about-upload__path__arrow-right'
+
+      .l-content__identify-area__form
+        %label.l-content__identify-area__form__title 都道府県
+        %span.l-content__identify-area__form__status 任意
+        .l-content__identify-area__form__content
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "l-content__identify-area__form__content__type-space-select"}
+          .icon__arrow--bottom
+            = fa_icon "angle-down"
+
+      .l-content__identify-area__form
+        %label.l-content__identify-area__form__title 市町区村
+        %span.l-content__identify-area__form__status 任意
+        .l-content__identify-area__form__content
+          = f.text_field :city, autofocus: true, autocomplete: "city", placeholder: "例) 横浜市緑区", class: "l-content__identify-area__form__content__type-space"
+          .error_message_box
+            -if @user_detail.errors.full_messages_for(:city).present?
+              = @user_detail.errors.full_messages_for(:city).first
+
+      .l-content__identify-area__form
+        %label.l-content__identify-area__form__title 番地
+        %span.l-content__identify-area__form__status 任意
+        .l-content__identify-area__form__content
+          = f.text_field :block, autofocus: true, autocomplete: "block", placeholder: "例) 青山1-1-1", class: "l-content__identify-area__form__content__type-space"
+          .error_message_box
+            -if @user_detail.errors.full_messages_for(:block).present?
+              = @user_detail.errors.full_messages_for(:block).first
+
+      .l-content__identify-area__form
+        %label.l-content__identify-area__form__title 建物名
+        %span.l-content__identify-area__form__status 任意
+        .l-content__identify-area__form__content
+          = f.text_field :building, autofocus: true, autocomplete: "building", placeholder: "例) 柳ビル103", class: "l-content__identify-area__form__content__type-space"
+          .error_message_box
+            -if @user_detail.errors.full_messages_for(:building).present?
+              = @user_detail.errors.full_messages_for(:building).first
+
+      = f.submit "登録する", class: "l-content__identify-area__btn"
+
+      .l-content__identify-area__textarea__about-upload{id: "about-registration"}
+        =link_to users_path, class: "l-content__identify-area__textarea__about-upload__path" do
+          .l-content__identify-area__textarea__about-upload__path__text
+            本人情報の登録について
+          =fa_icon "angle-right", class: 'l-content__identify-area__textarea__about-upload__path__arrow-right'
+
+
+
+

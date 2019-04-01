@@ -1,7 +1,11 @@
 class ProductsController < ApplicationController
 
+  add_breadcrumb 'メルカリ', '/'
+  add_breadcrumb 'マイページ', :users_path
+  add_breadcrumb '出品した商品-出品中', :sell_path
   before_action :set_product, except: [:create, :index]
   before_action :get_header_category_brand, only: [:index, :show]
+
 
   def index
     @items_ladies = get_category_SQL(159,336)
@@ -19,20 +23,22 @@ class ProductsController < ApplicationController
   def create
 
     @product = Product.new(sell_params)
-    if @product.save!
-      redirect_to root_path
-    else
-      render template: 'sells/index', locals: {product: @product}
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to root_path }
+      else
+        format.json { render template: 'sells/index', locals: {product: @product} }
+      end
     end
 
   end
 
-
   def show
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
-  end
 
+    add_breadcrumb @product.name
+  end
 
   private
 
