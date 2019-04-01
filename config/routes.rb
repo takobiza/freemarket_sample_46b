@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     post "signup/credit" => "users/registrations#credit"
     post "/signup/completed" => "users/registrations#create"
     get "/signup/done" => "users/registrations#done"
-    delete "users/:user_id/cards/:id" => "cards#destroy"
     post "products/:products_id/transactions" => "cards#pay"
   end
 
@@ -23,7 +22,12 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :cards, only: :index
+    resources :cards, only:[:index, :new, :update, :create]
+
+    collection do
+      delete '/:user_id/card/destroy' => "cards#destroy", as: :card_delete
+    end
+
     collection do
       get 'logout'
     end
