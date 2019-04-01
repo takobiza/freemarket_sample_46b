@@ -1,0 +1,18 @@
+.search-result-product
+  = link_to(product_path(product.id), class: 'search-result-product__link') do
+    .product-image
+      = image_tag(product.item_image, class: 'product-image__image')
+      - if product.is_buy != true
+        .product-image__info
+          .product-image__info__sold SOLD
+    .search-result-product__text-area
+      .search-result-product__text-area__product-name
+        = product.name
+      .search-result-product__text-area__others
+        .iine
+          %i.fa.fa-heart
+          %span.iine-total **
+        %p.price
+          %span ¥
+          = product.price
+        %p.tax-info (税込)
