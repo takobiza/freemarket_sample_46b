@@ -1,10 +1,12 @@
 = render 'shared/main-header'
 
-= render 'shared/bread-crumbs'
-
 %main.l-container
   .l-container__menu
     = render 'shared/mypage-sidemenu'
-    = render 'mypage-card'
+
+    - if current_user.pay_id.present?
+      = render 'mypage-card'
+    - else
+      = render 'mypage-add-card'
 
 = render 'shared/main-footer'

@@ -32,3 +32,4 @@ UserDetail.create!(user_id: user.id, family_name: "佐藤", given_name: "光宙"
 
 UserAddress.create!(user_id: user.id, family_name: "加藤", given_name: "大秘宝", family_name_kana: "カトウ", given_name_kana: "ワンピース", postal_code: "150-0032", prefecture_id: 13, city: "渋谷区", block: "鶯谷町")
 
+

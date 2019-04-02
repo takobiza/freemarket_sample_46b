@@ -1,5 +1,5 @@
 = render '/shared/main-header'
-= render '/shared/bread-crumbs'
+= render '/shared/breadcrumbs'
 
 
 .product-detail-wrapper
@@ -50,6 +50,7 @@
           %tr
             %th ブランド
             = product_brand_name(@product)
+
           %tr
             %th 商品の状態
             %td
@@ -61,6 +62,7 @@
           %tr
             %th 配送の方法
             %td
+
               = @product.delivary_option.shippingmethod.name
 
           %tr
@@ -69,7 +71,9 @@
               = @product.delivary_option.prefecture.name
           %tr
             %th 発送日の目安
+
             %td
+
               = @product.delivary_option.shippingday.name
 
       .item-box__item-price
@@ -85,7 +89,7 @@
             着払い
 
       .item-box__item-buy-btn
-        = link_to '購入画面に進む', root_path
+        = render 'shared/product_edit'
 
       .item-box__item-message
         %p #{@product.description}
@@ -172,6 +176,7 @@
             %p.tax (税込)
 
     .show-items
+
       %h3 #{@product.category.name} その他の商品
       - @six_products_related_product.each do |p|
         = link_to(product_path(p.id), class: 'show-items__product') do

@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   before_action :get_header_category_brand
 
+  add_breadcrumb 'メルカリ', '/'
+
   def index
+    add_breadcrumb "マイページ"
     @user = User.find(current_user.id)
     @listing_number = Product.where(user_id: current_user.id).where(status: true).length
     purchase_buyer = @user.products_of_buyer

@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_03_31_051519) do
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.integer "price_pay", null: false
-    t.integer "rate", null: false
+    t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "buyer_id"

@@ -21,7 +21,6 @@ class User < ApplicationRecord
   validates :message,    length: { maximum: 1000 }
 
 
-
   attr_writer :card_number, :credit_year, :credit_month, :card_code
 
   def get_good_rate

@@ -83,7 +83,7 @@
           %p.l-side__list__link__area__name 発送元・お届け先住所変更
           =icon 'fa', 'angle-right', class: 'l-side__list__link__area__arrow-right'
       %li.l-side__list__link
-        =link_to users_path, class: "l-side__list__link__area" do
+        =link_to user_cards_path(current_user.id), class: "l-side__list__link__area" do
           %p.l-side__list__link__area__name 支払い方法
           =icon 'fa', 'angle-right', class: 'l-side__list__link__area__arrow-right'
       %li.l-side__list__link
