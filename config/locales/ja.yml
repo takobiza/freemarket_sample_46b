@@ -21,7 +21,6 @@ ja:
     card_code: セキュリティコード
     message: メッセージ
     category_id: カテゴリー
-
   activerecord:
     errors:
       models:

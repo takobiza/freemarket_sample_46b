@@ -99,18 +99,34 @@
 
   &__item-buy-btn {
     width: 100%;
-    height: 60px;
-    background-color: $warm-red;
+    height: 50px;
     text-align: center;
     margin-top: 20px;
+    display: inline-block;
 
     a {
       color: $white;
-      font-size: 25px;
+      font-size: 15px;
       font-weight: 600;
       line-height: 60px;
       text-decoration: none;
     }
+  }
+  &__edit {
+    background-color: $warm-red;
+    margin: 20px;
+  }
+  &__stop {
+    background-color: gray;
+    margin: 20px;
+  }
+  &__delete {
+    background-color: gray;
+    margin: 20px;
+  }
+  &__buy {
+    background-color: $warm-red;
+    margin: 20px;
   }
 
 
@@ -270,6 +286,3 @@
 }
 }
 
-.sell-btn {
-  display: none;
-}
