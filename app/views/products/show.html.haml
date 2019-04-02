@@ -73,7 +73,7 @@
             着払い
 
       .item-box__item-buy-btn
-        = link_to '購入画面に進む', root_path
+        = render 'shared/product_edit'
 
       .item-box__item-message
         %p #{@product.description}

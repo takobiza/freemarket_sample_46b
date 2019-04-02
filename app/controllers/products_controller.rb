@@ -38,6 +38,7 @@ class ProductsController < ApplicationController
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
 
     add_breadcrumb @product.name
+
   end
 
   private
