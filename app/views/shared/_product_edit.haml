@@ -1,6 +1,6 @@
 - if @product.user_id == current_user.id
   %p.item-box__edit
-    = link_to '商品を編集', root_path
+    = link_to '商品を編集', edit_product_path(@product.id)
   or
   %p.item-box__stop
     = link_to '出品を一旦停止する', root_path
