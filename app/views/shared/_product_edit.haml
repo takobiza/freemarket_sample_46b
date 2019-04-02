@@ -2,8 +2,12 @@
   %p.item-box__edit
     = link_to '商品を編集', root_path
   or
-  %p.item-box__stop
-    = link_to '出品を一旦停止する', root_path
+  - if @product.status == true
+    %p.item-box__stop
+      = link_to '出品を一旦停止する', "/products/#{@product.id}", method: :patch
+  - else
+    %p.item-box__restart
+      = link_to '出品を再開する', "/products/#{@product.id}", method: :patch
   %p.item-box__delete
     = link_to 'この商品を削除する', "/products/#{@product.id}", method: :delete, data: {confirm: "本当に削除しますか？"}
 - else

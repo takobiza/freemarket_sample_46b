@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
 
     add_breadcrumb @product.name
 
+
   end
 
   def destroy
@@ -49,6 +50,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def update
+    product = Product.find(params[:id])
+    if product.status
+      product.update(status: '0')
+    else
+      product.update(status: '1')
+    end
+    redirect_to("/")
+  end
+
   private
 
   def category_search(category_name)
@@ -56,11 +67,11 @@ class ProductsController < ApplicationController
   end
 
   def brand_search(brand_id)
-    Product.where(brand_id: brand_id).order("RAND()").limit(4)
+    Product.where(brand_id: brand_id).where(status: 1).order("RAND()").limit(4)
   end
 
   def get_category_SQL(low, high)
-    ActiveRecord::Base.connection.select_all("SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `products`.`category_id` BETWEEN #{low} AND #{high}  ORDER BY RAND() LIMIT 4").to_hash.map{|id| Product.find( id.fetch("id") )}
+    ActiveRecord::Base.connection.select_all("SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `products`.`category_id` BETWEEN #{low} AND #{high} AND  `products`.`status` = 1 ORDER BY RAND() LIMIT 4").to_hash.map{|id| Product.find( id.fetch("id") )}
   end
 
   def set_product
@@ -68,7 +79,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.permit(:name, :price)
+    params.permit(:name, :price, :status)
   end
 
   def sell_params
