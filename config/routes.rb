@@ -29,18 +29,33 @@ Rails.application.routes.draw do
 
     collection do
       get 'logout'
+      get '/listings/listing' => 'users#listing'
+      get '/listings/completed' => 'users#completed'
+      get '/listings/in_progress' => 'users#in_progress'
     end
   end
 
+<<<<<<< HEAD
   resources :products, only:[:show, :index, :create, :new, :destroy, :update] do
+=======
+
+  resources :products, only:[:show, :index, :create, :edit, :update] do
+    collection do
+      get "/:product_id/rate" => "purchase#edit", as: :rate
+      patch "/:product_id/rate" => "purchase#update", as: :rate_update
+    end
+
+>>>>>>> takobiza/master
     resources :transactions, only: :index
 
     collection do
       post "/:products_id/transactions" => "cards#pay", as: :buy_product
     end
+
   end
 
   resources :sells
   resources :search, only: :index
+
   get '/categories' => 'categories#category'
 end

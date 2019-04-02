@@ -9,7 +9,9 @@
         =link_to users_path, class: "l-content__identify-area__textarea__about-upload__path" do
           .l-content__identify-area__textarea__about-upload__path__text
             .l-content__identify-area__textarea__about-upload__path__text__about-identification 本人確認書類のアップロードについて
-          =fa_icon "angle-right", class: 'l-content__identify-area__textarea__about-upload__path__arrow-right'
+          = icon 'fa', 'angle-right', class: 'l-content__identify-area__textarea__about-upload__path__arrow-right'
+
+
 
     .l-content__identify-area__form
       .l-content__identify-area__form__title
@@ -46,7 +48,7 @@
         .l-content__identify-area__form__content
           = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "l-content__identify-area__form__content__type-space-select"}
           .icon__arrow--bottom
-            = fa_icon "angle-down"
+            = icon 'fa', 'angle-down'
 
       .l-content__identify-area__form
         %label.l-content__identify-area__form__title 市町区村
@@ -81,7 +83,8 @@
         =link_to users_path, class: "l-content__identify-area__textarea__about-upload__path" do
           .l-content__identify-area__textarea__about-upload__path__text
             本人情報の登録について
-          =fa_icon "angle-right", class: 'l-content__identify-area__textarea__about-upload__path__arrow-right'
+          = icon 'fa', 'angle-right', class: 'l-content__identify-area__textarea__about-upload__path__arrow-right'
+
 
 
 

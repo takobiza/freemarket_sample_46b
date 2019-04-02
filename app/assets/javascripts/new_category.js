@@ -64,4 +64,12 @@ function buildOption(categories) {
     })
   });
 
+  $(function() {
+    if (location.href.match(/\/products\/\d+\/edit/)) {
+      $('#large_category').prepend("<option value> --- </option>");
+      $('#middle_category').prepend("<option value> --- </option>");
+      $('#small_category').prepend("<option value> --- </option>");
+    }
+  });
+
 });
