@@ -11,19 +11,15 @@
         %p 最大5枚までアップロードできます
         .single-main__sell-registration__upload-drop-box
           %ul.single-main__sell-registration__upload-drop-box__list
-            - @product_images.each_with_index do |product_image, i|
-              = form.fields_for product_image do |image|
-                %li.single-main__sell-registration__upload-drop-box__photo
-                  = image.file_field :image, id: "file-photo-#{i}", class: "single-main__sell-registration__upload-drop-box__photo__file", accept: ".jpg, .jpeg, .png", value: "#{i}"
+            = form.fields_for :product_images do |image|
+              %li.single-main__sell-registration__upload-drop-box__photo
+                = image.file_field :image, id: "file-photo-0", class: "single-main__sell-registration__upload-drop-box__photo__file", accept: ".jpg, .jpeg, .png", value: "0"
+                - if image.object.image.url.present?
                   .single-main__sell-registration__upload-drop-box__photo__image-area
-                    = image_tag(product_image.image.url, alt: "", class: "single-main__sell-registration__upload-drop-box__photo__image-area__image", width: "114")
+                    = image_tag(image.object.image.url, alt: "", class: "single-main__sell-registration__upload-drop-box__photo__image-area__image", width: "114")
                     %p.single-main__sell-registration__upload-drop-box__photo__image-area__btn-area
                       %a.single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn 削除
                       %a.single-main__sell-registration__upload-drop-box__photo__image-area__edit-btn 編集
-            - @images_area_count.times do |j|
-              = form.fields_for :product_images do |image|
-                %li.single-main__sell-registration__upload-drop-box__photo
-                  = image.file_field :image, id: "file-photo-#{j + @images_count}", class: "single-main__sell-registration__upload-drop-box__photo__file", accept: ".jpg, .jpeg, .png", value: "#{j + @images_count}"
           = form.label :image, "クリックしてファイルをアップロード", class: "single-main__sell-registration__upload-drop-box__text", for: "file-photo-#{@images_count}", edit_value: "#{@images_count}"
 
 

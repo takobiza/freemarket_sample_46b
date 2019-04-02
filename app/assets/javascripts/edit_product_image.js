@@ -15,7 +15,6 @@ $(document).on('turbolinks:load', function() {
       var parentBox = input.parent().prev();
       var grandBox = parentBox.parent().prev();
       var m = grandBox.attr('value');
-      console.log(m);
       grandBox.val('');
       parentBox.parent().remove();
       $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + m).attr('edit_value', m);
@@ -44,6 +43,7 @@ $(document).on('turbolinks:load', function() {
 
         filereader.onload = function() {
           view_box.find('img').attr('src', filereader.result);
+          remove_image(view_box);
         }
 
         filereader.readAsDataURL(fileprop);
@@ -51,6 +51,18 @@ $(document).on('turbolinks:load', function() {
         var p = $('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length;
 
         $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + p).attr('edit_value', p);
+
+        function remove_image(target) {
+          target.find("a.single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn").on('click', function(){
+            var input =$(this);
+            var parentBox = input.parent().prev();
+            var grandBox = parentBox.parent().prev();
+            var m = grandBox.attr('value');
+            grandBox.val('');
+            parentBox.parent().remove();
+            $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + m);
+          });
+        }
       });
 
     });

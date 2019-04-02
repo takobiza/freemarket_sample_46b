@@ -1,11 +1,7 @@
 $(document).on('turbolinks:load', function() {
 
   $('.single-main__sell-registration__upload-drop-box__text').on('click', function() {
-    if (location.href.match(/\/products\/\d+\/edit/)) {
-      var i = $('.single-main__sell-registration__upload-drop-box__text').attr('edit_value');
-    } else {
-      var i = $('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length;
-    }
+    var i = $('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length;
 
 
     $('#file-photo-' + i).off().on('change',function() {

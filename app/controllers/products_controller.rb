@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   add_breadcrumb 'メルカリ', '/'
   add_breadcrumb 'マイページ', :users_path
-  add_breadcrumb '出品した商品-出品中', :sell_path
+  add_breadcrumb '出品した商品-出品中', :sells_path
   before_action :set_product, except: [:create, :index]
   before_action :get_header_category_brand, only: [:index, :show]
 
@@ -47,6 +47,8 @@ class ProductsController < ApplicationController
     @shippingmethod_number = @product.delivary_option.shippingmethod_id
     @product_images = @product.product_images
     @images_count = @product_images.count
+    @images_area_count = 5 - @images_count
+    @images_area_count.times { @product.product_images.build }
     respond_to do |format|
       format.html
       format.json { @middle_categories = Category.find(params[:category_id]).children }
@@ -55,7 +57,7 @@ class ProductsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @product.update(update_sell_params)
+      if @product.update(sell_params)
         format.html { redirect_to root_path }
       else
         format.json { render template: 'sells/index', locals: {product: @product} }
@@ -87,11 +89,7 @@ class ProductsController < ApplicationController
   end
 
   def sell_params
-    params.require(:product).permit(:name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:image]).merge(user_id: current_user.id)
-  end
-
-  def update_sell_params
-    params.require(:product).permit(:name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id, :_destroy, :id], product_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:id, :name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:id, :image]).merge(user_id: current_user.id)
   end
 
   def get_header_category_brand
