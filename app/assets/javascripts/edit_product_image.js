@@ -18,6 +18,19 @@ $(document).on('turbolinks:load', function() {
       grandBox.val('');
       parentBox.parent().remove();
       $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + m).attr('edit_value', m);
+      var hiddenNumber = grandBox.parent().next().attr('value');
+      $.ajax({
+        type: 'DELETE',
+        url: window.location.href,
+        data: {image_id: hiddenNumber},
+        dataType: 'json'
+      })
+      .done(function() {
+        grandBox.parent().next().remove();
+      })
+      .fail(function() {
+        alert('error');
+      });
     });
 
     $('.single-main__sell-registration__upload-drop-box__text').on('click', function() {
