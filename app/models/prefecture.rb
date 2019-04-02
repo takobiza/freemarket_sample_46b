@@ -19,5 +19,6 @@ class Prefecture < ActiveHash::Base
       {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}, {id: 99, name: '未定'}
   ]
   has_many :delivary_options
+  has_many :user_address
 
 end
