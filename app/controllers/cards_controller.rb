@@ -36,7 +36,6 @@ class CardsController < ApplicationController
     customer: current_user.pay_id,
     currency: 'jpy'
    )
-    binding.pry
     redirect_to root_path
   end
 
