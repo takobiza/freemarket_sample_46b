@@ -64,6 +64,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def remove
+    respond_to do |format|
+      format.html
+      format.json { ProductImage.find(params[:image_id]).delete }
+    end
+  end
+
 
   private
 
