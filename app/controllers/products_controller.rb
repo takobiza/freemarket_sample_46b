@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @product.update(update_sell_params)
+      if @product.update(sell_params)
         format.html { redirect_to root_path }
       else
         format.json { render template: 'sells/index', locals: {product: @product} }
@@ -96,10 +96,6 @@ class ProductsController < ApplicationController
 
   def sell_params
     params.require(:product).permit(:id, :name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:id, :image]).merge(user_id: current_user.id)
-  end
-
-  def update_sell_params
-    params.require(:product).permit(:id, :name, :price, :category_id, :brand_id, :description, :state_id, delivary_option_attributes: [:shippingpay_id, :seller_fee, :purchaser_fee, :prefecture_id, :shippingday_id], product_images_attributes: [:id, :image, :remove_image]).merge(user_id: current_user.id)
   end
 
   def get_header_category_brand
