@@ -6,18 +6,27 @@
       %h2.single-main__title__text 購入を確定しますか？
     .single-main__transaction-buy
       .single-main__transaction-buy__image
-        = image_tag('https://static.mercdn.net/item/detail/orig/photos/m23105812790_1.jpg?1549854089', width: "148", height: "148")
+        = image_tag(@product.item_image, width: "148", height: "148")
       .single-main__transaction-buy__product
-        %p.single-main__transaction-buy__product__name 高品質カジュアル腕時計 ピンクゴールド レディース メッシュステンレス鋼バンド
+        %p.single-main__transaction-buy__product__name
+          = @product.name
         .single-main__transaction-buy__product__price
-          ¥ 1,650
-          %span.single-main__transaction-buy__product__price__tax 送料込み
+          ¥
+          = @product.price
+
+          %span.single-main__transaction-buy__product__price__tax
+            -if @product.delivary_option.shippingpay.id == 0
+              送料込み
+            - else
+              着払い
+
         .single-main__transaction-buy__product__point
           = link_to users_path, method: :get, class: "single-main__transaction-buy__product__point__link" do
             %p.single-main__transaction-buy__product__point__link__text ポイントを使う
         .single-main__transaction-buy__product__payment-price
           %p 支払い金額
-          %span ¥ 1,650
+          ¥
+          = @product.price
         .single-main__transaction-buy__product__point
           = link_to users_path, method: :get, class: "single-main__transaction-buy__product__point__link" do
             = link_to '購入する', '/products/1/transactions', method: :post, class: 'single-main__transaction-buy__product__point__link__text'
@@ -26,11 +35,12 @@
       .single-main__user-info__means
         .single-main__user-info__means__numbers
           %p 配送先
-          〒755-4649
+          〒
+          = current_user.user_address.postal_code
           %br
-          東京都 港区 赤坂1-23-1
+          = current_user.user_address.get_full_address
           %br
-          小早川 建
+          = current_user.user_address.get_fullname
           = link_to users_path, class: "single-main__user-info__means__numbers__path" do
             .single-main__user-info__means__numbers__path__text 変更する
             = icon 'fa', 'angle-right', class: 'single-main__user-info__means__numbers__path__arrow-right'
