@@ -112,21 +112,24 @@
                 .signup-main-content__inner-form__group__select__wrap
                   = det.select(:birth_year, User::years, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"})
                   .icon__arrow--bottom
-                    = fa_icon "angle-down"
+                    = icon 'fa', 'angle-down'
+
                 .signup-main-content__inner-form__group__select__wrap_text 年
 
               .signup-main-content__inner-form__group__select
                 .signup-main-content__inner-form__group__select__wrap
                   = det.select(:birth_month, User::months, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"})
                   .icon__arrow--bottom
-                    = fa_icon "angle-down"
+                    = icon 'fa', 'angle-down'
+
                 .signup-main-content__inner-form__group__select__wrap_text 月
 
               .signup-main-content__inner-form__group__select
                 .signup-main-content__inner-form__group__select__wrap
                   = det.select(:birth_day, [], { prompt: "--" }, { class: "signup-main-content__inner-form__group__select__wrap-default" })
                   .icon__arrow--bottom
-                    = fa_icon "angle-down"
+                    = icon 'fa', 'angle-down'
+
                 .signup-main-content__inner-form__group__select__wrap_text 日
                 .error_message_box
                   -if @detail.errors.full_messages_for(:birth).present?

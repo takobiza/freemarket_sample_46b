@@ -9,7 +9,8 @@
           = form_with do |f|
             = f.text_field :keyword,  class: 'input', placeholder: 'キーワードから探す'
           .input__search
-            = fa_icon 'search', class: 'input__search--btn'
+            = icon 'fa', 'search', class: 'input__search--btn'
+
       .header-inner__bottom
         %ul.header-inner__bottom--left
           %li.nav カテゴリーから探す
@@ -24,6 +25,7 @@
     .sell-btn
       %p 出品
       = fa_icon 'camera 4x'
+
     .banner
       .banner__inner
         .banner__inner--content

@@ -7,10 +7,12 @@
       .signup__container__main__box__section
         .signup__container__main__box__section__list
           = link_to new_user_registration_path, class: "registration__btn btn-mail" do
-            = fa_icon "envelope-o", class: "mail-icon"
+            = icon 'far', 'envelope', class: "mail-icon"
+
             メールアドレスで登録
           %button.registration__btn.btn-facebook
-            = fa_icon "facebook-square", class: "facebook-icon"
+            = icon 'fab', 'facebook-square', class: "facebook-icon"
+
             Facebookで登録
           %button.registration__btn.btn-google
             = image_tag("https://img.icons8.com/color/48/000000/google-logo.png", class: "google-icon")
