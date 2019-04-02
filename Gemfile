@@ -48,6 +48,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'faker'
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -83,13 +86,10 @@ gem 'bxslider-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'recaptcha', require: "recaptcha/rails"
-gem 'pry-rails'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'active_hash'
-gem 'hirb'
-gem 'hirb-unicode'
 gem 'payjp'
 gem 'carrierwave'
 gem 'mini_magick'

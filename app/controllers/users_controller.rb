@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def listing
-    @products = Product.where(user_id: current_user.id).where(status: true).where(is_buy: true)
+    @products = Product.where(user_id: current_user.id).where(is_buy: true)
   end
 
   def completed

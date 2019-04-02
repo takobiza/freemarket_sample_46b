@@ -33,12 +33,15 @@
                   0
                   = icon 'far', 'comment-alt'
                   0
-                  %span.l-content__listings_contents_active_link_item_icon_status_blue
-                    出品中
+
+                  - if product.status
+                    %span.l-content__listings_contents_active_link_item_icon_status_blue
+                      出品中
+                  -else
+                    %span.l-content__listings_contents_active_link_item_icon_status_red
+                      出品停止中
+
               = icon 'fa', 'angle-right', class: 'l-content__listings_contents_active_link_arrow-right'
-
-
-
 
 
 
