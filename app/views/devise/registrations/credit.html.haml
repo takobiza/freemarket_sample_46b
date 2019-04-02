@@ -67,14 +67,18 @@
                 .signup-main-content__inner-form__group__select__wrap
                   = f.collection_select :credit_year, CreditYear.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
                   .icon__arrow--bottom
-                    = fa_icon "angle-down"
+                    = icon 'fa', 'angle-down'
+
+
+
                 .signup-main-content__inner-form__group__select__wrap_text 年
 
               .signup-main-content__inner-form__group__select
                 .signup-main-content__inner-form__group__select__wrap
                   = f.collection_select :credit_month, CreditMonth.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
                   .icon__arrow--bottom
-                    = fa_icon "angle-down"
+                    = icon 'fa', 'angle-down'
+
 
                 .signup-main-content__inner-form__group__select__wrap_text 月
                 .error_message_box
@@ -90,7 +94,8 @@
             %span 必須
             = f.text_field :card_code, autofocus: true, autocomplete: "card_number", placeholder: "カードの背面４桁もしくは３桁の番号", class: "signup-main-content__inner-form__group-inner"
             .signup-main-content__inner-form__group-card-right
-              = fa_icon "question-circle", class: "icon__arrow-question"
+              = icon 'fa', "question-circle", class: "icon__arrow-question"
+
               = link_to "カード裏面の番号とは？", "#", target: "_blank", class: "signup-main-content__inner-form__group-right__inner"
 
             .error_message_box

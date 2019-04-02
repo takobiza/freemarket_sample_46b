@@ -9,11 +9,16 @@ class Product < ApplicationRecord
   belongs_to :brand, optional: true
   belongs_to :user
   belongs_to_active_hash :state
+
+  has_many :purchase, dependent: :destroy
+
   validates :category_id, presence: true
+
   validates :name, length: { in: 1..40 }
   validates :description, length: { in: 1..1000 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :product_images, length: { minimum: 1, maximum: 5}
+
 
   def item_image
     ProductImage.find_by(product_id: self.id).image.url

@@ -21,6 +21,9 @@ ja:
     card_code: セキュリティコード
     message: メッセージ
     category_id: カテゴリー
+    is_product_arrived: 商品有無
+    rate: 評価
+
   activerecord:
     errors:
       models:

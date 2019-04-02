@@ -1,0 +1,61 @@
+= render '/shared/main-header'
+= render '/shared/bread-crumbs'
+
+.product-detail-wrapper
+  .product-detail-wrapper__container
+
+
+    .item-box
+      %h1.item-box__item-name
+        = @product.name
+
+      .item-box__item-main
+        .item-box__item-main--main-img
+          = image_tag(@product.item_image, class: 'active-img')
+
+          .item-box__item-main--sub-img
+            %ul
+              - @product.product_images.each do |product_image|
+                %li
+                  = image_tag(product_image.image.url, class: 'bottom-img')
+
+        = form_for(@purchase, url: rate_update_products_path , html: {method: :patch}) do |f|
+          %table.item-box__item-main--table
+            %tr
+              %th 商品の有無
+              %td
+                .item-box__item-main--table--change-color_icons
+                  = f.label :商品が届いた
+                  = f.check_box :is_product_arrived ,as:  :boolean
+                .error_message_box
+                  -if @purchase.errors.full_messages_for(:is_product_arrived).present?
+                    = @purchase.errors.full_messages_for(:is_product_arrived).first.split(" ")[1]
+            %tr
+              %th 評価
+              %td.item-box__item-main--table--change-color
+                = @product.user.nickname
+                .item-box__item-main--table--change-color_icons
+
+                  .item-box__item-main--table--change-color_icons_icon
+                    = icon 'far', 'grin',class: "fa-grin"
+                    %label
+                      = f.radio_button :rate, 1
+
+                  .item-box__item-main--table--change-color_icons_icon
+                    = icon 'far', 'meh'
+                    %label
+                      = f.radio_button :rate, 2
+
+                  .item-box__item-main--table--change-color_icons_icon
+                    = icon 'far', 'frown'
+                    %label
+                      = f.radio_button :rate, 3
+
+                  .error_message_box
+                    -if @purchase.errors.full_messages_for(:rate).present?
+                      = @purchase.errors.full_messages_for(:rate).first.split(" ")[1]
+
+                  = f.submit "評価する", class: "btn-red registration__btn"
+
+  = render '/shared/main-footer'
+
