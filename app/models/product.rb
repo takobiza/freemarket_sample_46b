@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   validates :category_id, presence: true
   validates :name, length: { in: 1..40 }
   validates :description, length: { in: 1..1000 }
-  validates :price, presence: true, numericality: { greater_than: 300, less_than: 9999999 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   validates :product_images, length: { minimum: 1, maximum: 5}
 
   def item_image

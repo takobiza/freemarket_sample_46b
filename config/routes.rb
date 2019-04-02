@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only:[:show, :index, :create, :new] do
+  resources :products, only:[:show, :index, :create, :edit, :update] do
     resources :transactions, only: :index
 
     collection do
@@ -40,7 +40,9 @@ Rails.application.routes.draw do
     end
   end
 
+  
   resources :sells
   resources :search, only: :index
+
   get '/categories' => 'categories#category'
 end
