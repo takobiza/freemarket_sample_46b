@@ -35,7 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only:[:show, :index, :create, :new] do
+
+  resources :products, only:[:show, :index, :create, :edit, :update] do
     collection do
       get "/:product_id/rate" => "purchase#edit", as: :rate
       patch "/:product_id/rate" => "purchase#update", as: :rate_update
@@ -51,5 +52,6 @@ Rails.application.routes.draw do
 
   resources :sells
   resources :search, only: :index
+
   get '/categories' => 'categories#category'
 end

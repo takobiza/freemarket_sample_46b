@@ -1,0 +1,153 @@
+.wrapper-sell
+  = render('/shared/single/single-header')
+
+  %main.single-main
+    .single-main__title
+      %h2.single-main__title__text 商品の情報を入力
+    = form_with(model: @product)  do |form|
+      .single-main__sell-registration
+        出品画像
+        %span 必須
+        %p 最大5枚までアップロードできます
+        .single-main__sell-registration__upload-drop-box
+          %ul.single-main__sell-registration__upload-drop-box__list
+            = form.fields_for :product_images do |image|
+              %li.single-main__sell-registration__upload-drop-box__photo
+                = image.file_field :image, id: "file-photo-0", class: "single-main__sell-registration__upload-drop-box__photo__file", accept: ".jpg, .jpeg, .png", value: "0"
+                - if image.object.image.url.present?
+                  .single-main__sell-registration__upload-drop-box__photo__image-area
+                    = image_tag(image.object.image.url, alt: "", class: "single-main__sell-registration__upload-drop-box__photo__image-area__image", width: "114")
+                    %p.single-main__sell-registration__upload-drop-box__photo__image-area__btn-area
+                      %a.single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn 削除
+                      %a.single-main__sell-registration__upload-drop-box__photo__image-area__edit-btn 編集
+          = form.label :image, "クリックしてファイルをアップロード", class: "single-main__sell-registration__upload-drop-box__text", for: "file-photo-#{@images_count}", edit_value: "#{@images_count}"
+
+
+      .single-main__sell-registration
+        .single-main__sell-registration__product
+          = form.label :name, "商品名", class: "single-main__sell-registration__product__title"
+          %span 必須
+        .single-main__sell-registration__product-name
+          = form.text_field :name, class: "single-main__sell-registration__product-name__type-name", placeholder: "商品名（必須 40文字まで）"
+
+        .single-main__sell-registration__product__title-two-more
+          = form.label :description, "商品の説明", class: "single-main__sell-registration__product__title-two-more"
+          %span 必須
+        .single-main__sell-registration__product-name
+          = form.text_area :description, class: "single-main__sell-registration__product-name__type-textarea", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+
+      .single-main__sell-registration
+        .single-main__sell-registration__options
+          .single-main__sell-registration__options__title 商品の詳細
+          .single-main__sell-registration__options__product
+            .single-main__sell-registration__options__product__box
+              .single-main__sell-registration__options__product__box__title
+                = form.label :category_id, "カテゴリー"
+                %span 必須
+              = select_tag :category_id, options_from_collection_for_select( Category.roots, :id, :name, @large_category_number ), {class: "single-main__sell-registration__options__product__box__select-box", id: "large_category"}
+              =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+            .single-main__sell-registration__options__product__edit-box#middle_category_box
+              .single-main__sell-registration__options__product__box
+                .single-main__sell-registration__options__product__box__title
+                = select_tag :category_id, options_from_collection_for_select(Category.where(parent_id: @large_category_number), :id, :name, @middle_category_number), {class: "single-main__sell-registration__options__product__box__select-box", id: "middle_category"}
+                =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+            .single-main__sell-registration__options__product__edit-box#small_category_box
+              .single-main__sell-registration__options__product__box
+                .single-main__sell-registration__options__product__box__title
+                = form.collection_select :category_id, Category.where(parent_id: @middle_category_number), :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "small_category"}
+                =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+            .error_message_box_product#error_message_product
+
+
+            .single-main__sell-registration__options__product__box
+              .single-main__sell-registration__options__product__box__title-two-more
+                = form.label :state_id, "商品の状態"
+                %span 必須
+              = form.collection_select :state_id, State.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
+              =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+
+      .single-main__sell-registration
+        .single-main__sell-registration__options
+          .single-main__sell-registration__options__title 配送について
+
+          .single-main__sell-registration__options__product
+            = form.fields_for :delivary_option do |shipping|
+              .single-main__sell-registration__options__product__box
+                .single-main__sell-registration__options__product__box__title
+                  = shipping.label :shippingpay_id, "配送料の負担"
+                  %span 必須
+                = shipping.collection_select :shippingpay_id, Shippingpay.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "shippingpay-method", fee_value: "#{@shippingmethod_number}"}
+                =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+              .single-main__sell-registration__options__product__edit-box#seller-fee
+                .single-main__sell-registration__options__product__box
+                  .single-main__sell-registration__options__product__box__title-two-more
+                    = shipping.label :seller_fee, "配送の方法(出品者負担)"
+                    %span 必須
+                  = shipping.collection_select :seller_fee, [], :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "edit_seller_fee"}
+                  =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+              .single-main__sell-registration__options__product__edit-box#purchaser-fee
+                .single-main__sell-registration__options__product__box
+                  .single-main__sell-registration__options__product__box__title-two-more
+                    = shipping.label :purchaser_fee, "配送の方法(購入者負担)"
+                    %span 必須
+                  = shipping.collection_select :purchaser_fee, [], :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "edit_purchaser_fee"}
+                  =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+              .single-main__sell-registration__options__product__box
+                .single-main__sell-registration__options__product__box__title-two-more
+                  = shipping.label :prefecture_id, "配送元の地域"
+                  %span 必須
+                = shipping.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
+                =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+              .single-main__sell-registration__options__product__box
+                .single-main__sell-registration__options__product__box__title-two-more
+                  = shipping.label :shippingday_id, "発送までの日数"
+                  %span 必須
+                = shipping.collection_select :shippingday_id, Shippingday.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
+                =fa_icon "angle-down", class: 'single-main__sell-registration__options__product__box__arrow-down'
+
+
+      .single-main__sell-registration
+        .single-main__sell-registration__options
+          .single-main__sell-registration__options__title 販売価格(300〜9,999,999)
+          .single-main__sell-registration__options__product
+            .single-main__sell-registration__options__product__price-box
+              %label.single-main__sell-registration__options__product__price-box__title
+                価格
+                %span 必須
+              %a
+                ¥
+                = form.number_field :price, class: "single-main__sell-registration__options__product__price-box__price", placeholder: "例）300"
+            .single-main__sell-registration__options__product__price-box
+              %label.single-main__sell-registration__options__product__price-box__title
+                .single-main__sell-registration__options__product__price-box__title__title-commision 販売手数料 (10%)
+              %a.single-main__sell-registration__options__product__price-box__comission -
+            .single-main__sell-registration__options__product__price-box-profit
+              販売利益
+              %a.single-main__sell-registration__options__product__price-box-profit__profit -
+
+
+      .single-main__sell-registration
+        .single-main__sell-registration__notice
+          禁止されている出品、行為を必ずご確認ください。
+          %br
+          またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+          %br
+          また、出品をもちまして加盟店規約に同意したことになります。
+
+
+
+        = form.submit "出品する", class: "single-main__sell-registration__sell-btn"
+        .single-main__sell-registration__back-btn
+          =link_to users_path, class: "single-main__sell-registration__back-btn__path" do
+            .single-main__sell-registration__back-btn__path__text もどる
+
+  = render('/shared/single/single-footer')
