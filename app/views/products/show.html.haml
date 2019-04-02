@@ -46,6 +46,7 @@
           %tr
             %th 配送の方法
             %td
+
               = @product.delivary_option.shippingmethod.name
 
           %tr
@@ -54,7 +55,9 @@
               = @product.delivary_option.prefecture.name
           %tr
             %th 発送日の目安
+
             %td
+
               = @product.delivary_option.shippingday.name
 
       .item-box__item-price
@@ -147,6 +150,7 @@
             %p.tax (税込)
 
     .show-items
+
       %h3 #{@product.category.name} その他の商品
       - @six_products_related_product.each do |p|
         = link_to(product_path(p.id), class: 'show-items__product') do
