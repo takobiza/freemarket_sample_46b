@@ -5,7 +5,7 @@
   %p.item-box__stop
     = link_to '出品を一旦停止する', root_path
   %p.item-box__delete
-    = link_to 'この商品を削除する', root_path
+    = link_to 'この商品を削除する', "/products/#{@product.id}", method: :delete, data: {confirm: "本当に削除しますか？"}
 - else
   %p.item-box__buy
     = link_to '購入画面に進む', product_transactions_path(@product.id)

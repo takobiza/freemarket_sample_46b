@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only:[:show, :index, :create, :new] do
+  resources :products, only:[:show, :index, :create, :new, :destroy] do
     resources :transactions, only: :index
 
     collection do
