@@ -1,0 +1,132 @@
+.search-result-product {
+  float: left;
+  background-color: #fff;
+  width: 160px;
+  height: 270px;
+  margin: 0 0 20px 20px;
+
+  &__link {
+    &:link {
+      color: #000;
+    }
+    &:visited {
+      color: #000;
+    }
+    &:hover {
+      color: #000;
+    }
+    &:active {
+      color: #000;
+    }
+    text-decoration: none;
+
+
+    .product-image {
+      width: 160px;
+      height:160px;
+      background-color: #aac;
+      position: relative;
+
+      &__image {
+        width: 160px;
+        height: 160px;
+      }
+
+      &__info {
+        width: 160px;
+        position: absolute;
+        z-index: 8;
+        top: 0;
+        left: 0;
+
+        &__sold {
+          color: #fff;
+          font-size: 22px;
+          letter-spacing: 2px;
+          font-family: 'YuGothic';
+          font-weight: bold;
+          position: absolute;
+          top: 20px;
+          z-index: 10;
+
+          -webkit-transform: rotate(-45deg);
+             -moz-transform: rotate(-45deg);
+              -ms-transform: rotate(-45deg);
+               -o-transform: rotate(-45deg);
+                  transform: rotate(-45deg);
+        }
+
+        &::after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: '';
+          z-index: 1;
+          border-top: 50px solid #ea352d;
+          border-left: 50px solid #ea352d;
+          border-right: 50px solid transparent;
+          border-bottom: 50px solid transparent;
+        }
+      }
+    }
+
+    .search-result-product__text-area {
+      padding: 16px;
+      height: 110px;
+      width: 160px;
+      box-sizing: border-box;
+
+      &__product-name {
+        width: 128px;
+        height: 48px;
+        overflow: hidden;
+        position: relative;
+
+        &::after {
+          width: 64px;
+          height: 24px;
+          background: linear-gradient(to left, white, white, transparent);
+          position: absolute;
+          left: 64px;
+          top: 24px;
+          content: '';
+          z-index: 10;
+        }
+      }
+
+      &__others {
+        margin-top: 8px;
+        width: 128px;
+        height: 30px;
+
+        .iine {
+          float: right;
+
+          i{
+            margin-right: 4px;
+            color: #ddd;
+          }
+
+          .iine-total {
+            font-size: 15px;
+          }
+        }
+
+        .price {
+          position: relative;
+          bottom: 3px;
+          height: 20px;
+          font-family: 'YuGothic';
+          font-weight: bold;
+          font-size: 17px;
+        }
+
+        .tax-info {
+          font-size: 10px;
+          position: relative;
+          bottom: 3px;
+        }
+      }
+    }
+  }
+}
