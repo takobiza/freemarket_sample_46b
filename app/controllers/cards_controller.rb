@@ -21,6 +21,7 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.create(card: payjp_params[:payjpToken])
     @user = User.find(payjp_params[:user_id])
     @new_card = @user.update(pay_id: customer.id)
+
     if @new_card != nil
       redirect_to user_cards_path
     else
@@ -35,6 +36,7 @@ class CardsController < ApplicationController
     customer: current_user.pay_id,
     currency: 'jpy'
    )
+    binding.pry
     redirect_to root_path
   end
 
