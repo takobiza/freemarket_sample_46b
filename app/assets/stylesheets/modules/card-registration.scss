@@ -1,0 +1,133 @@
+.l-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+  color: $thick-gray;
+
+  &__main {
+    width: 700px;
+    height: 666px;
+    background-color: $white;
+    margin-left: 40px;
+    &--title {
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+      font-size: 24px;
+      padding: 8px 0;
+      text-align: center;
+    }
+    &--registration {
+      height: calc(100% - 170px);
+      width: calc(100% - 380px);
+      padding: 50px 190px;
+    }
+  }
+  .registration-form {
+    &__card-number {
+        width: 320px;
+        height: 120px;
+      &--heading {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &--essential {
+        font-size: 12px;
+        color: $white;
+        background-color: $warm-red;
+        padding: 3px;
+        border-radius: 3px;
+        margin-left: 5px;
+      }
+      &--form {
+        width: 320px;
+        height: 50px;
+        margin-top: 8px;
+        padding-left: 10px;
+      }
+      &--image-list {
+        width: 320px;
+        display: flex;
+        img {
+          width: 32px;
+          height: 20px;
+          flex: 1;
+          margin: 5px 10px 0 0;
+        }
+      }
+    }
+
+
+    &__expiration-date {
+      margin-top: 20px;
+      width: 320px;
+      height: 150px;
+      &--heading {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &--essential {
+        font-size: 12px;
+        color: $white;
+        background-color: $warm-red;
+        padding: 3px;
+        border-radius: 3px;
+        margin-left: 5px;
+      }
+      &--month-form {
+        width: 115px;
+        height: 50px;
+        margin-top: 8px;
+        background-color: $white;
+      }
+      &--year-form {
+        width: 115px;
+        height: 50px;
+        margin-top: 8px;
+        background-color: $white;
+      }
+    }
+
+
+
+    &__sequrity-cord {
+      margin-top: 20px;
+      width: 320px;
+      height: 115px;
+      &--heading {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &--essential {
+        font-size: 12px;
+        color: $white;
+        background-color: $warm-red;
+        padding: 3px;
+        border-radius: 3px;
+        margin-left: 5px;
+      }
+      &--form {
+        width: 320px;
+        height: 50px;
+        margin: 8px 0;
+        padding-left: 10px;
+      }
+      &--link {
+        color: $lightblue;
+        font-size: 14px;
+        float: right;
+      }
+    }
+
+
+
+    &__add-btn {
+      text-align: center;
+      line-height: 50px;
+      font-size: 14px;
+      width: 320px;
+      height: 50px;
+      background-color: $warm-red;
+      color: $white;
+      margin-top: 40px;
+    }
+  }
+}
+
