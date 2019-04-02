@@ -36,7 +36,18 @@ class CardsController < ApplicationController
     customer: current_user.pay_id,
     currency: 'jpy'
    )
-    redirect_to root_path
+
+    if charge[:error].present?
+      redirect_to product_transactions_path(buy_product.id)
+    end
+
+    if Purchase.create(product_id: buy_product.id, price_pay: charge[:amount], rate: 0, buyer_id: current_user.id, seller_id: buy_product.user_id)
+      buy_product.update(is_buy: false)
+    else
+      redirect_to product_transactions_path(buy_product.id)
+    end
+
+    redirect_to users_path
   end
 
   def destroy
