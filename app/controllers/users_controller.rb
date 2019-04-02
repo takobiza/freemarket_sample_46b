@@ -25,11 +25,11 @@ class UsersController < ApplicationController
   end
 
   def completed
-    @products = current_user.products_of_seller.select{|product| product.purchase[0].rate != 0 }
+    @products = current_user.products_of_seller.select{|product| product.purchase[0].rate != 0 && product.is_buy == false }
   end
 
   def in_progress
-    @products = current_user.products_of_seller.select{|product| product.purchase[0].rate == 0 }
+    @products = current_user.products_of_seller.select{|product| product.purchase[0].rate == 0 && product.is_buy == false }
   end
 
   private
