@@ -41,5 +41,6 @@ Rails.application.routes.draw do
   end
 
   resources :sells
+  resources :search, only: :index
   get '/categories' => 'categories#category'
 end
