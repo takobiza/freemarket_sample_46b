@@ -22,6 +22,7 @@
       height: 35px;
       position: relative;
       width: calc(100% - (134px + 15px));
+
       .input {
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -35,13 +36,19 @@
           position: relative;
           width: 35px;
           visibility: hidden;
+
+          // &::after {
+          //   // content: "<i class="fas"></i>";
+          // }
+
           &--btn {
             line-height: 35px;
             position: absolute;
             visibility: visible;
-            top: 7px;
-            right: 8px;
+            top: 2px;
+            right: 18px;
             text-align: center;
+            font-size: 13px;
 
           }
         }
