@@ -69,17 +69,7 @@
             着払い
 
       .item-box__item-buy-btn
-        - if @product.user_id == current_user.id
-          %p.item-box__edit
-            = link_to '商品を編集', root_path
-          or
-          %p.item-box__stop
-            = link_to '出品を一旦停止する', root_path
-          %p.item-box__delete
-            = link_to 'この商品を削除する', root_path
-        - else
-          %p.item-box__buy
-            = link_to '購入画面に進む', root_path
+        = render 'shared/product_edit'
 
       .item-box__item-message
         %p #{@product.description}
