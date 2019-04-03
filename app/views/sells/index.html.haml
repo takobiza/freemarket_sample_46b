@@ -61,8 +61,8 @@
               .single-main__sell-registration__options__product__box__title-two-more
                 = form.label :brand_id, "ブランド"
                 %span.any-area 任意
-              = form.collection_select :brand_id, Brand.all, :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box"}
-              = icon 'fa', 'angle-down', class: 'single-main__sell-registration__options__product__box__arrow-down'
+              %input.single-main__sell-registration__product-name__type-name{id:"brand-type-area", placeholder: "例) シャネル"}
+              = form.hidden_field :brand_id, value: "", id: "brand-number-area"
 
 
             .single-main__sell-registration__options__product__box

@@ -64,6 +64,10 @@ function buildOption(categories) {
     })
   });
 
+  $('#small_category').on('change', function() {
+    $('#brand-box').css('display', 'block');
+  });
+
   $(function() {
     if (location.href.match(/\/products\/\d+\/edit/)) {
       $('#large_category').prepend("<option value> --- </option>");

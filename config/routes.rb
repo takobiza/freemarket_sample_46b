@@ -56,7 +56,7 @@ Rails.application.routes.draw do
   resources :sells
   resources :search, only: :index
 
-  get '/categories' => 'categories#category'
+  resources :brands, only: :new
 
   delete '/products/:id/edit' => 'products#remove'
 
