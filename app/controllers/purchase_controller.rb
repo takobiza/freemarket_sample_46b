@@ -1,5 +1,7 @@
 class PurchaseController < ApplicationController
   before_action :get_header_category_brand, only: [:edit, :update]
+  before_action :authenticate_user!
+
 
   def edit
     @product = Product.find(params[:product_id])

@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   add_breadcrumb '出品した商品-出品中', :sells_path
   before_action :set_product, except: [:create, :index, :switch]
   before_action :get_header_category_brand, only: [:index, :show]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :remove]
+
 
 
   def index
@@ -80,6 +82,13 @@ class ProductsController < ApplicationController
       else
         format.json { render template: 'sells/index', locals: {product: @product} }
       end
+    end
+  end
+
+  def remove
+    respond_to do |format|
+      format.html
+      format.json { ProductImage.find(params[:image_id]).delete }
     end
   end
 

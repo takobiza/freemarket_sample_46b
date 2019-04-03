@@ -35,7 +35,12 @@ Rails.application.routes.draw do
     end
   end
 
+<<<<<<< HEAD
   resources :products, only:[:show, :index, :create, :edit, :update, :destroy] do
+=======
+
+  resources :products do
+>>>>>>> takobiza/master
     collection do
       get "/:product_id/rate" => "purchase#edit", as: :rate
       patch "/:product_id/rate" => "purchase#update", as: :rate_update
@@ -58,4 +63,7 @@ Rails.application.routes.draw do
   resources :search, only: :index
 
   get '/categories' => 'categories#category'
+
+  delete '/products/:id/edit' => 'products#remove'
+
 end

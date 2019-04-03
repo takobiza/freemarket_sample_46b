@@ -1,4 +1,6 @@
 class SellsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @product = Product.new
     @product.build_delivary_option
