@@ -5,8 +5,9 @@
   = link_to(product_path(product.id), class: 'search-result-product__link') do
     .product-image
       -# 実際の実装時には下記のコメントアウトを外してください。外さないと画像が表示されません
-      -# - if product.item_image.present?
-      -#   = image_tag(product.item_image, class: 'product-image__image')
+      - if product.item_image.present?
+        = image_tag(product.item_image, class: 'product-image__image')
+
       - if product.is_buy != true
         .product-image__info
           .product-image__info__sold SOLD

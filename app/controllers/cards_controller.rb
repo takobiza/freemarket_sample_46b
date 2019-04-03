@@ -2,6 +2,7 @@ class CardsController < ApplicationController
     protect_from_forgery except: :create
     before_action :get_header_category_brand
     before_action :set_api_key
+    before_action :authenticate_user!
 
   def index
     if current_user.pay_id.present?
