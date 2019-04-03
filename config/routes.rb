@@ -35,17 +35,17 @@ Rails.application.routes.draw do
     end
   end
 
-<<<<<<< HEAD
-  resources :products, only:[:show, :index, :create, :new, :destroy, :update] do
-=======
-
-  resources :products, only:[:show, :index, :create, :edit, :update] do
+  resources :products, only:[:show, :index, :create, :edit, :update, :destroy] do
     collection do
       get "/:product_id/rate" => "purchase#edit", as: :rate
       patch "/:product_id/rate" => "purchase#update", as: :rate_update
     end
 
->>>>>>> takobiza/master
+    collection do
+      patch "/:id" => "products#switch"
+      put "/:id" => "products#switch"
+    end
+
     resources :transactions, only: :index
 
     collection do

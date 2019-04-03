@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   add_breadcrumb 'メルカリ', '/'
   add_breadcrumb 'マイページ', :users_path
   add_breadcrumb '出品した商品-出品中', :sells_path
-  before_action :set_product, except: [:create, :index]
+  before_action :set_product, except: [:create, :index, :switch]
   before_action :get_header_category_brand, only: [:index, :show]
 
 
@@ -54,9 +54,6 @@ class ProductsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-
-  end
 
   def destroy
     product = Product.find(params[:id])
@@ -66,7 +63,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def update
+  def switch
     product = Product.find(params[:id])
     if product.status
       product.update(status: '0')
@@ -74,7 +71,8 @@ class ProductsController < ApplicationController
       product.update(status: '1')
     end
     redirect_to("/")
-=======
+  end
+
   def update
     respond_to do |format|
       if @product.update(sell_params)
@@ -83,7 +81,6 @@ class ProductsController < ApplicationController
         format.json { render template: 'sells/index', locals: {product: @product} }
       end
     end
->>>>>>> takobiza/master
   end
 
 
