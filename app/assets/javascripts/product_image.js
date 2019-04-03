@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function() {
 
       var p = $('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length;
 
-      $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + p);
+      $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + p).attr('edit_value', p);
 
       function remove_image(target) {
         target.find("a.single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn").on('click', function(){
@@ -59,7 +59,7 @@ $(document).on('turbolinks:load', function() {
           var m = grandBox.attr('value');
           grandBox.val('');
           parentBox.parent().remove();
-          $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + m);
+          $('.single-main__sell-registration__upload-drop-box__text').attr('edit_value', m).attr('for', 'file-photo-' + m);
         });
       }
     });
