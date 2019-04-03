@@ -35,11 +35,14 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :products do
     collection do
       get "/:product_id/rate" => "purchase#edit", as: :rate
       patch "/:product_id/rate" => "purchase#update", as: :rate_update
+    end
+
+    collection do
+      patch "/:id/switch" => "products#switch", as: :switch
     end
 
     resources :transactions, only: :index

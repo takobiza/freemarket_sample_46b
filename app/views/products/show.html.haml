@@ -1,10 +1,11 @@
 = render '/shared/main-header'
 = render '/shared/breadcrumbs'
 
-
 .product-detail-wrapper
   .product-detail-wrapper__container
-
+    - flash.each do |message_type, message|
+      -if message_type == "success" && (message == "出品停止しました" || message == "出品再開しました")
+        = javascript_tag "toastr.success('#{message}')"
 
     .item-box
       %h1.item-box__item-name

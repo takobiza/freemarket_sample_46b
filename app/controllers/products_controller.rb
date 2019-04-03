@@ -3,9 +3,10 @@ class ProductsController < ApplicationController
   add_breadcrumb 'メルカリ', '/'
   add_breadcrumb 'マイページ', :users_path
   add_breadcrumb '出品した商品-出品中', :sells_path
-  before_action :set_product, except: [:create, :index]
-  before_action :get_header_category_brand, only: [:index, :show]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :remove]
+  before_action :set_product, except: [:create, :index, :switch]
+  before_action :get_header_category_brand, only: [:index, :show, :switch]
+  before_action :authenticate_user!, only: [:create,  :remove]
+  before_action :no_use_turbolinks_cache, only: [:show]
 
 
 
@@ -38,7 +39,6 @@ class ProductsController < ApplicationController
   def show
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
-
     add_breadcrumb @product.name
   end
 
@@ -54,6 +54,27 @@ class ProductsController < ApplicationController
       format.html
       format.json { @middle_categories = Category.find(params[:category_id]).children }
     end
+  end
+
+
+  def destroy
+    product = Product.find(params[:id])
+    if product.user_id == current_user.id
+      product.destroy
+      redirect_to root_path
+    end
+  end
+
+  def switch
+    @product = Product.find(params[:id])
+    if @product.status
+      @product.update(status: '0')
+      flash[:success] = "出品停止しました"
+    else
+      @product.update(status: '1')
+      flash[:success] = "出品再開しました"
+    end
+    redirect_to product_path(@product.id)
   end
 
   def update
@@ -81,11 +102,11 @@ class ProductsController < ApplicationController
   end
 
   def brand_search(brand_id)
-    Product.where(brand_id: brand_id).order("RAND()").limit(4)
+    Product.where(brand_id: brand_id).where(status: 1).order("RAND()").limit(4)
   end
 
   def get_category_SQL(low, high)
-    ActiveRecord::Base.connection.select_all("SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `products`.`category_id` BETWEEN #{low} AND #{high}  ORDER BY RAND() LIMIT 4").to_hash.map{|id| Product.find( id.fetch("id") )}
+    ActiveRecord::Base.connection.select_all("SELECT products.id FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` WHERE `products`.`category_id` BETWEEN #{low} AND #{high} AND  `products`.`status` = 1 ORDER BY RAND() LIMIT 4").to_hash.map{|id| Product.find( id.fetch("id") )}
   end
 
   def set_product
@@ -93,7 +114,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.permit(:name, :price)
+    params.permit(:name, :price, :status)
   end
 
   def sell_params
@@ -103,15 +124,7 @@ class ProductsController < ApplicationController
   def get_header_category_brand
     @brands = Brand.limit(5)
 
-    @categories = Category.roots
-    @categories.each do |large|
-      large.children.limit(14).each do |middle|
-        @categories+= [middle]
-        middle.children.limit(14).each do |small|
-          @categories+= [small]
-        end
-      end
-    end
+    @categories = Category.all
   end
 
 end
