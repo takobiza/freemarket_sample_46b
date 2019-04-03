@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   add_breadcrumb '出品した商品-出品中', :sells_path
   before_action :set_product, except: [:create, :index]
   before_action :get_header_category_brand, only: [:index, :show]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :remove]
+
 
 
   def index
