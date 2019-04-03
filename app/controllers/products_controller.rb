@@ -39,7 +39,6 @@ class ProductsController < ApplicationController
   def show
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
-
     add_breadcrumb @product.name
   end
 
@@ -125,15 +124,7 @@ class ProductsController < ApplicationController
   def get_header_category_brand
     @brands = Brand.limit(5)
 
-    @categories = Category.roots
-    @categories.each do |large|
-      large.children.limit(14).each do |middle|
-        @categories+= [middle]
-        middle.children.limit(14).each do |small|
-          @categories+= [small]
-        end
-      end
-    end
+    @categories = Category.all
   end
 
 end

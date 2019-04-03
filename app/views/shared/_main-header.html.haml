@@ -22,14 +22,18 @@
                   %li
                     = link_to large.name, root_path, class: "category__menu__large_text"
                     %ul.category__menu__large__middle
+                      - middle_index = 0
                       - @categories.each do |middle|
-                        - if middle.parent_id == large.id
+                        - if middle.parent_id == large.id && 14 > middle_index
                           %li
                             = link_to middle.name, root_path
+                            - middle_index += 1
                             %ul.category__menu__large__middle__small
+                              - small_index = 0
                               - @categories.each do |small|
-                                - if small.parent_id == middle.id
+                                - if small.parent_id == middle.id && 14 > small_index
                                   %li
+                                    - small_index += 1
                                     = link_to small.name, root_path
 
         %li.nav.header-inner__bottom--left__brand
