@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
   before_action :get_header_category_brand
   before_action :authenticate_user!
   add_breadcrumb 'メルカリ', '/'
+  before_action :no_use_turbolinks_cache, only: [:index]
+
 
   def index
     @user = User.find(current_user.id)
@@ -11,8 +13,8 @@ class ProfilesController < ApplicationController
 
     @user = User.find(current_user.id)
     if @user.update(profile_params)
-      flash.now[:success] = "変更しました"
-      render :index
+      flash[:success] = "変更しました"
+      redirect_to profiles_path
     else
       render :index
     end
