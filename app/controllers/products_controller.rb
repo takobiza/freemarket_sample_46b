@@ -4,8 +4,9 @@ class ProductsController < ApplicationController
   add_breadcrumb 'マイページ', :users_path
   add_breadcrumb '出品した商品-出品中', :sells_path
   before_action :set_product, except: [:create, :index, :switch]
-  before_action :get_header_category_brand, only: [:index, :show]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :remove]
+  before_action :get_header_category_brand, only: [:index, :show, :switch]
+  before_action :authenticate_user!, only: [:create,  :remove]
+  before_action :no_use_turbolinks_cache, only: [:show]
 
 
 
@@ -61,18 +62,20 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     if product.user_id == current_user.id
       product.destroy
-      redirect_to("/")
+      redirect_to root_path
     end
   end
 
   def switch
-    product = Product.find(params[:id])
-    if product.status
-      product.update(status: '0')
+    @product = Product.find(params[:id])
+    if @product.status
+      @product.update(status: '0')
+      flash[:success] = "出品停止しました"
     else
-      product.update(status: '1')
+      @product.update(status: '1')
+      flash[:success] = "出品再開しました"
     end
-    redirect_to("/")
+    redirect_to product_path(@product.id)
   end
 
   def update

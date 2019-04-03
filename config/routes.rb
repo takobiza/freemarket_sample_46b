@@ -42,8 +42,7 @@ Rails.application.routes.draw do
     end
 
     collection do
-      patch "/:id" => "products#switch"
-      put "/:id" => "products#switch"
+      patch "/:id/switch" => "products#switch", as: :switch
     end
 
     resources :transactions, only: :index
