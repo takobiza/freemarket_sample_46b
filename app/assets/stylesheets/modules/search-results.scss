@@ -40,16 +40,74 @@
         width: calc( 700px + 20px );
         overflow: hidden;
 
-
-
       }
 
       .pagenate-box {
         margin-top: 40px;
         width: 700px;
         height: 44px;
-        background-color: #ccc;
         list-style-type: none;
+        text-align: center;
+
+        nav {
+          .page {
+            max-width: 44px;
+            max-height: 44px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: solid 1px #ccc;
+            font-size: 14px;
+            padding: 13px 15px;
+            box-sizing: border-box;
+
+            a {
+              &:link {
+                color: #000;
+              }
+              &:visited {
+                color: #000;
+              }
+              &:hover {
+                color: #000;
+              }
+              &:active {
+                color: #000;
+              }
+              text-decoration: none;
+            }
+          }
+          .current {
+            background-color: #ea352d;
+            color: #fff;
+          }
+
+          .next, .last, .first, .prev {
+            max-width: 44px;
+            max-height: 44px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: solid 1px #ccc;
+            font-size: 14px;
+            padding: 13px 15px;
+            box-sizing: border-box;
+
+            a {
+              &:link {
+                color: #000;
+              }
+              &:visited {
+                color: #000;
+              }
+              &:hover {
+                color: #000;
+              }
+              &:active {
+                color: #000;
+              }
+              text-decoration: none;
+            }
+          }
+        }
       }
     }
 
