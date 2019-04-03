@@ -75,10 +75,6 @@ class ProductsController < ApplicationController
       @product.update(status: '1')
       flash[:success] = "出品再開しました"
     end
-    # @six_products_related_product = @product.six_products_related_product
-    # @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
-    # add_breadcrumb @product.name
-    # render :show
     redirect_to product_path(@product.id)
   end
 
