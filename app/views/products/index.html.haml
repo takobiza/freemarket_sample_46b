@@ -26,7 +26,7 @@
 
           .pickup-items__boxes
             - @items_ladies.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -34,7 +34,7 @@
 
           .pickup-items__boxes
             - @items_mens.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -42,7 +42,7 @@
 
           .pickup-items__boxes
             - @items_kids.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -50,7 +50,7 @@
 
           .pickup-items__boxes
             - @items_cosmetics.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
 
@@ -62,7 +62,7 @@
 
           .pickup-items__boxes
             - @items_chanel.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -70,7 +70,7 @@
 
           .pickup-items__boxes
             - @items_vuitton.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -78,7 +78,7 @@
 
           .pickup-items__boxes
             - @items_supreme.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
         .pickup-items
@@ -86,7 +86,7 @@
 
           .pickup-items__boxes
             - @items_nike.each do |i|
-              = render partial: 'products-list', locals: {i: i}
+              = render partial: '/shared/top-page-product', locals: {i: i}
           .pickup-items__view-all すべての商品を見る
 
   = render '/shared/main-footer'
