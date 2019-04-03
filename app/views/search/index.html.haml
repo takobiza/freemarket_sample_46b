@@ -15,8 +15,9 @@
       .main-results__products
         - @products.each do |product|
           = render partial:'/shared/search-result-product', locals: { product: product }
-      -# - if @count != 0
-      -#   %ul.pagenate-box ここにページネーションが表示されます
+      - if @count >= 17
+        %ul.pagenate-box
+          = paginate @products
     .side-detailed-search
       .side-detailed-search__form-box
         .select-sort-box
