@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_api_key
 
   def index
 
@@ -13,5 +14,10 @@ class TransactionsController < ApplicationController
       redirect_to user_cards_path(current_user.id)
     end
 
+  end
+
+  private
+  def set_api_key
+    Payjp.api_key = 'sk_test_cf22f826afb6315d068a24b2'
   end
 end
