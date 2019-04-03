@@ -10,14 +10,30 @@ class User < ApplicationRecord
 
   has_one :user_address, dependent: :destroy
   has_one :sns_credentials, dependent: :destroy
-  has_many :products
+  has_many :products, dependent: :destroy
+  has_many :purchase_seller, :class_name => 'Purchase', :foreign_key => 'seller_id'
+  has_many :purchase_buyer, :class_name => 'Purchase', :foreign_key => 'buyer_id'
+  has_many :products_of_seller, :through => :purchase_seller, :source => 'product'
+  has_many :products_of_buyer, :through => :purchase_buyer, :source => 'product'
+
   validates :nickname, presence: true
   validates :nickname,    length: { maximum: 20 }
   validates :message,    length: { maximum: 1000 }
 
 
-
   attr_writer :card_number, :credit_year, :credit_month, :card_code
+
+  def get_good_rate
+    self.purchase_seller.select{|purchase| purchase.rate == 1}.length
+  end
+
+  def get_normal_rate
+    self.purchase_seller.select{|purchase| purchase.rate == 2}.length
+  end
+
+  def get_low_rate
+    self.purchase_seller.select{|purchase| purchase.rate == 3}.length
+  end
 
   def card_number
     @card_number

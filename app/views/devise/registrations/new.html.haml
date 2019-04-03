@@ -95,21 +95,24 @@
               .signup-main-content__inner-form__group__select__wrap
                 = f.select(:birth_year, User::years, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"})
                 .icon__arrow--bottom
-                  = fa_icon "angle-down"
+                  = icon 'fa', 'angle-down'
+
               .signup-main-content__inner-form__group__select__wrap_text 年
 
             .signup-main-content__inner-form__group__select
               .signup-main-content__inner-form__group__select__wrap
                 = f.select(:birth_month, User::months, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"})
                 .icon__arrow--bottom
-                  = fa_icon "angle-down"
+                  = icon 'fa', 'angle-down'
+
               .signup-main-content__inner-form__group__select__wrap_text 月
 
             .signup-main-content__inner-form__group__select
               .signup-main-content__inner-form__group__select__wrap
                 = f.select(:birth_day, [], { prompt: "--" }, { class: "signup-main-content__inner-form__group__select__wrap-default" })
                 .icon__arrow--bottom
-                  = fa_icon "angle-down"
+                  = icon 'fa', 'angle-down'
+
               .signup-main-content__inner-form__group__select__wrap_text 日
 
           %p.signup-main-content__inner-form__text-gray ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

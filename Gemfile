@@ -48,6 +48,9 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'faker'
+  gem 'hirb'
+  gem 'hirb-unicode'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -78,23 +81,22 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
 gem 'erb2haml'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
 gem 'bxslider-rails'
 gem 'jquery-rails'
 gem 'devise'
 gem 'recaptcha', require: "recaptcha/rails"
-gem 'pry-rails'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'active_hash'
-gem 'hirb'
-gem 'hirb-unicode'
+gem 'payjp'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'breadcrumbs_on_rails'
 gem 'acts_as_tree'
+gem 'breadcrumbs_on_rails'
 gem 'toastr_rails'
 gem 'fog-aws'
+gem 'kaminari', '~> 0.17.0'

@@ -32,13 +32,15 @@
     cursor: pointer;
 }
 
-@mixin arrow-bottom-icon($right: 8px) {
+@mixin arrow-bottom-icon($right: 0px) {
     position: absolute;
     right: $right;
-    top: -24%;
+    top: 3%;
     width: 30px;
-    background-color: $white;
+    background-color: #ffffff;
     color: #888;
-    font-size: 48px;
+    font-size: 31px;
     -webkit-text-stroke: 2px white;
 }
+
+

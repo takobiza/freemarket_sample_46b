@@ -21,16 +21,40 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :cards, only: :index
+    resources :cards, only:[:index, :new, :update, :create]
+
+    collection do
+      delete '/:user_id/card/destroy' => "cards#destroy", as: :card_delete
+    end
+
     collection do
       get 'logout'
+      get '/listings/listing' => 'users#listing'
+      get '/listings/completed' => 'users#completed'
+      get '/listings/in_progress' => 'users#in_progress'
     end
   end
 
-  resources :products, only:[:show, :index, :create, :new] do
+
+  resources :products do
+    collection do
+      get "/:product_id/rate" => "purchase#edit", as: :rate
+      patch "/:product_id/rate" => "purchase#update", as: :rate_update
+    end
+
     resources :transactions, only: :index
+
+    collection do
+      post "/:products_id/transactions" => "cards#pay", as: :buy_product
+    end
+
   end
 
   resources :sells
+  resources :search, only: :index
+
   get '/categories' => 'categories#category'
+
+  delete '/products/:id/edit' => 'products#remove'
+
 end

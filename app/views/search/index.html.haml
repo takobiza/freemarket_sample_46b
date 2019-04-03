@@ -1,0 +1,35 @@
+-# 商品検索結果のページ
+-# このページについて：search/index.html.haml
+-# このページのscssファイル：search-results.scss
+.header-wrapper
+  = render '/shared/main-header'
+  = render '/shared/breadcrumbs'
+.search-results-container
+  .search-container
+    .main-results
+      %h2.main-results__count 検索結果 #{ @count }件
+      - if @count == 0
+        %p.item-not-found
+          該当する商品が見つかりません。商品は毎日増えていますので、これからの出品に期待してください。
+        %h3.new-products 新着商品
+      .main-results__products
+        - @products.each do |product|
+          = render partial:'/shared/search-result-product', locals: { product: product }
+      - if @count >= 17
+        %ul.pagenate-box
+          = paginate @products
+    .side-detailed-search
+      .side-detailed-search__form-box
+        .select-sort-box
+          .select-sort-box__wrap
+            .select-base
+              %select.select-default
+                %option 並び替え
+                %option 価格の安い順
+                %option 価格の高い順
+                %option 出品の古い順
+                %option 出品の新しい順
+                %option いいね!の多い順
+              %i.fa.fa-angle-down
+        .select-detailed-search-box 詳細検索はここに実装されます
+  = render '/shared/main-footer'

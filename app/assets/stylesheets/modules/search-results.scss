@@ -1,0 +1,189 @@
+.header-wrapper {
+  background-color: #fff;
+}
+
+.search-results-container {
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+  background-color: #f5f5f5;
+
+  .search-container {
+    margin: 0 auto ;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 1020px;
+    overflow: hidden;
+
+    .main-results {
+      width: 700px;
+      float: right;
+
+      &__count {
+        padding: 0 0 8px;
+        font-weight: 400;
+        font-size: 22px;
+      }
+
+      .item-not-found {
+        margin-top: 8px;
+        font-size: 14px;
+      }
+      .new-products {
+        margin: 24px 0 8px;
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      &__products {
+        position: relative;
+        left: -20px;
+        width: calc( 700px + 20px );
+        overflow: hidden;
+
+      }
+
+      .pagenate-box {
+        margin-top: 40px;
+        width: 700px;
+        height: 44px;
+        list-style-type: none;
+        text-align: center;
+
+        nav {
+          .page {
+            max-width: 44px;
+            max-height: 44px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: solid 1px #ccc;
+            font-size: 14px;
+            padding: 13px 15px;
+            box-sizing: border-box;
+
+            a {
+              &:link {
+                color: #000;
+              }
+              &:visited {
+                color: #000;
+              }
+              &:hover {
+                color: #000;
+              }
+              &:active {
+                color: #000;
+              }
+              text-decoration: none;
+            }
+          }
+          .current {
+            background-color: #ea352d;
+            color: #fff;
+          }
+
+          .next, .last, .first, .prev {
+            max-width: 44px;
+            max-height: 44px;
+            border-radius: 4px;
+            background-color: #fff;
+            border: solid 1px #ccc;
+            font-size: 14px;
+            padding: 13px 15px;
+            box-sizing: border-box;
+
+            a {
+              &:link {
+                color: #000;
+              }
+              &:visited {
+                color: #000;
+              }
+              &:hover {
+                color: #000;
+              }
+              &:active {
+                color: #000;
+              }
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .side-detailed-search {
+      width: 280px;
+      margin: 0 40px 0 0;
+
+      &__form-box {
+        overflow: hidden;
+
+        .select-sort-box {
+          width: 280px;
+          height: 48px;
+          position: relative;
+
+          &__wrap {
+            width: 280px;
+            height: 48px;
+            background-color: #fff;
+            border-style: solid;
+            border-color: #ccc;
+            border-width: 1px;
+            border-radius: 5px;
+            box-sizing: border-box;
+
+            .select-base {
+              width: 280px;
+              height: 48px;
+              box-sizing: border-box;
+              position: absolute;
+              top: 0;
+              left: 0;
+
+              .select-default {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                border-style: none;
+                background-color: transparent;
+                width: 280px;
+                height: 46px;
+                padding: 0 16px;
+                color: #333;
+                position: relative;
+                left: 0px;
+                &:focus {
+                  outline: 0;
+                }
+              }
+
+              .fa-angle-down {
+                position: absolute;
+                top: 0;
+                right: 16px;
+                color: #888;
+                font-size: 28px;
+                z-index: 2;
+                transform: translate(0, 8px);
+              }
+
+              &::after {
+                content: '';
+                pointer-events: none;
+              }
+            }
+          }
+        }
+
+        .select-detailed-search-box {
+          width: 280px;
+          background-color: #fff;
+          margin-top: 40px;
+          padding: 16px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+-# 商品検索結果内の各商品表示用の個別パーツ
+-# このページが主に組み込まれているところ：search/index.html.haml
+-# このページのscssファイル：search-result-product.scss
+.search-result-product
+  = link_to(product_path(product.id), class: 'search-result-product__link') do
+    .product-image
+      -# 実際の実装時には下記のコメントアウトを外してください。外さないと画像が表示されません
+      - if product.item_image.present?
+        = image_tag(product.item_image, class: 'product-image__image')
+
+      - if product.is_buy != true
+        .product-image__info
+          .product-image__info__sold SOLD
+    .search-result-product__text-area
+      .search-result-product__text-area__product-name
+        = product.name
+      .search-result-product__text-area__others
+        .iine
+          %i.fa.fa-heart
+          %span.iine-total **
+        %p.price
+          %span ¥
+          = product.price
+        %p.tax-info (税込)
