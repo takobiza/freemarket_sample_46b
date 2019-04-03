@@ -33,6 +33,9 @@
     padding: 4px 6px;
     border-radius: 2px;
     font-weight: normal;
+    &.any-area {
+      background-color: #ccc;
+    }
   }
   p {
     font-weight: normal;
