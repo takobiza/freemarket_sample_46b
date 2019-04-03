@@ -1,9 +1,13 @@
-.search-result-product {
+// このファイルは、rootのトップページに表示する新着アイテムの個別表示パーツのscssになります。
+
+.top-page-product {
   float: left;
   background-color: #fff;
-  width: 160px;
-  height: 270px;
-  margin: 0 0 20px 20px;
+  width: 213px;
+  height: 330px;
+  margin: 5px 0 5px 20px;
+  display: inline-block;
+  text-align: left;
 
   &__link {
     &:link {
@@ -22,17 +26,17 @@
 
 
     .product-image {
-      width: 160px;
-      height:160px;
+      width: 213px;
+      height: 213px;
       position: relative;
 
       &__image {
-        width: 160px;
-        height: 160px;
+        width: 213px;
+        height: 213px;
       }
 
       &__info {
-        width: 160px;
+        width: 213px;
         position: absolute;
         z-index: 8;
         top: 0;
@@ -69,20 +73,20 @@
       }
     }
 
-    .search-result-product__text-area {
+    .top-page-product__text-area {
       padding: 16px;
       height: 110px;
-      width: 160px;
+      width: 213px;
       box-sizing: border-box;
 
       &__product-name {
-        width: 128px;
+        width: 181px;
         height: 48px;
         overflow: hidden;
         position: relative;
 
         &::after {
-          width: 64px;
+          width: 90px;
           height: 24px;
           background: linear-gradient(to left, white, white, transparent);
           position: absolute;
@@ -95,7 +99,7 @@
 
       &__others {
         margin-top: 8px;
-        width: 128px;
+        width: 181px;
         height: 30px;
 
         .iine {
@@ -110,6 +114,7 @@
             font-size: 15px;
           }
         }
+
 
         .price {
           position: relative;

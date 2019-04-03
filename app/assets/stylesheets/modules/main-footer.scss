@@ -16,7 +16,9 @@
   right: 30px;
   text-align: center;
   width: 160px;
-
+  text-decoration: none;
+  color: $white;
+  z-index: 100;
   p {
     font-size: 25px;
     margin-top: 25px;

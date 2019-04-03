@@ -5,13 +5,11 @@
       %p クレジットカード一覧
       .l-content__payment__card__add
         .l-content__payment__card__add__inner
-          / = fa_icon 'credit-card', class: 'l-content__payment__card__add__inner__card-icon'
           = icon 'fa', 'credit-card', class: 'l-content__payment__card__add__inner__card-icon'
 
           = link_to 'クレジットカードを追加する', new_user_card_path, class: 'l-content__payment__card__add__inner'
       .l-content__payment__card__about-payment
         = link_to users_path, class: 'l-content__payment__card__about-payment__path' do
           .l-content__payment__card__about-payment__path__text 支払い方法について
-          / =fa_icon "angle-right", class: 'l-content__payment__card__about-payment__path__arrow-right'
           = icon 'fa', 'angle-right', class: 'l-content__payment__card__about-payment__path__arrow-right'
 

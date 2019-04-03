@@ -1,5 +1,7 @@
 class PurchaseController < ApplicationController
   before_action :get_header_category_brand, only: [:edit, :update]
+  before_action :authenticate_user!
+
 
   def edit
     @product = Product.find(params[:product_id])
@@ -39,15 +41,7 @@ class PurchaseController < ApplicationController
   def get_header_category_brand
     @brands = Brand.limit(5)
 
-    @categories = Category.roots
-    @categories.each do |large|
-      large.children.limit(14).each do |middle|
-        @categories+= [middle]
-        middle.children.limit(14).each do |small|
-          @categories+= [small]
-        end
-      end
-    end
+    @categories = Category.all
   end
 
   def purchase_params

@@ -2,6 +2,7 @@ class CardsController < ApplicationController
     protect_from_forgery except: :create
     before_action :get_header_category_brand
     before_action :set_api_key
+    before_action :authenticate_user!
 
   def index
     if current_user.pay_id.present?
@@ -36,7 +37,18 @@ class CardsController < ApplicationController
     customer: current_user.pay_id,
     currency: 'jpy'
    )
-    redirect_to root_path
+
+    if charge[:error].present?
+      redirect_to product_transactions_path(buy_product.id)
+    end
+
+    if Purchase.create(product_id: buy_product.id, price_pay: charge[:amount], rate: 0, buyer_id: current_user.id, seller_id: buy_product.user_id)
+      buy_product.update(is_buy: false)
+    else
+      redirect_to product_transactions_path(buy_product.id)
+    end
+
+    redirect_to users_path
   end
 
   def destroy
@@ -56,16 +68,7 @@ class CardsController < ApplicationController
 
  def get_header_category_brand
     @brands = Brand.limit(5)
-
-    @categories = Category.roots
-    @categories.each do |large|
-      large.children.limit(14).each do |middle|
-        @categories+= [middle]
-        middle.children.limit(14).each do |small|
-          @categories+= [small]
-        end
-      end
-    end
+    @categories = Category.all
   end
 end
 

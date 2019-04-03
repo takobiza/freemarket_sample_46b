@@ -1,25 +1,25 @@
--# 商品検索結果内の各商品表示用の個別パーツ
--# このページが主に組み込まれているところ：search/index.html.haml
--# このページのscssファイル：search-result-product.scss
-.search-result-product
-  = link_to(product_path(product.id), class: 'search-result-product__link') do
+-# この部分テンプレートは、rootのトップページに表示する新着アイテムの個別表示パーツになります。
+-# このページのscss: top-page-product.scss
+
+.top-page-product
+  = link_to(product_path(i.id), class: 'top-page-product__link') do
     .product-image
       -# 実際の実装時には下記2行のコメントアウトを外してください。外さないと画像が表示されません。ローカル環境では外すとエラーが出る場合があるのでその場合はコメントアウトしてください。
-      - if product.item_image.present?
-        = image_tag(product.item_image, class: 'product-image__image')
+      - if i.item_image.present?
+        = image_tag(i.item_image, class: 'product-image__image')
 
-      - if product.is_buy != true
+      - if i.is_buy != true
         .product-image__info
           .product-image__info__sold SOLD
-    .search-result-product__text-area
-      .search-result-product__text-area__product-name
-        = product.name
-      .search-result-product__text-area__others
+    .top-page-product__text-area
+      .top-page-product__text-area__product-name
+        = i.name
+      .top-page-product__text-area__others
         -# 下記 .iine についてはいいね機能実装時、.iineの直前に「いいねの数値が1以上の場合に.iine以下を表示する」コードを追加してください
         .iine
           %i.fa.fa-heart
           %span.iine-total 0
         %p.price
           %span ¥
-          = product.price
+          = i.price
         %p.tax-info (税込)
