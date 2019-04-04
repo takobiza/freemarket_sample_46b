@@ -1,0 +1,25 @@
+// このファイルは、アイテムの個別表示パーツ（ミドルサイズ）(横188px)のscssになります。
+-# このページのscss: product-middle.scss
+
+.product-middle
+  = link_to(product_path(product.id), class: 'product-middle__link') do
+    .product-image
+      -# 実際の実装時には下記2行のコメントアウトを外してください。外さないと画像が表示されません。ローカル環境では外すとエラーが出る場合があるのでその場合はコメントアウトしてください。
+      - if product.item_image.present?
+        = image_tag(product.item_image, class: 'product-image__image')
+
+      - if product.is_buy != true
+        .product-image__info
+          .product-image__info__sold SOLD
+    .product-middle__text-area
+      .product-middle__text-area__product-name
+        = product.name
+      .product-middle__text-area__others
+        -# 下記 .iine についてはいいね機能実装時、.iineの直前に「いいねの数値が1以上の場合に.iine以下を表示する」コードを追加してください
+        .iine
+          %i.fa.fa-heart
+          %span.iine-total 0
+        %p.price
+          %span ¥
+          = product.price
+        %p.tax-info (税込)

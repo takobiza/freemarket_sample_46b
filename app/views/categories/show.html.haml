@@ -1,0 +1,41 @@
+
+-# カテゴリ機能で選択したカテゴリの商品一覧を表示するページ
+-# このページについて：categories/show.html.haml
+-# このページのscssファイル：categories-show.scss
+.header-wrapper
+  = render '/shared/main-header'
+  = render '/shared/breadcrumbs'
+.set-baclground-color
+  .category-wrapper
+    .category-main-container
+      %ul.categories-nav
+        - @category_children.each do |children|
+          %li
+            = link_to children.name ,category_path(children.id)
+
+      .products-box
+        %h1
+          = @category.name
+          の商品一覧
+
+        .products-box__products-area
+          - @products.each do |product|
+            = render partial:'/shared/product-middle', locals: { product: product }
+
+      - if @count >= 15
+        %ul.pagenate-box
+          = paginate @products
+      .category-description
+        .category-description__title
+          %h3
+            = @category.name
+        .category-description__content
+          %p
+            = @category.name
+            の買い取り、売るならメルカリへ。自動車・オートバイの商品は
+            = @count
+            点あります。
+            = @category.name
+            の売り方や整理を検討中の方にお勧めです。
+
+  = render '/shared/main-footer'
