@@ -47,7 +47,14 @@
           %tr
             %th カテゴリー
             %td.item-box__item-main--table--change-color
-              #{@product.category.root.name}<br>>#{@product.category.parent.name}<br>>#{@product.category.name}
+              = link_to @product.category.root.name, category_path(@product.category.root.id)
+              <br>
+              >
+              = link_to @product.category.parent.name, category_path(@product.category.parent.id)
+              <br>
+              >
+              = link_to @product.category.name, category_path(@product.category.id)
+
           %tr
             %th ブランド
             = product_brand_name(@product)
