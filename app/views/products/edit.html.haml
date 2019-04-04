@@ -60,7 +60,13 @@
                 = form.collection_select :category_id, Category.where(parent_id: @middle_category_number), :id, :name, {prompt: "---"}, {class: "single-main__sell-registration__options__product__box__select-box", id: "small_category"}
                 = icon 'fa', 'angle-down', class: 'single-main__sell-registration__options__product__box__arrow-down'
 
-            .error_message_box_product#error_message_product
+
+            .single-main__sell-registration__options__product__edit-box#brand-box
+              .single-main__sell-registration__options__product__box__title-two-more
+                = form.label :brand_id, "ブランド"
+                %span.any-area 任意
+              %input.single-main__sell-registration__product-name__type-name{ id:"brand-type-area", placeholder: "例) シャネル", value: "#{@brand_name = Brand.find(@brand_id).name}" }
+              = form.hidden_field :brand_id, value: "#{@brand_id}", id: "brand-number-area"
 
 
             .single-main__sell-registration__options__product__box
