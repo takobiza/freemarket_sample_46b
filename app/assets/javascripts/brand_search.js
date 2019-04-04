@@ -22,6 +22,10 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
     .done(function(brands){
+      if ( brands[0].name == $('#brand-type-area').val() ) {
+        var brandJustId = brands[0].id
+        $('#brand-number-area').attr('value', brandJustId);
+      }
       $('#brands-area').empty();
       brands.forEach(function(brand) {
         appendBrandName(brand);
