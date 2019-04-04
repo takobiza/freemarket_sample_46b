@@ -178,7 +178,7 @@
 
     .show-items
 
-      %h3 #{@product.category.name} その他の商品
+      %h3 #{@product.category.name}のその他の商品
       - @six_products_related_product.each do |p|
         = link_to(product_path(p.id), class: 'show-items__product') do
           = image_tag(p.item_image, class: 'show-items__product--img')
