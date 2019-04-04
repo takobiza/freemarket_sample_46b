@@ -1,0 +1,15 @@
+= @category.name
+
+- if @products.present?
+  - @products.each do |product|
+    =product.name
+
+
+- else
+  商品に画像ない
+
+- if @category_children.present?
+  - @category_children.each do |category|
+    = category.name
+
+= paginate @products
