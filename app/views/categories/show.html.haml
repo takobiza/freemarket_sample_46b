@@ -1,3 +1,4 @@
+
 -# カテゴリ機能で選択したカテゴリの商品一覧を表示するページ
 -# このページについて：categories/show.html.haml
 -# このページのscssファイル：categories-show.scss
@@ -8,27 +9,33 @@
   .category-wrapper
     .category-main-container
       %ul.categories-nav
-        -# カテゴリ名は暫定的に入れています
-        %li
-          %a オートバイパーツ-----------------------------
-        %li
-          %a 自動車パーツ----------------------------------
-        %li
-          %a 自動車アクセサリー-----------------------------
-        %li
-          %a タイヤ・ホイール--------------------------
+        - @category_children.each do |children|
+          %li
+            = link_to children.name ,category_path(children.id)
+
       .products-box
-        %h1 ***の商品一覧
-        -# 下記の@productsは動作確認用に暫定的に書いています
+        %h1
+          = @category.name
+          の商品一覧
+
         .products-box__products-area
           - @products.each do |product|
             = render partial:'/shared/product-middle', locals: { product: product }
-      - if @count >= 5
+
+      - if @count >= 15
         %ul.pagenate-box
           = paginate @products
       .category-description
         .category-description__title
-          %h3 カテゴリ名
+          %h3
+            = @category.name
         .category-description__content
-          %p 自動車・オートバイの買い取り、売るならメルカリへ。自動車・オートバイの商品は90万点以上あります。人気のあるカテゴリーは外国自動車用パーツとメーターです。人気の商品は「メルセデス ベンツ 車 フロント ブラック シルバー」や「ガンマ　ウルフ　　メーター」があります。自動車・オートバイの売り方や整理を検討中の方にお勧めです。
+          %p
+            = @category.name
+            の買い取り、売るならメルカリへ。自動車・オートバイの商品は
+            = @count
+            点あります。
+            = @category.name
+            の売り方や整理を検討中の方にお勧めです。
+
   = render '/shared/main-footer'

@@ -1,12 +1,37 @@
 class CategoriesController < ApplicationController
-  def show
-    # ビューを作る上で下記の変数を作成しておかないと、エラーが出てビューの仕上がり状態の確認ができないため、暫定的に空の配列とProductの適当な値を渡してあります。
-    @categories = []
-    @brands = []
 
-    pre_products = Product.where('status = ?', '1').order('id DESC')
-    @count = pre_products.count
-    @products = pre_products.page(params[:page]).per(4)
-    # 仮で設置した変数などここまで（@countはページネーションの判定に必要なので必ず入れてください。詳しくはsearchコントローラーのindexアクションの記述とコメントアウトを参照してください）
+  before_action :get_header_category_brand
+
+  def show
+    @category = Category.find(params[:id])
+    if @category.root?
+      @category_descendants = @category.descendants
+      first_id =@category_descendants.first.id
+      last_id = @category_descendants.last.id
+      product = Product.where(category_id: first_id..last_id).where(status: true).order(created_at: "ASC")
+      @count = product.count
+      @products = product.page(params[:page]).per(14)
+      @category_children = @category.children.order("RAND()").limit(9)
+    elsif @category.leaf?
+      product = Product.where(category_id: @category.id).where(status: true).order(created_at: "ASC")
+      @products = product.page(params[:page]).per(14)
+      @count = product.count
+      @category_children = []
+    else
+      @category_childrens = @category.children
+      first_id =@category_childrens.first.id
+      last_id = @category_childrens.last.id
+      product = Product.where(category_id: first_id..last_id).where(status: true).order(created_at: "ASC")
+      @products = product.page(params[:page]).per(14)
+      @count = product.count
+      @category_children = @category.children.order("RAND()").limit(9)
+    end
+  end
+
+  private
+  def get_header_category_brand
+    @brands = Brand.limit(5)
+
+    @categories = Category.all
   end
 end
