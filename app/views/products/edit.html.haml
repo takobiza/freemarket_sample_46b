@@ -65,7 +65,7 @@
               .single-main__sell-registration__options__product__box__title-two-more
                 = form.label :brand_id, "ブランド"
                 %span.any-area 任意
-              %input.single-main__sell-registration__product-name__type-name{ id:"brand-type-area", placeholder: "例) シャネル", value: "#{@brand_name = Brand.find(@brand_id).name}" }
+              %input.single-main__sell-registration__product-name__type-name{ id:"brand-type-area", placeholder: "例) シャネル", value: "#{@brand_name}" }
               = form.hidden_field :brand_id, value: "#{@brand_id}", id: "brand-number-area"
               %ul.single-main__sell-registration__options__product__box__suggestion-area#brands-area
 

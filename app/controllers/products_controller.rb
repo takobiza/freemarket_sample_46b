@@ -50,8 +50,13 @@ class ProductsController < ApplicationController
     @images_count = @product_images.count
     @images_area_count = 5 - @images_count
     @images_area_count.times { @product.product_images.build }
-    @brand_id = @product.brand_id
-    @brand_name = Brand.find(@brand_id).name
+    if @product.brand_id.present?
+      @brand_id = @product.brand_id
+      @brand_name = Brand.find(@brand_id).name
+    else
+      @brand_id = ""
+      @brand_name = ""
+    end
     respond_to do |format|
       format.html
       format.json { @middle_categories = Category.find(params[:category_id]).children }

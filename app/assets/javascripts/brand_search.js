@@ -6,8 +6,12 @@ $(document).on('turbolinks:load', function() {
     $('#brands-area').append(html);
   }
 
-  $('#brand-type-area').on('keyup', function() {
-    $('#brand-number-area').val('');
+  var disabledKeys = ["9", "16", "17", "18", "37", "38", "39", "40", "27"]
+
+  $('#brand-type-area').on('keyup', function(e) {
+    if ($.inArray(`${e.keyCode}`, disabledKeys) == -1) {
+      $('#brand-number-area').val('');
+    }
     var brandNameKeyword = $(this).val();
     $.ajax({
       type: 'GET',
