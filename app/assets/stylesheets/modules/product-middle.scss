@@ -1,11 +1,12 @@
-// このファイルは、rootのトップページに表示する新着アイテムの個別表示パーツのscssになります。
+// このファイルは、アイテムの個別表示パーツ（ミドルサイズ）(横188px)のscssになります。
+// このscssファイルに対応する部分テンプレート：_product-middle.html.haml
 
-.top-page-product {
+.product-middle {
   float: left;
   background-color: #fff;
-  width: 213px;
-  height: 330px;
-  margin: 5px 0 5px 20px;
+  width: 188px;
+  height: 298px;
+  margin: 0px 0 20px 20px;
   display: inline-block;
   text-align: left;
 
@@ -26,17 +27,17 @@
 
 
     .product-image {
-      width: 213px;
-      height: 213px;
+      width: 188px;
+      height: 188px;
       position: relative;
 
       &__image {
-        width: 213px;
-        height: 213px;
+        width: 188px;
+        height: 188px;
       }
 
       &__info {
-        width: 213px;
+        width: 188px;
         position: absolute;
         z-index: 8;
         top: 0;
@@ -73,20 +74,20 @@
       }
     }
 
-    .top-page-product__text-area {
+    .product-middle__text-area {
       padding: 16px;
       height: 110px;
-      width: 213px;
+      width: 188px;
       box-sizing: border-box;
 
       &__product-name {
-        width: 181px;
+        width: 156px;
         height: 48px;
         overflow: hidden;
         position: relative;
 
         &::after {
-          width: 90px;
+          width: 80px;
           height: 24px;
           background: linear-gradient(to left, white, white, transparent);
           position: absolute;
@@ -99,7 +100,7 @@
 
       &__others {
         margin-top: 8px;
-        width: 181px;
+        width: 156px;
         height: 30px;
 
         .iine {
