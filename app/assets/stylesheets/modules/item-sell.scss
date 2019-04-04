@@ -33,6 +33,9 @@
     padding: 4px 6px;
     border-radius: 2px;
     font-weight: normal;
+    &.any-area {
+      background-color: #ccc;
+    }
   }
   p {
     font-weight: normal;
@@ -108,6 +111,19 @@
         &__title-two-more {
           margin-top: 40px;
         }
+        &__suggestion-area {
+          width: 400px;
+          padding-left: 8px;
+          position: absolute;
+          z-index: 2;
+          background-color: white;
+          box-shadow: 0.5px 0.5px;
+          border: 0.3px solid #ccc;
+          border-top: 0;
+          &__brand-name {
+            cursor: pointer;
+          }
+        }
       }
       &__price-box {
         margin-top: 24px;
@@ -177,4 +193,7 @@
       }
     }
   }
+}
+#brand-type-area {
+  margin-top: 8px;
 }

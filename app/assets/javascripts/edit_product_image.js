@@ -36,6 +36,24 @@ $(document).on('turbolinks:load', function() {
     $('.single-main__sell-registration__upload-drop-box__text').on('click', function() {
       var g = $(this).attr('edit_value');
 
+      if ($('#file-photo-' + g)[0].files[0] !== undefined || $('#file-photo-' + g).next().find('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length == 1) {
+        // inputにfileが入っていたら以下を実行
+        var g = 0;
+        if ($('#file-photo-' + g)[0].files[0] !== undefined || $('#file-photo-' + g).next().find('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length == 1) {
+          var g = 1;
+          if ($('#file-photo-' + g)[0].files[0] !== undefined || $('#file-photo-' + g).next().find('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length == 1) {
+            var g = 2;
+            if ($('#file-photo-' + g)[0].files[0] !== undefined || $('#file-photo-' + g).next().find('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length == 1) {
+              var g = 3;
+              if ($('#file-photo-' + g)[0].files[0] !== undefined || $('#file-photo-' + g).next().find('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length == 1) {
+                var g = 4;
+              }
+            }
+          }
+        }
+        $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + g);
+      }
+
       $('#file-photo-' + g).off().on('change',function() {
         var file_photo = $(this);
         var filepropArray = $(this).prop('files');
@@ -63,7 +81,8 @@ $(document).on('turbolinks:load', function() {
 
         var p = $('img.single-main__sell-registration__upload-drop-box__photo__image-area__image').length;
 
-        $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + p).attr('edit_value', p);
+        $('.single-main__sell-registration__upload-drop-box__text').attr('edit_value', p);
+        $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + p);
 
         function remove_image(target) {
           target.find("a.single-main__sell-registration__upload-drop-box__photo__image-area__remove-btn").on('click', function(){
@@ -73,7 +92,7 @@ $(document).on('turbolinks:load', function() {
             var m = grandBox.attr('value');
             grandBox.val('');
             parentBox.parent().remove();
-            $('.single-main__sell-registration__upload-drop-box__text').attr('for', 'file-photo-' + m);
+            $('.single-main__sell-registration__upload-drop-box__text').attr('edit_value', m).attr('for', 'file-photo-' + m);
           });
         }
       });

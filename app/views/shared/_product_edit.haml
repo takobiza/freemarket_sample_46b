@@ -23,5 +23,9 @@
   #glayLayer
   #overLayer
 - else
-  %p.item-box__buy
-    = link_to '購入画面に進む', product_transactions_path(@product.id)
+  - if @product.is_buy
+    %p.item-box__buy
+      = link_to '購入画面に進む', product_transactions_path(@product.id)
+  - else
+    %p.item-box__stop
+      = link_to '売り切れました',tabindex: "-1"
