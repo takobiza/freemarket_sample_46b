@@ -111,6 +111,11 @@
         &__title-two-more {
           margin-top: 40px;
         }
+        &__suggestion-area {
+          &__brand-name {
+            cursor: pointer;
+          }
+        }
       }
       &__price-box {
         margin-top: 24px;

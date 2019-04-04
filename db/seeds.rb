@@ -19,6 +19,13 @@ Brand.create(name: "シャネル")
 Brand.create(name: "ルイ ヴィトン")
 Brand.create(name: "シュプリーム")
 Brand.create(name: "ナイキ")
+Brand.create(name: "シャンテクレール")
+Brand.create(name: "シャペル")
+Brand.create(name: "シナコバ")
+Brand.create(name: "アシックス")
+Brand.create(name: "エルルイ")
+Brand.create(name: "リーム")
+Brand.create(name: "シャルルガルニエ")
 
 user = User.create!(email: "hoge@gmail.com", password: 11111111, nickname: "出品者")
 
