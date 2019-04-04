@@ -57,10 +57,7 @@ Rails.application.routes.draw do
   resources :search, only: :index
   resources :categories, only: :show
 
-<<<<<<< HEAD
   resources :brands, only: :new
-=======
->>>>>>> takobiza/master
 
   delete '/products/:id/edit' => 'products#remove'
 
