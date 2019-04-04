@@ -112,6 +112,14 @@
           margin-top: 40px;
         }
         &__suggestion-area {
+          width: 400px;
+          padding-left: 8px;
+          position: absolute;
+          z-index: 2;
+          background-color: white;
+          box-shadow: 0.5px 0.5px;
+          border: 0.3px solid #ccc;
+          border-top: 0;
           &__brand-name {
             cursor: pointer;
           }
