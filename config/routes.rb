@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   resources :search, only: :index
   resources :categories, only: :show
 
+  resources :brands, only: :new
 
   delete '/products/:id/edit' => 'products#remove'
 
