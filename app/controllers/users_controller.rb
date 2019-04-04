@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :get_header_category_brand
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:new]
   add_breadcrumb 'メルカリ', '/'
 
   def index
