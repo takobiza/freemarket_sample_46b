@@ -12,9 +12,9 @@
     %script{ src: 'https://ajaxzip3.github.io/ajaxzip3.js', charset: 'UTF-8'}
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
     %meta{name: "turbolinks-cache-control", content: "#{use_turbolinks_cache?}"}
-    %meta{name: robots, content: noindex}
-    %meta{name: robots, content: nofollow}
-    %meta{name: robots, content: noarchive}
+    %meta{name: "robots", content: "noindex"}
+    %meta{name: "robots", content: "nofollow"}
+    %meta{name: "robots", content: "noarchive"}
 
   %body
     = yield
