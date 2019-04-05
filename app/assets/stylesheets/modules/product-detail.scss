@@ -143,7 +143,57 @@
   &__delete {
     background-color: gray;
     margin: 20px;
+    color: $white;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 60px;
+    // text-decoration: none;
   }
+  dl dt {
+      cursor: pointer;
+    }
+    .ident{
+      font-size: 20px;
+      font-weight: bold;
+      padding-top: 20px;
+      }
+    .modal{
+      font-size: 50px;
+      color: black;
+    }
+    #cancel{
+      color: black;
+      font-size: 20px;
+      padding: 10px;
+      }
+    #delete{
+      color: #3399FF;
+      font-size: 20px;
+      padding: 20px;
+    }
+    #glayLayer{
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: #555555;
+      filter: alpha(opacity=75);
+      opacity: 0.75;
+    }
+    #overLayer{
+      display: none;
+      width: 600px;
+      height: 200px;
+      background: white;
+      padding: 10px;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+    }
+
+
   &__buy {
     background-color: $warm-red;
     margin: 20px;
