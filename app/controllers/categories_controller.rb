@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     if @category.root?
-      @category_descendants = @category.descendants
+      @category_descendants = @category.descendants.select{|category| category.parent_id != @category.id}
       first_id =@category_descendants.first.id
       last_id = @category_descendants.last.id
       product = Product.where(category_id: first_id..last_id).where(status: true).order(created_at: "ASC")
