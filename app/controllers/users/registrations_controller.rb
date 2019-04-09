@@ -2,6 +2,8 @@
 require "nkf"
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  before_action :set_api_key, only: [:create]
+
   def registration
     session[:provider] = "registration"
     @user = User.new
@@ -74,10 +76,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
 
     get_create_error_message
-
     if @user.errors.messages.blank?
-      # ToDo クレジットカード情報からトークを取得する処理
-      build_resource(email: session[:email], password: session[:password], nickname: session[:nickname])
+
+      customer = Payjp::Customer.create(card: card_params[:payjpToken])
+      build_resource(email: session[:email], password: session[:password], nickname: session[:nickname],pay_id: customer.id)
       resource.save
 
       @detail = UserDetail.create(user_id: resource.id ,family_name: session[:family_name], given_name: session[:given_name], family_name_kana: session[:family_name_kana], given_name_kana: session[:given_name_kana], birth_year: session[:birth_year], birth_month: session[:birth_month], birth_day: session[:birth_day], cell_phone_number: session[:cell_phone_number])
@@ -368,6 +370,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.errors[:card_code] << "正しくありません"
     end
 
+    if card_params[:payjpToken].blank?
+      @user.errors[:total] << " このカードはご利用になれません。"
+    end
   end
 
   def user_params
@@ -387,7 +392,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def card_params
-    params.require(:user).permit(:card_number, :credit_year, :credit_month, :card_code)
+    params.require(:user).permit(:card_number, :credit_year, :credit_month, :card_code).merge(payjpToken: params[:payjpToken])
   end
 
   def half_to_full(str)
@@ -448,6 +453,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def sign_up(resource_name, resource)
     sign_in(resource_name, resource)
   end
+
+  def set_api_key
+    Payjp.api_key = 'sk_test_cf22f826afb6315d068a24b2'
+  end
+
 end
 
 

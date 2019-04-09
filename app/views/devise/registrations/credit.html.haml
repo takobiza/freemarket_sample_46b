@@ -33,8 +33,11 @@
     %h2.signup-main-content__head
       支払い方法
     .signup-main-content__inner
-      = form_for(@user, url: signup_completed_path , html: { id:"form", method: :post}) do |f|
+      = form_for(@user, url: signup_completed_path , html: { id:"card-form", method: :post}) do |f|
         .signup-main-content__inner-form
+          .error_message_box
+            -if @user.errors.full_messages_for(:total).present?
+              = @user.errors.full_messages_for(:total).first.split(" ")[1]
 
           .signup-main-content__inner-form__group
             = f.label :'カード番号'
@@ -65,7 +68,7 @@
               %span 必須
               .signup-main-content__inner-form__group__select
                 .signup-main-content__inner-form__group__select__wrap
-                  = f.collection_select :credit_year, CreditYear.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
+                  = f.collection_select :credit_year, CreditYear::YEAR, :to_s, :to_s, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
                   .icon__arrow--bottom
                     = icon 'fa', 'angle-down'
 
@@ -75,7 +78,7 @@
 
               .signup-main-content__inner-form__group__select
                 .signup-main-content__inner-form__group__select__wrap
-                  = f.collection_select :credit_month, CreditMonth.all, :id, :name, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
+                  = f.collection_select :credit_month, CreditMonth::MONTH, :to_s, :to_s, {prompt: "--"}, {class: "signup-main-content__inner-form__group__select__wrap-default"}
                   .icon__arrow--bottom
                     = icon 'fa', 'angle-down'
 
@@ -104,7 +107,7 @@
 
 
           .actions
-            = f.submit "登録する", class: "btn-red registration__btn"
+            = f.submit "登録する", class: "btn-red registration__btn create_card_btn"
 
 
   = render '/shared/single/single-footer'
