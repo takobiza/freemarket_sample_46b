@@ -4,7 +4,7 @@
 .product-detail-wrapper
   .product-detail-wrapper__container
     - flash.each do |message_type, message|
-      -if message_type == "success" && (message == "出品停止しました" || message == "出品再開しました")
+      -if message_type == "success" && (message == "出品停止しました" || message == "出品再開しました" || message == "コメントしました" || message == "削除しました")
         = javascript_tag "toastr.success('#{message}')"
 
     .item-box
@@ -115,47 +115,59 @@
           = icon 'fa', 'lock'
           %a あんしん・あんぜんへの取り組み
 
+    - if @comments.present?
+      .comments-list
+        %ul
+          - @comments.each do |comment|
+            - if user_signed_in? && current_user.id == comment.user.id
+              %li.comment-container__current
+                = image_tag(comment.user.image, class: 'comment-container__current__user-avater')
+                .comment-container__current__comment-box
+                  .comment-container__current__comment-box--user-name
+                    %p
+                      = comment.user.nickname
+                  .comment-container__current__comment-box--comment
+                    %p
+                      = comment.message
+                    = icon 'far', 'clock'
 
-    .comments-list
-      %ul
-        %li.comment-container
-          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Xe6HCS4lyoEhsVAHOOBBin6qxLYLren_xcLyTTknCIF-k24u', class: 'comment-container__user-avater')
-          .comment-container__comment-box
-            .comment-container__comment-box--user-name
-              %p 小曽根
-            .comment-container__comment-box--comment
-              %p あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-              = icon 'fa', 'clock-o'
+                    %span
+                      = distance_of_time_in_words_to_now(comment.created_at)
+                    = icon 'fas', 'trash-alt', class: 'is-modal-icon', "data-message": comment.message, "data-id": comment.id
 
-              %span 20日前
-              = icon 'fa', 'flag'
+            - else
+              %li.comment-container
+                .comment-container_seller
+                  = image_tag(comment.user.image, class: 'comment-container__user-avater')
+                  - if comment.user_id == @product.user_id
+                    %p.comment-container_seller_content 出品者
 
-        %li.comment-container
-          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCZALHoHYx_FZT7PSvWXSdNJoOOUgkTqgURomgtXxbb8b5JDi0Vw', class: 'comment-container__user-avater')
-          .comment-container__comment-box
-            .comment-container__comment-box--user-name
-              %p 小崎
-            .comment-container__comment-box--comment
-              %p 欲しい！
-              = icon 'fa', 'clock-o'
+                .comment-container__comment-box
+                  .comment-container__comment-box--user-name
+                    %p
+                      = comment.user.nickname
+                  .comment-container__comment-box--comment
+                    %p
+                      = comment.message
+                    = icon 'far', 'clock'
 
-              %span 15日前
-              = icon 'fa', 'flag'
-
-
-        %li.comment-container
-          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGT-FqAbRzN8UQnpybr8xvbvxDzzGnF0e1z2NIN9wyHLfdZJk7cA', class: 'comment-container__user-avater')
-          .comment-container__comment-box
-            .comment-container__comment-box--user-name
-              %p 木幡
-            .comment-container__comment-box--comment
-              %p かわいい！
-              = icon 'fa', 'clock-o'
-
-              %span 3日前
-              = icon 'fa', 'flag'
+                    %span
+                      = distance_of_time_in_words_to_now(comment.created_at)
+                    - if user_signed_in? && current_user.id == @product.user_id
+                      = icon 'fas', 'trash-alt', class: 'is-modal-icon', "data-message": comment.message, "data-id": comment.id
 
 
+    - if user_signed_in?
+      .comments-list
+        %p.comments-list_message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        = form_for(@comment, url: product_comments_path(@product.id) , html: { method: :post}) do |f|
+          =f.text_area :message, class: "comments-list_message-textarea"
+          .error_message_box
+            -if flash[:error].present?
+              - flash[:error].each do |e|
+                = e
+
+          = f.submit "コメントする", class: "comments-list_message-btn registration__btn"
 
     .sns_icons
       .sns_icons__icon
@@ -197,5 +209,19 @@
             .price
             %p.tax (税込)
 
+  %aside.is-modal
+    .is-modal__inner
+      .is-modal__body
+        %p 確認
+        %br
+        .is-modal__body_gray
+          = "内容内容"
+        %br
+        = "本当にこのコメントを削除してよろしいですか？"
+      .cancel-btn キャンセル
+      .is-modal__body_delete
+        = button_to '削除する', "#", method: :delete, class: 'delete-change cancel-btn', onfocus:"this.blur();"
 
 = render '/shared/main-footer'
+
+

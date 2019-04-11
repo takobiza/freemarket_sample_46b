@@ -39,6 +39,8 @@ class ProductsController < ApplicationController
   def show
     @six_products_related_product = @product.six_products_related_product
     @six_products_related_user = Product.where(user_id: @product.user_id).limit(6)
+    @comment = Comment.new
+    @comments = Comment.where(product_id: params[:id]).includes(:user)
     add_breadcrumb @product.name
   end
 
