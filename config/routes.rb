@@ -51,9 +51,10 @@ Rails.application.routes.draw do
       post "/:products_id/transactions" => "cards#pay", as: :buy_product
     end
 
-    resources :comments, only: :create
+    resources :comments, only: [:create]
   end
 
+  resources :comments, only: [:destroy]
   resources :sells
   resources :search, only: :index
   resources :categories, only: :show

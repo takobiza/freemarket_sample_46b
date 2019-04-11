@@ -1,7 +1,17 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.create(comments_params)
+    @comment = Comment.new(comments_params)
+    if @comment.save
+      flash[:success] = "コメントしました"
+    end
+
     redirect_to product_path(params[:product_id]), flash: {error: @comment.errors.full_messages}
+  end
+
+  def destroy
+    Comment.delete(params[:id])
+    flash[:success] = "削除しました"
+    redirect_back(fallback_location: root_path)
   end
 
   private
