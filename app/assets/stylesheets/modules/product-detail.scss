@@ -235,11 +235,70 @@
   font-size: 14px;
   color: $thick-gray;
   padding: 0 25px 30px 25px;
+  &_message{
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
+    &-btn{
+      border: 1px solid #888;
+      background: #888;
+      color: #fff;
+    }
+
+    &-textarea{
+      margin: 10px 0;
+      background: #f5f5f5;
+      display: block;
+      width: 97%;
+      max-width: 97%;
+      min-height: 104px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
 }
 
 .comment-container {
     display: flex;
     padding-top: 30px;
+  &__current{
+    display: flex;
+    flex-direction : row-reverse;
+    padding-top: 30px;
+    &__user-avater {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    &__comment-box{
+      width: 100%;
+      padding-right: 15px;
+
+      &--user-name {
+        font-weight: 600;
+        color: #ea352d;
+        text-align: right;
+      }
+      &--comment {
+
+        background: #fbf0e6;
+        border-radius: 15px;
+        padding: 20px;
+        width: 93%;
+
+        .far,.fas, span {
+          margin-top: 8px;
+          color: #aaaaaa;
+          font-size: 14px;
+        }
+        .fa-trash-alt {
+          float: right;
+        }
+      }
+    }
+  }
   &__user-avater {
     width: 40px;
     height: 40px;
@@ -257,13 +316,12 @@
       padding: 20px;
       width: 93%;
       background-color: #eef0f4;
-      .fa, span {
+      .far,.fas, span {
         margin-top: 8px;
         color: #aaaaaa;
         font-size: 14px;
       }
-      .fa-flag {
-        font-size: 16px;
+      .fa-trash-alt {
         float: right;
       }
     }

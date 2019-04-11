@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       post "/:products_id/transactions" => "cards#pay", as: :buy_product
     end
 
+    resources :comments, only: :create
   end
 
   resources :sells
@@ -60,5 +61,6 @@ Rails.application.routes.draw do
   resources :brands, only: :new
 
   delete '/products/:id/edit' => 'products#remove'
+
 
 end

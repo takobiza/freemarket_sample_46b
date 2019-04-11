@@ -118,44 +118,47 @@
 
     .comments-list
       %ul
-        %li.comment-container
-          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4Xe6HCS4lyoEhsVAHOOBBin6qxLYLren_xcLyTTknCIF-k24u', class: 'comment-container__user-avater')
-          .comment-container__comment-box
-            .comment-container__comment-box--user-name
-              %p 小曽根
-            .comment-container__comment-box--comment
-              %p あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-              = icon 'fa', 'clock-o'
+        - @comments.each do |comment|
+          - if current_user.id == comment.user.id
+            %li.comment-container__current
+              = image_tag(comment.user.image, class: 'comment-container__current__user-avater')
+              .comment-container__current__comment-box
+                .comment-container__current__comment-box--user-name
+                  %p
+                    = comment.user.nickname
+                .comment-container__current__comment-box--comment
+                  %p
+                    = comment.message
+                  = icon 'far', 'clock'
 
-              %span 20日前
-              = icon 'fa', 'flag'
+                  %span 20日前
+                  = icon 'fas', 'trash-alt'
+          - else
+            %li.comment-container
+              = image_tag(comment.user.image, class: 'comment-container__user-avater')
+              .comment-container__comment-box
+                .comment-container__comment-box--user-name
+                  %p
+                    = comment.user.nickname
+                .comment-container__comment-box--comment
+                  %p
+                    = comment.message
+                  = icon 'far', 'clock'
 
-        %li.comment-container
-          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCZALHoHYx_FZT7PSvWXSdNJoOOUgkTqgURomgtXxbb8b5JDi0Vw', class: 'comment-container__user-avater')
-          .comment-container__comment-box
-            .comment-container__comment-box--user-name
-              %p 小崎
-            .comment-container__comment-box--comment
-              %p 欲しい！
-              = icon 'fa', 'clock-o'
-
-              %span 15日前
-              = icon 'fa', 'flag'
-
-
-        %li.comment-container
-          = image_tag('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGT-FqAbRzN8UQnpybr8xvbvxDzzGnF0e1z2NIN9wyHLfdZJk7cA', class: 'comment-container__user-avater')
-          .comment-container__comment-box
-            .comment-container__comment-box--user-name
-              %p 木幡
-            .comment-container__comment-box--comment
-              %p かわいい！
-              = icon 'fa', 'clock-o'
-
-              %span 3日前
-              = icon 'fa', 'flag'
+                  %span 20日前
+                  = icon 'fas', 'trash-alt'
 
 
+    .comments-list
+      %p.comments-list_message 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = form_for(@comment, url: product_comments_path(@product.id) , html: { method: :post}) do |f|
+        =f.text_area :message, class: "comments-list_message-textarea"
+        .error_message_box
+          -if flash[:error].present?
+            - flash[:error].each do |e|
+              = e
+
+        = f.submit "コメントする", class: "comments-list_message-btn registration__btn"
 
     .sns_icons
       .sns_icons__icon
