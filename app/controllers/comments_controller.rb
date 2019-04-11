@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  protect_from_forgery :except => [:destroy]
+
   def create
     @comment = Comment.new(comments_params)
     if @comment.save
