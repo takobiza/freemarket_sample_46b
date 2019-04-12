@@ -81,7 +81,6 @@
             %th 発送日の目安
 
             %td
-
               = @product.delivary_option.shippingday.name
 
       .item-box__item-price
@@ -102,7 +101,7 @@
       .item-box__item-message
         %p #{@product.description}
 
-      - if user_signed_in? && @product.user_id != current_user.id
+      - if !(user_signed_in?) || (user_signed_in? && @product.user_id != current_user.id)
         .item-box__item-footer
 
           .item-box__item-footer--like{ class: "#{'item-box__item-footer--like-heart' if like?(@product.id)}", "data-label": "#{get_label(like?(@product.id))}", "data-id": @product.id }
