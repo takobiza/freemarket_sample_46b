@@ -59,6 +59,12 @@ Rails.application.routes.draw do
   resources :search, only: :index
   resources :categories, only: :show
 
+  resources :favorites, only: :create do
+    collection do
+      delete "/destroy" => "favorites#destroy"
+    end
+  end
+
   resources :brands, only: :new
 
   delete '/products/:id/edit' => 'products#remove'

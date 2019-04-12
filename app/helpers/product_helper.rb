@@ -8,4 +8,15 @@ module ProductHelper
     end
   end
 
+  def like?(id)
+    user_signed_in? && current_user.like_user?(id)
+  end
+
+  def get_label(like_decision)
+    if like_decision
+      "like"
+    else
+      "dis-like"
+    end
+  end
 end

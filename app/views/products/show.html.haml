@@ -102,18 +102,23 @@
       .item-box__item-message
         %p #{@product.description}
 
-      .item-box__item-footer
-        .item-box__item-footer--like-btn
-          = icon 'fa', 'heart'
+      - if user_signed_in? && @product.user_id != current_user.id
+        .item-box__item-footer
 
-          %a いいね！
-        .item-box__item-footer--report-btn
-          = icon 'fa', 'flag'
+          .item-box__item-footer--like{ class: "#{'item-box__item-footer--like-heart' if like?(@product.id)}", "data-label": "#{get_label(like?(@product.id))}", "data-id": @product.id }
+            = icon 'fa', 'heart'
 
-          %a 不適切な商品の報告
-        .item-box__item-footer--link-safety
-          = icon 'fa', 'lock'
-          %a あんしん・あんぜんへの取り組み
+            %a.item-box__item-footer--like-content いいね!
+            %a.item-box__item-footer--like-counter
+              = @product.favorites.length
+
+          .item-box__item-footer--report-btn
+            = icon 'fa', 'flag'
+
+            %a 不適切な商品の報告
+          .item-box__item-footer--link-safety
+            = icon 'fa', 'lock'
+            %a あんしん・あんぜんへの取り組み
 
     - if @comments.present?
       .comments-list
