@@ -30,9 +30,9 @@
                   = product.name
                 .l-content__listings_contents_active_link_item_icon
                   = icon 'fa', 'heart'
-                  0
+                  = product.favorites.length
                   = icon 'far', 'comment-alt'
-                  0
+                  = product.comments.length
 
                   - if product.status
                     %span.l-content__listings_contents_active_link_item_icon_status_blue

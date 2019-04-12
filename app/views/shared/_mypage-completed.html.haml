@@ -30,9 +30,9 @@
                   = product.name
                 .l-content__listings_contents_active_link_item_icon
                   = icon 'fa', 'heart'
-                  0
+                  = product.favorites.length
                   = icon 'far', 'comment-alt'
-                  0
+                  = product.comments.length
                   %span.l-content__listings_contents_active_link_item_icon_status_gray
                     売却済
               = icon 'fa', 'angle-right', class: 'l-content__listings_contents_active_link_arrow-right'
