@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_051519) do
+ActiveRecord::Schema.define(version: 2019_04_12_065115) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2019_03_31_051519) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_delivary_options_on_product_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -148,6 +157,8 @@ ActiveRecord::Schema.define(version: 2019_03_31_051519) do
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "delivary_options", "products"
+  add_foreign_key "favorites", "products"
+  add_foreign_key "favorites", "users"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"

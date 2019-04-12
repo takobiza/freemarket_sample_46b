@@ -9,7 +9,8 @@ class Product < ApplicationRecord
   belongs_to :brand, optional: true
   belongs_to :user
   belongs_to_active_hash :state
-
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :purchase, dependent: :destroy
 
   validates :category_id, presence: true
@@ -27,4 +28,5 @@ class Product < ApplicationRecord
   def six_products_related_product
     Product.where.not(id: self.id).where(category_id: self.category_id).limit(6)
   end
+
 end

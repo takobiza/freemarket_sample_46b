@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  def new
+    self.resource = resource_class.new(sign_in_params)
+    clean_up_passwords(resource)
+    if flash[:error].present?
+      resource.errors[:total] << flash[:error]
+    end
+    yield resource if block_given?
+    respond_with(resource, serialize_options(resource))
+  end
 
   def create
     if verify_recaptcha

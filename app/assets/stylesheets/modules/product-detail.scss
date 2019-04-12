@@ -211,10 +211,23 @@
     font-size: 14px;
     color: $thick-gray;
     display: flex;
-    &--like-btn {
+    &--like{
       @include btn;
       background-color: $background-gray;
+      color: #ddd;
       margin-right: 20px;
+      cursor: pointer;
+      &-heart {
+        color: red !important;
+      }
+    }
+
+    &--like-content{
+      color: #333333;
+    }
+
+    &--like-counter{
+      color: #333333;
     }
     &--report-btn {
       @include btn;

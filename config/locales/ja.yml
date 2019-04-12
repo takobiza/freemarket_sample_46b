@@ -60,6 +60,7 @@ ja:
     category_id: カテゴリー
     is_product_arrived: 商品有無
     rate: 評価
+    total: ""
 
   activerecord:
     errors:

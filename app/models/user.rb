@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :purchase_buyer, :class_name => 'Purchase', :foreign_key => 'buyer_id'
   has_many :products_of_seller, :through => :purchase_seller, :source => 'product'
   has_many :products_of_buyer, :through => :purchase_buyer, :source => 'product'
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :nickname, presence: true
   validates :nickname,    length: { maximum: 20 }
@@ -65,6 +67,10 @@ class User < ApplicationRecord
      months << month
    end
    return months
+  end
+
+  def like_user?(id)
+    self.favorites.select{|favorite| favorite.product_id == id}.present?
   end
 
 end

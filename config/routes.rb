@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get '/listings/listing' => 'users#listing'
       get '/listings/completed' => 'users#completed'
       get '/listings/in_progress' => 'users#in_progress'
+      get '/like/history' => 'users#like'
     end
   end
 
@@ -58,6 +59,12 @@ Rails.application.routes.draw do
   resources :sells
   resources :search, only: :index
   resources :categories, only: :show
+
+  resources :favorites, only: :create do
+    collection do
+      delete "/destroy" => "favorites#destroy"
+    end
+  end
 
   resources :brands, only: :new
 

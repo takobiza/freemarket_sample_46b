@@ -17,7 +17,7 @@
     -if @products.blank?
       %ul.l-content__listings_contents_content
         %li.l-content__listings_contents_content_none
-          出品中の商品がありません
+          取引中の商品がありません
     -else
       %ul.l-content__listings_contents_content.l-content__listings_contents_active
         - @products.each do |product|
@@ -30,9 +30,9 @@
                   = product.name
                 .l-content__listings_contents_active_link_item_icon
                   = icon 'fa', 'heart'
-                  0
+                  = product.favorites.length
                   = icon 'far', 'comment-alt'
-                  0
+                  = product.comments.length
                   %span.l-content__listings_contents_active_link_item_icon_status_red
                     取引中
               = icon 'fa', 'angle-right', class: 'l-content__listings_contents_active_link_arrow-right'

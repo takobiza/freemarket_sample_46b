@@ -16,9 +16,12 @@
         = product.name
       .product-middle__text-area__others
         -# 下記 .iine についてはいいね機能実装時、.iineの直前に「いいねの数値が1以上の場合に.iine以下を表示する」コードを追加してください
-        .iine
-          %i.fa.fa-heart
-          %span.iine-total 0
+        -if product.favorites.length != 0
+          .iine
+            %i.fa.fa-heart{ style: "#{'color: red' if like?(i.id)}"}
+            %span.iine-total
+              = product.favorites.length
+
         %p.price
           %span ¥
           = product.price
