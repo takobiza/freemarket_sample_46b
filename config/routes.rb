@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       get '/listings/listing' => 'users#listing'
       get '/listings/completed' => 'users#completed'
       get '/listings/in_progress' => 'users#in_progress'
+      get '/like/history' => 'users#like'
     end
   end
 

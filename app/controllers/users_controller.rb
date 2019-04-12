@@ -35,6 +35,10 @@ class UsersController < ApplicationController
     @products = current_user.products_of_seller.select{|product| product.purchase[0].rate == 0 && product.is_buy == false }
   end
 
+  def like
+    @products = current_user.favorites.map{|favorite| Product.find(favorite.product_id)}
+  end
+
   private
   def get_header_category_brand
     @brands = Brand.limit(5)
