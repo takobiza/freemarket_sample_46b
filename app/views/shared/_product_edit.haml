@@ -8,20 +8,23 @@
   - else
     %p.item-box__restart
       = link_to '出品を再開する', switch_products_path(@product.id), method: :patch
-  %dl
-    %dt.item-box__delete この商品を削除する
-    %dd
-      %p.ident 確認
-      %p 削除すると二度と復活できません。
-      %p 削除する代わりに停止することもできます。
-      %br
-      %p 本当に削除しますか？
-      %br
-      %p
-      = link_to 'キャンセル', product_path(@product.id), method: :get, class: "modal", id: "cancel"
-      = link_to '削除する', product_path, method: :delete, class: "modal", id: "delete"
-  #glayLayer
-  #overLayer
+
+  - if @product.is_buy
+    %dl
+      %dt.item-box__delete この商品を削除する
+      %dd
+        %p.ident 確認
+        %p 削除すると二度と復活できません。
+        %p 削除する代わりに停止することもできます。
+        %br
+        %p 本当に削除しますか？
+        %br
+        %p
+        = link_to 'キャンセル', product_path(@product.id), method: :get, class: "modal", id: "cancel"
+        = link_to '削除する', product_path, method: :delete, class: "modal", id: "delete"
+    #glayLayer
+    #overLayer
+
 - else
   - if @product.is_buy
     %p.item-box__buy
