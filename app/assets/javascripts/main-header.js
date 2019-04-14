@@ -14,4 +14,14 @@ $(document).on('turbolinks:load', function() {
 
   );
 
+  $(".header-inner__bottom--right-mypage").hover(
+     function () {
+      $(".header-inner__bottom--right-mypage-box").css('display','block');
+    },
+    function () {
+      $(".header-inner__bottom--right-mypage-box").css('display','none');
+    }
+
+  );
+
 });

@@ -73,4 +73,12 @@ class User < ApplicationRecord
     self.favorites.select{|favorite| favorite.product_id == id}.present?
   end
 
+  def get_listing_length
+    Product.where(user_id: self.id).where(status: true).length
+  end
+
+  def get_money
+    self.purchase_seller.select{ |model| model[:rate] > 0 }.sum{|model| model[:price_pay]}.to_s(:delimited)
+  end
+
 end
