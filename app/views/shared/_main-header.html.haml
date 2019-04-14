@@ -14,7 +14,10 @@
     .header-inner__bottom
       %ul.header-inner__bottom--left
         %li.nav.header-inner__bottom--left__category
-          カテゴリーから探す
+          .header-inner__bottom--left_content
+            = icon 'fas', 'list-ul'
+            カテゴリーから探す
+
           .header-inner__bottom--left__category__menu
             %ul.category__menu__large
               - @categories.each do |large|
@@ -37,7 +40,9 @@
                                     = link_to small.name, category_path(small.id)
 
         %li.nav.header-inner__bottom--left__brand
-          ブランドから探す
+          .header-inner__bottom--left_content
+            = icon 'fas', 'tags'
+            ブランドから探す
           .header-inner__bottom--left__brand__menu
             %ul.category__menu__large
               - @brands.each do |brand|
@@ -58,14 +63,109 @@
               = icon 'fa', 'angle-down'
               やることリスト
 
-          %li.header-inner__bottom--right-login
-            = link_to (users_path) do
+          %li.header-inner__bottom--right-mypage.header-inner__bottom--right-mypage
+            = link_to users_path, class: "header-inner__bottom--right-mypage-link" do
               = image_tag current_user.image, width: "32"
-              .header-inner__bottom--right-login-text
+              .header-inner__bottom--right-mypage-text
                 マイページ
+            .header-inner__bottom--right-mypage-box
+              .header-inner__bottom--right-mypage-box-text
+                .header-inner__bottom--right-mypage-box-text-user
+                  .header-inner__bottom--right-mypage-box-text-user-image
+                    = image_tag current_user.image, width: "60"
+                  .header-inner__bottom--right-mypage-box-text-user-name
+                    = current_user.nickname
+
+                .header-inner__bottom--right-mypage-box-text-listing
+                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-listing-link" do
+                    評価:
+                    = current_user.get_good_rate
+
+                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-listing-link" do
+                    出品数:
+                    = current_user.get_listing_length
+
+
+                .header-inner__bottom--right-mypage-box-text-sales-point
+
+                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-sales-point-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-sales-point-link-left
+                      売上金
+
+                    .header-inner__bottom--right-mypage-box-text-sales-point-link-right
+                      ¥
+                      = current_user.get_money
+                      =icon 'fa', 'angle-right'
+
+                .header-inner__bottom--right-mypage-box-text-sales-point
+                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-sales-point-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-sales-point-link-left
+                      ポイント
+
+                    .header-inner__bottom--right-mypage-box-text-sales-point-link-right
+                      P
+                      0
+                      =icon 'fa', 'angle-right'
+
+                .header-inner__bottom--right-mypage-box-text-lists
+                  = link_to like_history_users_path, class: "header-inner__bottom--right-mypage-box-text-lists-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-left
+                      いいね！一覧
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-right
+                      =icon 'fa', 'angle-right'
+
+                  = link_to listings_listing_users_path, class: "header-inner__bottom--right-mypage-box-text-lists-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-left
+                      出品した商品 - 出品中
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-right
+                      =icon 'fa', 'angle-right'
+
+                  = link_to listings_in_progress_users_path, class: "header-inner__bottom--right-mypage-box-text-lists-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-left
+                      出品した商品 - 取引中
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-right
+                      =icon 'fa', 'angle-right'
+
+                  = link_to listings_completed_users_path, class: "header-inner__bottom--right-mypage-box-text-lists-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-left
+                      出品した商品 - 売却済み
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-right
+                      =icon 'fa', 'angle-right'
+
+                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-lists-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-left
+                      購入した商品 - 取引中
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-right
+                      =icon 'fa', 'angle-right'
+
+                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-lists-link" do
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-left
+                      購入した商品 - 過去の取引
+
+                    .header-inner__bottom--right-mypage-box-text-lists-link-right
+                      =icon 'fa', 'angle-right'
+
+
 
         - else
-          %li.signin
-            = link_to 'ログイン', new_user_session_path
-          %li.signup
-            = link_to '新規会員登録', new_user_path
+          %li
+            = link_to new_user_session_path, class: "signin" do
+              ログイン
+
+          %li
+            = link_to  new_user_path, class: "signup" do
+              新規会員登録
+

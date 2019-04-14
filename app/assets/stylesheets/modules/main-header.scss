@@ -69,6 +69,17 @@
       .nav{
         padding-right: 15px;
       }
+
+      &_content{
+        font-weight: bold;
+        &:hover {
+          color: $lightblue;
+        }
+        i {
+          color: red;
+        }
+      }
+
       &__category {
       position: relative;
       &:hover {
@@ -130,7 +141,6 @@
           border-radius: 50%;
         }
 
-
         &-text{
           display: inline-block;
           margin-bottom: 18px;
@@ -139,16 +149,161 @@
         }
       }
 
+      &-mypage{
+        position: relative;
+        display: inline-block;
+        padding-left: 28px;
+        font-size: 14px;
+        text-align: center;
+        color: $thick-gray;
+        padding-bottom: 10px;
+
+        &-link{
+          text-decoration: none;
+          &:hover {
+            color: $lightblue;
+          }
+        }
+
+        img{
+          overflow: hidden;
+          border-radius: 50%;
+        }
+
+        &-text{
+          display: inline-block;
+          margin-bottom: 18px;
+          font-size: 14px;
+          vertical-align: middle;
+        }
+
+        &-box{
+            position: absolute;
+            top: 35px;
+            z-index: 1;
+            display: none;
+            width: 320px;
+            background: #fff;
+            -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,0.24);
+            font-size: 14px;
+            right: 0px;
+
+
+
+            &-text{
+              text-align: center;
+              &-user{
+                padding: 28px 0 0;
+                height: 80px;
+                background-image: url(https://www.mercari.com/assets/img/mypage/user-bg.jpg);
+                background-repeat: no-repeat;
+                background-size: 320px 80px;
+                &-name{
+                  margin: 8px 0 0;
+                  padding: 0 8px;
+                  font-size: 16px;
+                }
+              }
+
+              &-listing{
+                margin-top: 40px;
+                padding: 8px 8px 0;
+                display: flex;
+                justify-content: center;
+
+                &-link{
+                  margin-left: 16px;
+                  font-size: 14px;
+                  color: #333;
+                  text-decoration: none;
+                  &:hover {
+                    text-decoration: underline;
+                    color: #ccc;
+                  }
+                }
+              }
+
+              &-sales-point{
+                width: 300px;
+                margin: 0 auto;
+                background: #fafafa;
+                border: 1px solid #eee;
+                &-link{
+                  font-size: 14px;
+                  color: #333;
+                  text-decoration: none;
+                  display: flex;
+                  justify-content: space-between;
+
+                  &:hover {
+                    color: #ccc;
+                  }
+
+                  &-left{
+                    margin-left: 6px;
+                  }
+
+                  &-right{
+                    color: #333;
+                    margin-right: 6px;
+                    i{
+                      font-size: 12px;
+                      color: $form-box-border;
+                    }
+                  }
+
+                }
+              }
+
+              &-lists{
+                padding-top: 16px;
+
+                &-link {
+                  position: relative;
+                  display: block;
+                  padding-top: 14px;
+                  border-top: 1px solid #eee;
+                  min-height: 48px;
+                  text-decoration: none;
+                  font-size: 14px;
+                  color: $form-box-border;
+                  display: flex;
+                  justify-content: space-between;
+
+                  padding-right: 16px;
+                  &:hover {
+                    background-color: #fafafa;
+                    color: black;
+                    padding-right: 8px;
+                  }
+
+                  &-left{
+                    color: #333;
+                    margin-left: 6px;
+                  }
+
+                  &-right{
+                    i{
+                      font-size: 23px;
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+        }
+
       .signin {
         background-color: $warm-red;
         border-radius: 4px;
         margin-right: 15px;
         text-align: center;
         width: 80px;
-        a {
-          text-decoration: none;
-          color: $white;
-        }
+        padding: 9px;
+        text-decoration: none;
+        color: $white;
       }
 
       .signup {
@@ -157,9 +312,12 @@
         float: left;
         text-align: center;
         width: 105px;
-        a {
-          text-decoration: none;
-          color: $lightblue;
+        text-decoration: none;
+        color: $lightblue;
+
+        &:hover {
+          background-color: $lightblue;
+          color: white !important;
         }
       }
 
