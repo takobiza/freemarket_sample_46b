@@ -81,7 +81,7 @@
                     評価:
                     = current_user.get_good_rate
 
-                  = link_to root_path, class: "header-inner__bottom--right-mypage-box-text-listing-link" do
+                  = link_to listings_listing_users_path, class: "header-inner__bottom--right-mypage-box-text-listing-link" do
                     出品数:
                     = current_user.get_listing_length
 
