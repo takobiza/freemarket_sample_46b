@@ -104,7 +104,7 @@
       - if !(user_signed_in?) || (user_signed_in? && @product.user_id != current_user.id)
         .item-box__item-footer
 
-          .item-box__item-footer--like{ class: "#{'item-box__item-footer--like-heart' if like?(@product.id)}", "data-label": "#{get_label(like?(@product.id))}", "data-id": @product.id }
+          .item-box__item-footer--like{ style: "#{'color: red' if like?(@product.id)}", "data-label": "#{get_label(like?(@product.id))}", "data-id": @product.id }
             = icon 'fa', 'heart'
 
             %a.item-box__item-footer--like-content いいね!
