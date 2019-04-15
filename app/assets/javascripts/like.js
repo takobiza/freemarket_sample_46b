@@ -23,7 +23,7 @@ $(document).on('turbolinks:load', function() {
 
         })
         .fail(function(data){
-
+          alert('いいね！に失敗しました。')
         });
 
       }else{
@@ -37,12 +37,13 @@ $(document).on('turbolinks:load', function() {
         })
         .done(function(data){
           like.removeClass('item-box__item-footer--like-heart');
+          $(".item-box__item-footer--like").css('color', "");
           var count = parseInt($(".item-box__item-footer--like-counter").text());
           $(".item-box__item-footer--like-counter").text(count -= 1);
           like.data('label', 'dis-like');
         })
         .fail(function(data){
-
+          alert('いいね！に失敗しました。');
         });
 
       }
